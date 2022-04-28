@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EcommerceWeb.Models
 {
     public class LoaiHang
     {
-
-        public int MaLoai { get; set; }
+        public int Id { get; set; }
         public string TenLoai { get; set; }
+        public ICollection<MatHang> MatHangs { get; set; }
 
     }
 }
