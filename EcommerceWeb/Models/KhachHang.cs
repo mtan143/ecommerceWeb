@@ -5,6 +5,12 @@ namespace EcommerceWeb.Models
 {
     public class KhachHang
     {
+        public KhachHang(string username, string password)
+        {
+            Username = username;
+            Password = password;
+        }
+
         public int Id { get; set; }
         public string TenKH { get; set; }
         public string DiaChi { get; set; }

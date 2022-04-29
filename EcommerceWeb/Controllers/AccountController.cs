@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EcommerceWeb.Models;
+using EcommerceWeb.DAL;
 
 namespace EcommerceWeb.Controllers
 {
@@ -152,9 +153,13 @@ namespace EcommerceWeb.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    EcommerceContext ecommerceContext = new EcommerceContext();
+                    ecommerceContext.KhachHangs.Add(new KhachHang(model.Email, model.Password));
+                    ecommerceContext.SaveChanges();
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
