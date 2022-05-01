@@ -5,6 +5,10 @@ namespace EcommerceWeb.Models
 {
     public class MatHang
     {
+        public MatHang()
+        {
+        }
+
         public int Id { get; set; }
         [StringLength(1000, MinimumLength =10)]
         public string TenMH { get; set; }

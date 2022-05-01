@@ -74,6 +74,15 @@ namespace EcommerceWeb.Controllers
                 return View(model);
             }
 
+            var user = await UserManager.FindAsync(model.Email, model.Password);
+            if (user != null)
+            {
+                if (UserManager.IsInRole(user.Id, "ADMIN"))
+                {
+                    returnUrl = "/Admin/Index";
+                }
+            }
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -155,6 +164,7 @@ namespace EcommerceWeb.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 
                 var result = await UserManager.CreateAsync(user, model.Password);
+                await UserManager.AddToRoleAsync(user.Id, "USER");
                 if (result.Succeeded)
                 {
                     EcommerceContext ecommerceContext = new EcommerceContext();

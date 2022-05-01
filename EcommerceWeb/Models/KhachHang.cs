@@ -5,6 +5,10 @@ namespace EcommerceWeb.Models
 {
     public class KhachHang
     {
+        public KhachHang()
+        {
+        }
+
         public KhachHang(string username, string password)
         {
             Username = username;

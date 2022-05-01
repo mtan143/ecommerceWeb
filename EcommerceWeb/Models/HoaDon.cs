@@ -4,6 +4,10 @@ namespace EcommerceWeb.Models
 {
     public class HoaDon
     {
+        public HoaDon()
+        {
+        }
+
         public int Id { get; set; }
 
         public int MaKH { get; set; }
