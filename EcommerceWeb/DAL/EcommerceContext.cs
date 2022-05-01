@@ -15,5 +15,6 @@ namespace EcommerceWeb.DAL
         public DbSet<MatHang> MatHangs { get; set; }
         public DbSet<KhachHang> KhachHangs { get; set; }
         public DbSet<HoaDon> HoaDons { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
     }
 }
