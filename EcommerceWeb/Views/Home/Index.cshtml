@@ -1,31 +1,930 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
+<head>
+    <link rel="stylesheet" href="~/Content/Site.css">
+    <style>
+        div.gallery img {
+            width: 150px;
+            height: 150px;
+            margin: 30px;
+            display:inline-block;
+        }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+        .zoomPic:hover{
+            transform: scale(1.5);
+            transition: transform .2s;
+        }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        div.gallery {
+            margin: 30px;
+            /*border: 2px solid #ccc;*/
+            width: auto;
+            height: auto;
+            display:inline-block;
+            background-color: #E7E7E7;
+        }
+    </style>
+</head>
+
+<header>
+    <div class="w3-content w3-section" @*style="max-width: 500%; max-height: 100%"*@>
+        <img class="mySlides" src="~/image/fashion2.jpg" style="width:100%; height: 750px; margin:0">
+        <img class="mySlides" src="~/image/fashion3.jpg" style="width:100%; height: 750px; margin:0">
+        <img class="mySlides" src="~/image/fashion1.jpg" style="width:100%; height: 750px; margin:0">
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 5000); // Change image every 5 seconds
+        }
+    </script>
+</header>
+<div class="content">
+    <h2 id="newArrivals" style="font-family: inherit; color: #5f5b57; margin: 100px 0px 50px 0px">
+        New Arrivals
+    </h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <h2 id="Man" style="font-family: inherit; color: #5f5b57; margin: 100px 0px 50px 0px">
+        Man
+    </h2>
+    <!-- T-shirts & Polo Shirts -->
+    <p id="TsPsMen" style="text-align:left; margin-left: 83px ; font-size: 20px">T-shirts & Polo Shirts</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
     </div>
+
+    <!--Shirt-->
+    <p id="StMen" style="text-align:left; margin-left: 83px ; font-size: 20px">Shirts</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Shorts & Pants-->
+    <p id="SPMen" style="text-align:left; margin-left: 83px ; font-size: 20px">Shorts & Pants</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Demin-->
+    <p id="DMen" style="text-align:left; margin-left: 83px ; font-size: 20px">Demin</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Coat-->
+    <p id="CMen" style="text-align:left; margin-left: 83px ; font-size: 20px">Coat</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Shoes-->
+    <p id="SsMen" style="text-align:left; margin-left: 83px ; font-size: 20px">Shoes</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Sneakers-->
+    <p id="SksMen" style="text-align:left; margin-left: 83px ; font-size: 20px">Sneakers</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Boots-->
+    <p id="BtsMen" style="text-align:left; margin-left: 83px ; font-size: 20px">Boots</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Backpacks-->
+    <p id="BpsMen" style="text-align:left; margin-left: 83px ; font-size: 20px">Backpacks</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 id="Women" style="font-family: inherit; color: #5f5b57; margin: 100px 0px 50px 0px">
+        Women
+    </h2>
+
+    <!-- Dresses -->
+    <p id="Dw" style="text-align:left; margin-left: 83px ; font-size: 20px">Dresses</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Top-->
+    <p id="Tw" style="text-align:left; margin-left: 83px ; font-size: 20px">Top</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--T-Shirst-->
+    <p id="TSw" style="text-align:left; margin-left: 83px ; font-size: 20px">T-Shirst</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Pants & Shorts-->
+    <p id="PSw" style="text-align:left; margin-left: 83px ; font-size: 20px">Pants & Shorts</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Denim-->
+    <p id="Dmw" style="text-align:left; margin-left: 83px ; font-size: 20px">Denim</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Coat-->
+    <p id="Cw" style="text-align:left; margin-left: 83px ; font-size: 20px">Coat</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Swimwear-->
+    <p id="Sww" style="text-align:left; margin-left: 83px ; font-size: 20px">Swimwear</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Sandals-->
+    <p id="STw" style="text-align:left; margin-left: 83px ; font-size: 20px">Sandals & Thongs</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Sneakers-->
+    <p id="Sksw" style="text-align:left; margin-left: 83px ; font-size: 20px">Sneakers</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Boots & Ankle Boots-->
+    <p id="BAw" style="text-align:left; margin-left: 83px ; font-size: 20px">Boots & Ankle Boots</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Mini Bags-->
+    <p id="MBw" style="text-align:left; margin-left: 83px ; font-size: 20px">Mini Bags</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Tote Bags-->
+    <p id="TBw" style="text-align:left; margin-left: 83px ; font-size: 20px">Tote Bags</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>Geometric GG print bowling shirt</p>
+                <p>$ 1,400</p>
+            </div>
+        </div>
+    </div>
+
 </div>

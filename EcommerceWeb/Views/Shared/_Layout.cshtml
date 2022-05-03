@@ -3,13 +3,60 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>ARON</title>
+    <link rel="icon" href="~/image/LogoAron.png">
+    <link href="~/Content/font-awesome/css/all.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .navbar-brand{
+            color: black;
+        }
+
+        .navbar-brand:hover{
+            color: #1998E8;
+        }
+
+        .homeNav:hover{
+            color: #1998E8;
+        }
+
+        .newArrivalsNav:hover{
+            color: #1998E8;
+        }
+
+        .infoNav:hover{
+            color: #1998E8;
+        }
+
+        .navbar-fixed-top{
+            background-color:#F8F9FD;
+            border-bottom-color:#F8F9FD ;
+        }
+
+        .container-fluid {
+            /*background-image: url('../../image/header.png');*/
+        }
+
+        .text-white{
+            color: white;
+        }
+
+        .btn:hover{
+            color: #1998E8;
+        }
+
+        .btn{
+            color: white
+        }
+
+
+
+    </style>
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body style="padding-bottom: 0">
+    <div class="navbar navbar-fixed-top" @*style="border-bottom-color:#fff ; background-color: #fff"*@>
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,25 +64,236 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("ARON", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a class="homeNav" href="#" style="color:black">Home</a></li>
+                    <li><a class="newArrivalsNav"  href="#newArrivals" style="color:black">New Arrivals</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="color:black">
+                            Man
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#TsPsMen">T-shirts & Polo Shirts</a></li>
+                            <li><a class="dropdown-item" href="#StMen">Shirts</a></li>
+                            <li><a class="dropdown-item" href="#SPMen">Shorts & Pants</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#DMen">Demin</a></li>
+                            <li><a class="dropdown-item" href="#CMen">Coat</a></li>
+                            <li><a class="dropdown-item" href="#SsMen">Shoes</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#SksMen">Sneakers</a></li>
+                            <li><a class="dropdown-item" href="#BtsMen">Boots</a></li>
+                            <li><a class="dropdown-item" href="#BpsMen">Backpacks</a></li>
+                        </ul>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="color:black">
+                            Women
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#Dw">Dresses</a></li>
+                            <li><a class="dropdown-item" href="#Tw">Tops</a></li>
+                            <li><a class="dropdown-item" href="#TSw">T-Shirst</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#PSw">Pants & Shorts</a></li>
+                            <li><a class="dropdown-item" href="#Dmw">Denim</a></li>
+                            <li><a class="dropdown-item" href="#Cw">Coat</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#Sww">Swimwear</a></li>
+                            <li><a class="dropdown-item" href="#STw">Sandals & Thongs</a></li>
+                            <li><a class="dropdown-item" href="#Sksw">Sneakers</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#BAw">Boots & Ankle Boots</a></li>
+                            <li><a class="dropdown-item" href="#MBw">Mini Bags</a></li>
+                            <li><a class="dropdown-item" href="#TBw">Tote Bags</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="infoNav" href="#info" style="color:black">Info</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Ecommerce Application</p>
-        </footer>
-    </div>
+    @*<div class="container body-content"></div>*@
+    @RenderBody()
+    <hr />
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white" id="info" style="background-color: #262626; color: white">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://vi-vn.facebook.com/" role="button">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/" role="button">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://google.com/" role="button">
+                    <i class="fab fa-google"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/" role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+            <!-- Section: Social media -->
+            <!-- Section: Form -->
+            @*<section class="">
+                <form action="">
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center">
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <strong>Sign up for our newsletter</strong>
+                            </p>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-md-5 col-12">
+                            <!-- Email input -->
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" id="form5Example21" class="form-control" />
+                                <label class="form-label" for="form5Example21">Email address</label>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-outline-light mb-4">
+                                Subscribe
+                            </button>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </form>
+            </section>*@
+            <!-- Section: Form -->
+            <!-- Section: Text -->
+            <section class="mb-4">
+                <p style="font-size: 20px">
+                    Welcome to ARON
+                </p>
+            </section>
+            <!-- Section: Text -->
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+        </div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); padding: 20px 0">
+            © 2020 Copyright:
+            <a class="text-white" href="#">ARONVN.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
