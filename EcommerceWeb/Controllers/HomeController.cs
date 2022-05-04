@@ -9,6 +9,7 @@ namespace EcommerceWeb.Controllers
 {
     public class HomeController : Controller
     {
+        private EcommerceContext db = new EcommerceContext();
         public ActionResult Index()
         {
             return View();
@@ -33,6 +34,18 @@ namespace EcommerceWeb.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Man()
+        {
+            var manProduct = db.MatHangs.Where(x => x.LoaiID == 1).ToList();
+            return View(manProduct);
+        }
+
+        public ActionResult Woman()
+        {
+            var womanProduct = db.MatHangs.Where(x => x.LoaiID == 1).ToList();
+            return View(womanProduct);
         }
     }
 }
