@@ -18,11 +18,12 @@ namespace EcommerceWeb.Controllers
         // GET: MatHang
         public ActionResult Index()
         {
-            return View(db.MatHangs.ToList());
+            var matHangs = db.MatHangs.Include(m => m.LoaiHang);
+            return View(matHangs.ToList());
         }
 
         // GET: MatHang/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -39,6 +40,7 @@ namespace EcommerceWeb.Controllers
         // GET: MatHang/Create
         public ActionResult Create()
         {
+            ViewBag.LoaiID = new SelectList(db.LoaiHangs, "LoaiID", "TenLoai");
             return View();
         }
 
@@ -47,7 +49,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TenMH,DonGia,MoTa,MaLoai,HinhAnh")] MatHang matHang)
+        public ActionResult Create([Bind(Include = "MatHangID,TenMH,DonGia,MoTa,LoaiID,HinhAnh")] MatHang matHang)
         {
             if (ModelState.IsValid)
             {
@@ -56,11 +58,12 @@ namespace EcommerceWeb.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.LoaiID = new SelectList(db.LoaiHangs, "LoaiID", "TenLoai", matHang.LoaiID);
             return View(matHang);
         }
 
         // GET: MatHang/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -71,6 +74,7 @@ namespace EcommerceWeb.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.LoaiID = new SelectList(db.LoaiHangs, "LoaiID", "TenLoai", matHang.LoaiID);
             return View(matHang);
         }
 
@@ -79,7 +83,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TenMH,DonGia,MoTa,MaLoai,HinhAnh")] MatHang matHang)
+        public ActionResult Edit([Bind(Include = "MatHangID,TenMH,DonGia,MoTa,LoaiID,HinhAnh")] MatHang matHang)
         {
             if (ModelState.IsValid)
             {
@@ -87,11 +91,12 @@ namespace EcommerceWeb.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.LoaiID = new SelectList(db.LoaiHangs, "LoaiID", "TenLoai", matHang.LoaiID);
             return View(matHang);
         }
 
         // GET: MatHang/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -108,7 +113,7 @@ namespace EcommerceWeb.Controllers
         // POST: MatHang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             MatHang matHang = db.MatHangs.Find(id);
             db.MatHangs.Remove(matHang);

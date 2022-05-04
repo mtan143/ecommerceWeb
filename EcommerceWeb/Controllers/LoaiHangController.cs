@@ -47,7 +47,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TenLoai")] LoaiHang loaiHang)
+        public ActionResult Create([Bind(Include = "LoaiID,TenLoai")] LoaiHang loaiHang)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TenLoai")] LoaiHang loaiHang)
+        public ActionResult Edit([Bind(Include = "LoaiID,TenLoai")] LoaiHang loaiHang)
         {
             if (ModelState.IsValid)
             {

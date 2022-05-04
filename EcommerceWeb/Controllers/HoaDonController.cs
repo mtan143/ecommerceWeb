@@ -18,7 +18,8 @@ namespace EcommerceWeb.Controllers
         // GET: HoaDon
         public ActionResult Index()
         {
-            return View(db.HoaDons.ToList());
+            var hoaDons = db.HoaDons.Include(h => h.KhachHang);
+            return View(hoaDons.ToList());
         }
 
         // GET: HoaDon/Details/5
@@ -39,6 +40,7 @@ namespace EcommerceWeb.Controllers
         // GET: HoaDon/Create
         public ActionResult Create()
         {
+            ViewBag.KhachHangID = new SelectList(db.KhachHangs, "KhachHangID", "TenKH");
             return View();
         }
 
@@ -47,7 +49,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,MaKH,MaMH,Ngay,SoLuong")] HoaDon hoaDon)
+        public ActionResult Create([Bind(Include = "HoaDonID,KhachHangID,MatHangID,Ngay,SoLuong")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +58,7 @@ namespace EcommerceWeb.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.KhachHangID = new SelectList(db.KhachHangs, "KhachHangID", "TenKH", hoaDon.KhachHangID);
             return View(hoaDon);
         }
 
@@ -71,6 +74,7 @@ namespace EcommerceWeb.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.KhachHangID = new SelectList(db.KhachHangs, "KhachHangID", "TenKH", hoaDon.KhachHangID);
             return View(hoaDon);
         }
 
@@ -79,7 +83,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,MaKH,MaMH,Ngay,SoLuong")] HoaDon hoaDon)
+        public ActionResult Edit([Bind(Include = "HoaDonID,KhachHangID,MatHangID,Ngay,SoLuong")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +91,7 @@ namespace EcommerceWeb.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.KhachHangID = new SelectList(db.KhachHangs, "KhachHangID", "TenKH", hoaDon.KhachHangID);
             return View(hoaDon);
         }
 

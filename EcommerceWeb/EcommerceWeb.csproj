@@ -293,14 +293,18 @@
     <Content Include="image\anh.jpg" />
     <Content Include="image\ARON.png" />
     <Content Include="image\Facebook.png" />
-    <Content Include="image\fashion3.jpg" />
-    <Content Include="image\fashion1.jpg" />
-    <Content Include="image\fashion2.jpg" />
+    <Content Include="image\cover3.jpg" />
+    <Content Include="image\cover2.jpg" />
+    <Content Include="image\cover1.jpg" />
     <Content Include="image\gucci1.png" />
     <Content Include="image\header.png" />
     <Content Include="image\Instagram.png" />
     <Content Include="image\LogoAron.png" />
     <Content Include="image\shirt.png" />
+    <Content Include="image\stories1.jpg" />
+    <Content Include="image\stories2.jpg" />
+    <Content Include="image\stories3.jpg" />
+    <Content Include="image\stories4.jpg" />
     <Content Include="image\Thum.jpg" />
     <Content Include="image\Twitter.png" />
     <Content Include="image\Youtube.png" />
@@ -360,21 +364,26 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\LoaiHang\Create.cshtml" />
-    <Content Include="Views\LoaiHang\Delete.cshtml" />
-    <Content Include="Views\LoaiHang\Details.cshtml" />
-    <Content Include="Views\LoaiHang\Edit.cshtml" />
-    <Content Include="Views\LoaiHang\Index.cshtml" />
-    <Content Include="Views\KhachHang\Create.cshtml" />
-    <Content Include="Views\KhachHang\Delete.cshtml" />
-    <Content Include="Views\KhachHang\Details.cshtml" />
-    <Content Include="Views\KhachHang\Edit.cshtml" />
-    <Content Include="Views\KhachHang\Index.cshtml" />
+    <Content Include="Views\CartItem\Create.cshtml" />
+    <Content Include="Views\CartItem\Delete.cshtml" />
+    <Content Include="Views\CartItem\Details.cshtml" />
+    <Content Include="Views\CartItem\Edit.cshtml" />
+    <Content Include="Views\CartItem\Index.cshtml" />
     <Content Include="Views\HoaDon\Create.cshtml" />
     <Content Include="Views\HoaDon\Delete.cshtml" />
     <Content Include="Views\HoaDon\Details.cshtml" />
     <Content Include="Views\HoaDon\Edit.cshtml" />
     <Content Include="Views\HoaDon\Index.cshtml" />
+    <Content Include="Views\KhachHang\Create.cshtml" />
+    <Content Include="Views\KhachHang\Delete.cshtml" />
+    <Content Include="Views\KhachHang\Details.cshtml" />
+    <Content Include="Views\KhachHang\Edit.cshtml" />
+    <Content Include="Views\KhachHang\Index.cshtml" />
+    <Content Include="Views\LoaiHang\Create.cshtml" />
+    <Content Include="Views\LoaiHang\Delete.cshtml" />
+    <Content Include="Views\LoaiHang\Details.cshtml" />
+    <Content Include="Views\LoaiHang\Edit.cshtml" />
+    <Content Include="Views\LoaiHang\Index.cshtml" />
     <Content Include="Views\MatHang\Create.cshtml" />
     <Content Include="Views\MatHang\Delete.cshtml" />
     <Content Include="Views\MatHang\Details.cshtml" />
@@ -385,14 +394,10 @@
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\CartItem\Create.cshtml" />
-    <Content Include="Views\CartItem\Delete.cshtml" />
-    <Content Include="Views\CartItem\Details.cshtml" />
-    <Content Include="Views\CartItem\Edit.cshtml" />
-    <Content Include="Views\CartItem\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Logic\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

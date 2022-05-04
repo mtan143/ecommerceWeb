@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Delete</h2>
@@ -20,27 +21,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CartId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CartId)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Quantity)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateCreated)
         </dd>
 
     </dl>

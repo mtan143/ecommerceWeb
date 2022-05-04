@@ -8,8 +8,8 @@ namespace EcommerceWeb.Models
         public LoaiHang()
         {
         }
-
-        public int Id { get; set; }
+        [Key]
+        public int LoaiID { get; set; }
         public string TenLoai { get; set; }
         public ICollection<MatHang> MatHangs { get; set; }
 

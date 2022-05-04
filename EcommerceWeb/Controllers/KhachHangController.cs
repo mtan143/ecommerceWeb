@@ -47,7 +47,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TenKH,DiaChi,DienThoai,Username,Password")] KhachHang khachHang)
+        public ActionResult Create([Bind(Include = "KhachHangID,TenKH,DiaChi,DienThoai,Username,Password")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TenKH,DiaChi,DienThoai,Username,Password")] KhachHang khachHang)
+        public ActionResult Edit([Bind(Include = "KhachHangID,TenKH,DiaChi,DienThoai,Username,Password")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {

@@ -9,11 +9,9 @@ namespace EcommerceWeb.Models
     public class CartItem
     {
         [Key]
-        public string ItemId { get; set; }
-        public string CartId { get; set; }
+        public int CartId { get; set; }
+        public string MatHangID { get; set; }
+        public MatHang MatHang { get; set; }
         public int Quantity { get; set; }
-        public DateTime DateCreated { get; set; }
-        public int MatHangId { get; set; }
-        public virtual MatHang MatHang { get; set; }
     }
 }

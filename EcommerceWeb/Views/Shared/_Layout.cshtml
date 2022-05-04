@@ -6,57 +6,83 @@
     <title>ARON</title>
     <link rel="icon" href="~/image/LogoAron.png">
     <link href="~/Content/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <style>
-        .navbar-brand{
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .navbar-brand {
             color: black;
         }
 
-        .navbar-brand:hover{
+            .navbar-brand:hover {
+                color: black;
+            }
+
+        .homeNav:hover {
             color: #1998E8;
         }
 
-        .homeNav:hover{
+        .newArrivalsNav:hover {
             color: #1998E8;
         }
 
-        .newArrivalsNav:hover{
+        .infoNav:hover {
             color: #1998E8;
         }
 
-        .infoNav:hover{
-            color: #1998E8;
+        .navbar-fixed-top {
+            background-color: #F8F9FD;
+            border-bottom-color: #F8F9FD;
         }
 
-        .navbar-fixed-top{
-            background-color:#F8F9FD;
-            border-bottom-color:#F8F9FD ;
-        }
-
-        .container-fluid {
-            /*background-image: url('../../image/header.png');*/
-        }
-
-        .text-white{
+        .text-white {
             color: white;
         }
 
-        .btn:hover{
+        .btn:hover {
             color: #1998E8;
         }
 
-        .btn{
+        .btn {
             color: white
         }
 
+        .text-uppercase {
+            margin-bottom: 40px
+        }
 
-
+        li {
+            margin: 10px 0;
+        }
+        .text-white:hover {
+            text-decoration: none;
+            color: white;
+        }
+        .text-white{
+            color: lightgray
+        }
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            cursor: pointer;
+            border-radius: 50%;
+        }
     </style>
 
 </head>
 <body style="padding-bottom: 0">
-    <div class="navbar navbar-fixed-top" @*style="border-bottom-color:#fff ; background-color: #fff"*@>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-angle-up" style="color:black"></i></button>
+    <div class="navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -68,8 +94,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a class="homeNav" href="#" style="color:black">Home</a></li>
-                    <li><a class="newArrivalsNav"  href="#newArrivals" style="color:black">New Arrivals</a></li>
+                    <li><a class="homeNav" href="/Home/Index" style="color:black">Home</a></li>
+                    <li><a class="newArrivalsNav" href="/Home/Index/#newArrivals" style="color:black">New Arrivals</a></li>
 
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="color:black">
@@ -77,17 +103,9 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#TsPsMen">T-shirts & Polo Shirts</a></li>
-                            <li><a class="dropdown-item" href="#StMen">Shirts</a></li>
-                            <li><a class="dropdown-item" href="#SPMen">Shorts & Pants</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#DMen">Demin</a></li>
-                            <li><a class="dropdown-item" href="#CMen">Coat</a></li>
-                            <li><a class="dropdown-item" href="#SsMen">Shoes</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#SksMen">Sneakers</a></li>
-                            <li><a class="dropdown-item" href="#BtsMen">Boots</a></li>
-                            <li><a class="dropdown-item" href="#BpsMen">Backpacks</a></li>
+                            <li><a class="dropdown-item" href="/Home/Index/#TsPsMen">T-shirts & Polo Shirts</a></li>
+                            <li><a class="dropdown-item" href="/Home/Index/#StMen">Shirts</a></li>
+                            <li><a class="dropdown-item" href="/Home/Index/#SPMen">Shorts & Pants</a></li>
                         </ul>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="color:black">
@@ -95,21 +113,13 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#Dw">Dresses</a></li>
-                            <li><a class="dropdown-item" href="#Tw">Tops</a></li>
-                            <li><a class="dropdown-item" href="#TSw">T-Shirst</a></li>
+                            <li><a class="dropdown-item" href="/Home/Index/#Dw">Dresses</a></li>
+                            <li><a class="dropdown-item" href="/Home/Index/#Tw">Tops</a></li>
+                            <li><a class="dropdown-item" href="/Home/Index/#TSw">T-Shirst</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#PSw">Pants & Shorts</a></li>
-                            <li><a class="dropdown-item" href="#Dmw">Denim</a></li>
-                            <li><a class="dropdown-item" href="#Cw">Coat</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#Sww">Swimwear</a></li>
-                            <li><a class="dropdown-item" href="#STw">Sandals & Thongs</a></li>
-                            <li><a class="dropdown-item" href="#Sksw">Sneakers</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#BAw">Boots & Ankle Boots</a></li>
-                            <li><a class="dropdown-item" href="#MBw">Mini Bags</a></li>
-                            <li><a class="dropdown-item" href="#TBw">Tote Bags</a></li>
+                            <li><a class="dropdown-item" href="/Home/Index/#PSw">Pants & Shorts</a></li>
+                            <li><a class="dropdown-item" href="/Home/Index/#Dmw">Denim</a></li>
+                            <li><a class="dropdown-item" href="/Home/Index/#Cw">Coat</a></li>
                         </ul>
                     </li>
 
@@ -126,9 +136,9 @@
     <!-- Footer -->
     <footer class="bg-dark text-center text-white" id="info" style="background-color: #262626; color: white">
         <!-- Grid container -->
-        <div class="container p-4">
+        <div class="container p-4" style="margin-bottom: 30px">
             <!-- Section: Social media -->
-            <section class="mb-4">
+            <section class="mb-4" style="margin: 30px">
                 <!-- Facebook -->
                 <a class="btn btn-outline-light btn-floating m-1" href="https://vi-vn.facebook.com/" role="button">
                     <i class="fab fa-facebook-f"></i>
@@ -157,41 +167,41 @@
             <!-- Section: Social media -->
             <!-- Section: Form -->
             @*<section class="">
-                <form action="">
-                    <!--Grid row-->
-                    <div class="row d-flex justify-content-center">
-                        <!--Grid column-->
-                        <div class="col-auto">
-                            <p class="pt-2">
-                                <strong>Sign up for our newsletter</strong>
-                            </p>
-                        </div>
-                        <!--Grid column-->
-                        <!--Grid column-->
-                        <div class="col-md-5 col-12">
-                            <!-- Email input -->
-                            <div class="form-outline form-white mb-4">
-                                <input type="email" id="form5Example21" class="form-control" />
-                                <label class="form-label" for="form5Example21">Email address</label>
+                    <form action="">
+                        <!--Grid row-->
+                        <div class="row d-flex justify-content-center">
+                            <!--Grid column-->
+                            <div class="col-auto">
+                                <p class="pt-2">
+                                    <strong>Sign up for our newsletter</strong>
+                                </p>
                             </div>
+                            <!--Grid column-->
+                            <!--Grid column-->
+                            <div class="col-md-5 col-12">
+                                <!-- Email input -->
+                                <div class="form-outline form-white mb-4">
+                                    <input type="email" id="form5Example21" class="form-control" />
+                                    <label class="form-label" for="form5Example21">Email address</label>
+                                </div>
+                            </div>
+                            <!--Grid column-->
+                            <!--Grid column-->
+                            <div class="col-auto">
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-outline-light mb-4">
+                                    Subscribe
+                                </button>
+                            </div>
+                            <!--Grid column-->
                         </div>
-                        <!--Grid column-->
-                        <!--Grid column-->
-                        <div class="col-auto">
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-outline-light mb-4">
-                                Subscribe
-                            </button>
-                        </div>
-                        <!--Grid column-->
-                    </div>
-                    <!--Grid row-->
-                </form>
-            </section>*@
+                        <!--Grid row-->
+                    </form>
+                </section>*@
             <!-- Section: Form -->
             <!-- Section: Text -->
             <section class="mb-4">
-                <p style="font-size: 20px">
+                <p style="font-size: 20px; margin: 30px">
                     Welcome to ARON
                 </p>
             </section>
@@ -201,81 +211,81 @@
                 <!--Grid row-->
                 <div class="row">
                     <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: left">
+                        <h5 class="text-uppercase">EXCLUSIVE SERVICES</h5>
 
                         <ul class="list-unstyled mb-0">
                             <li>
-                                <a href="#!" class="text-white">Link 1</a>
+                                <a href="#!" class="text-white">Aron Services</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 2</a>
+                                <a href="#!" class="text-white">Book An Appointment</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 4</a>
+                                <a href="#!" class="text-white">Gucci Osteria Beverly Hills da Massimo Bottura</a>
                             </li>
                         </ul>
                     </div>
                     <!--Grid column-->
                     <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: left">
+                        <h5 class="text-uppercase">NEED HELP?</h5>
 
                         <ul class="list-unstyled mb-0">
                             <li>
-                                <a href="#!" class="text-white">Link 1</a>
+                                <a href="#!" class="text-white">Contact Us</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 2</a>
+                                <a href="#!" class="text-white">Shipping Services</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 3</a>
+                                <a href="#!" class="text-white">Payment Options</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 4</a>
+                                <a href="#!" class="text-white">Returns & Exchanges</a>
                             </li>
                         </ul>
                     </div>
                     <!--Grid column-->
                     <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: left">
+                        <h5 class="text-uppercase">THE COMPANY</h5>
 
                         <ul class="list-unstyled mb-0">
                             <li>
-                                <a href="#!" class="text-white">Link 1</a>
+                                <a href="#!" class="text-white">About Aron</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 2</a>
+                                <a href="#!" class="text-white">Legal</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 3</a>
+                                <a href="#!" class="text-white">Privacy & Cookies</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 4</a>
+                                <a href="#!" class="text-white">Corporate Information</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Aron Garden</a>
                             </li>
                         </ul>
                     </div>
                     <!--Grid column-->
                     <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: left">
+                        <h5 class="text-uppercase">FIND US ON</h5>
 
                         <ul class="list-unstyled mb-0">
                             <li>
-                                <a href="#!" class="text-white">Link 1</a>
+                                <a href="#!" class="text-white">Facebook</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 2</a>
+                                <a href="#!" class="text-white">Youtube</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 3</a>
+                                <a href="#!" class="text-white">Instagram</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 4</a>
+                                <a href="#!" class="text-white">Twitter</a>
                             </li>
                         </ul>
                     </div>
@@ -289,11 +299,33 @@
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); padding: 20px 0">
             © 2020 Copyright:
-            <a class="text-white" href="#">ARONVN.com</a>
+            <a class="text-white" href="#">ARON.com</a>
         </div>
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
+
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
