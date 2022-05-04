@@ -9,7 +9,7 @@ namespace EcommerceWeb.DAL
 {
     public class EcommerceContext : DbContext
     {
-        public EcommerceContext() : base("name=DefaultConnection") { }
+        public EcommerceContext() : base("name=EcommerceConnection") { }
 
         public DbSet<LoaiHang> LoaiHangs { get; set; }
         public DbSet<MatHang> MatHangs { get; set; }

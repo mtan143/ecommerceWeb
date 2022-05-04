@@ -12,7 +12,7 @@ namespace EcommerceWeb.Controllers
         private EcommerceContext db = new EcommerceContext();
         public ActionResult Index()
         {
-            return View();
+            return View(db.MatHangs.ToList());
         }
 
         [HttpPost]
@@ -44,7 +44,7 @@ namespace EcommerceWeb.Controllers
 
         public ActionResult Woman()
         {
-            var womanProduct = db.MatHangs.Where(x => x.LoaiID == 1).ToList();
+            var womanProduct = db.MatHangs.Where(x => x.LoaiID == 2).ToList();
             return View(womanProduct);
         }
     }

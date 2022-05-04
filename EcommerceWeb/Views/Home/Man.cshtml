@@ -4,52 +4,44 @@
     ViewBag.Title = "Man";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    div.gallery img {
+        width: 150px;
+        height: 150px;
+        margin: 30px;
+        display: inline-block;
+    }
+    div.gallery {
+        margin: 30px;
+        /*border: 2px solid #ccc;*/
+        width: auto;
+        height: auto;
+        display: inline-block;
+        background-color: #E7E7E7;
+    }
+</style>
 
-<h2 style="text-align: center; font-size: 50px">Man</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LoaiHang.TenLoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenMH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DonGia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HinhAnh)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoaiHang.TenLoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenMH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DonGia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MoTa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HinhAnh)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MatHangID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MatHangID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MatHangID })
-        </td>
-    </tr>
-}
-
-</table>
+<div style="text-align:center; margin-top: 60px">
+        <div class="row">
+            <div class="col-md-9">
+                <img src="@Url.Content("~/image/man-cover.jpg")" style="width: 70%" alt="Man Cover" />
+            </div>
+            <div class="col-md-3" style="margin-top: 15%; ">
+                <h1 >for</h1><br/>
+                <h1 style="font-weight: bold">MAN</h1>
+            </div>
+        </div>
+    <div class="row" style="margin-top: 50px">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                </div>
+                <p>@item.TenMH</p>
+                <p>$ @item.DonGia</p>
+            </div>
+        }
+    </div>
+</div>

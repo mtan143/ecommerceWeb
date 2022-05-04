@@ -300,6 +300,7 @@
     <Content Include="image\header.png" />
     <Content Include="image\Instagram.png" />
     <Content Include="image\LogoAron.png" />
+    <Content Include="image\man-cover.jpg" />
     <Content Include="image\shirt.png" />
     <Content Include="image\stories1.jpg" />
     <Content Include="image\stories2.jpg" />
@@ -307,6 +308,7 @@
     <Content Include="image\stories4.jpg" />
     <Content Include="image\Thum.jpg" />
     <Content Include="image\Twitter.png" />
+    <Content Include="image\woman-cover.jpg" />
     <Content Include="image\Youtube.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<EcommerceWeb.Models.MatHang>
 <head>
     <link rel="stylesheet" href="~/Content/Site.css">
     <style>
@@ -6,10 +6,10 @@
             width: 150px;
             height: 150px;
             margin: 30px;
-            display:inline-block;
+            display: inline-block;
         }
 
-        .zoomPic:hover{
+        .zoomPic:hover {
             transform: scale(1.5);
             transition: transform .2s;
         }
@@ -19,9 +19,10 @@
             /*border: 2px solid #ccc;*/
             width: auto;
             height: auto;
-            display:inline-block;
+            display: inline-block;
             background-color: #E7E7E7;
         }
+
         #btnCover {
             position: absolute;
             left: 50%;
@@ -37,26 +38,31 @@
             text-align: center;
             border: solid 2px;
             width: 20%;
-            bottom:10%;
-            z-index:2;
+            bottom: 10%;
+            z-index: 2;
         }
-        .stories{
-            width:50%;
+
+        .stories {
+            width: 50%;
         }
-        #stories{
+
+        #stories {
             margin-top: 50px;
         }
-        .title-stories{
+
+        .title-stories {
             margin-top: 30px;
             font-size: medium;
         }
-        .stories-link{
+
+        .stories-link {
             color: lightgrey;
         }
-        .stories-link:hover{
-            text-decoration: none;
-            color: black
-        }
+
+            .stories-link:hover {
+                text-decoration: none;
+                color: black
+            }
     </style>
 </head>
 
@@ -94,32 +100,32 @@
                 <div class="gallery">
                     <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
                 </div>
-                <p>Geometric GG print bowling shirt</p>
-                <p>$ 1,400</p>
+                <p>@Model.First(x => x.MatHangID.Equals("11")).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID.Equals("11")).DonGia</p>
             </div>
 
             <div class="col-md-3">
                 <div class="gallery">
                     <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
                 </div>
-                <p>Geometric GG print bowling shirt</p>
-                <p>$ 1,400</p>
+                <p>@Model.First(x => x.MatHangID.Equals("2")).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID.Equals("2")).DonGia</p>
             </div>
 
             <div class="col-md-3">
                 <div class="gallery">
                     <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
                 </div>
-                <p>Geometric GG print bowling shirt</p>
-                <p>$ 1,400</p>
+                <p>@Model.First(x => x.MatHangID.Equals("20")).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID.Equals("20")).DonGia</p>
             </div>
 
             <div class="col-md-3">
                 <div class="gallery">
                     <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
                 </div>
-                <p>Geometric GG print bowling shirt</p>
-                <p>$ 1,400</p>
+                <p>@Model.First(x => x.MatHangID.Equals("12")).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID.Equals("12")).DonGia</p>
             </div>
         </div>
 
@@ -128,32 +134,33 @@
                 <div class="gallery">
                     <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
                 </div>
-                <p>Geometric GG print bowling shirt</p>
-                <p>$ 1,400</p>
+                <p>@Model.First(x => x.MatHangID.Equals("1")).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID.Equals("1")).DonGia</p>
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="gallery">
+                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
+                </div>
+                <p>@Model.First(x => x.MatHangID.Equals("19")).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID.Equals("19")).DonGia</p>
             </div>
 
             <div class="col-md-3">
                 <div class="gallery">
                     <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
                 </div>
-                <p>Geometric GG print bowling shirt</p>
-                <p>$ 1,400</p>
+                <p>@Model.First(x => x.MatHangID.Equals("15")).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID.Equals("15")).DonGia</p>
             </div>
 
             <div class="col-md-3">
                 <div class="gallery">
                     <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
                 </div>
-                <p>Geometric GG print bowling shirt</p>
-                <p>$ 1,400</p>
-            </div>
-
-            <div class="col-md-3">
-                <div class="gallery">
-                    <img class="zoomPic" src="~/image/anh.jpg" alt="ảnh lỗi rồi">
-                </div>
-                <p>Geometric GG print bowling shirt</p>
-                <p>$ 1,400</p>
+                <p>@Model.First(x => x.MatHangID.Equals("14")).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID.Equals("14")).DonGia</p>
             </div>
         </div>
     </div>
