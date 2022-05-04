@@ -99,7 +99,7 @@
             <div class="col-md-3">
                 <div class="gallery">
                     <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("11")).MatHangID})">
-                        <img class="zoomPic" src="@Model.First(x => x.MatHangID.Equals("11")).HinhAnh" alt="ảnh lỗi rồi">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("11")).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
                 <p>@Model.First(x => x.MatHangID.Equals("11")).TenMH</p>
@@ -108,8 +108,8 @@
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("11")).MatHangID})">
-                        <img class="zoomPic" src="@Model.First(x => x.MatHangID.Equals("2")).HinhAnh" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("2")).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("2")).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
                 <p>@Model.First(x => x.MatHangID.Equals("2")).TenMH</p>
@@ -118,8 +118,8 @@
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("11")).MatHangID})">
-                        <img class="zoomPic" src="@Model.First(x => x.MatHangID.Equals("20")).HinhAnh" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("20")).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("20")).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
                 <p>@Model.First(x => x.MatHangID.Equals("20")).TenMH</p>
@@ -128,8 +128,8 @@
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("11")).MatHangID})">
-                        <img class="zoomPic" src="@Model.First(x => x.MatHangID.Equals("12")).HinhAnh" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("12")).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("12")).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
                 <p>@Model.First(x => x.MatHangID.Equals("12")).TenMH</p>
@@ -140,8 +140,8 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("11")).MatHangID})">
-                        <img class="zoomPic" src="@Model.First(x => x.MatHangID.Equals("1")).HinhAnh" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("1")).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("1")).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
                 <p>@Model.First(x => x.MatHangID.Equals("1")).TenMH</p>
@@ -151,8 +151,8 @@
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("11")).MatHangID})">
-                        <img class="zoomPic" src="@Model.First(x => x.MatHangID.Equals("19")).HinhAnh" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("19")).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("19")).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
                 <p>@Model.First(x => x.MatHangID.Equals("19")).TenMH</p>
@@ -161,8 +161,8 @@
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("11")).MatHangID})">
-                        <img class="zoomPic" src="@Model.First(x => x.MatHangID.Equals("15")).HinhAnh" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("15")).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("15")).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
                 <p>@Model.First(x => x.MatHangID.Equals("15")).TenMH</p>
@@ -171,8 +171,8 @@
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("11")).MatHangID})">
-                        <img class="zoomPic" src="@Model.First(x => x.MatHangID.Equals("14")).HinhAnh" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("14")).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("14")).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
                 <p>@Model.First(x => x.MatHangID.Equals("14")).TenMH</p>
