@@ -19,7 +19,7 @@ namespace EcommerceWeb.Controllers
         public ActionResult Index(string product)
         {
             EcommerceContext entities = new EcommerceContext();
-            return View(entities.MatHangs.Where(x => x.TenMH.Contains(product.ToLower())));
+            return View(entities.MatHangs.Where(x => x.TenMH.Contains(product.ToLower())).ToList());
         }
 
         public ActionResult About()
@@ -38,13 +38,13 @@ namespace EcommerceWeb.Controllers
 
         public ActionResult Man()
         {
-            var manProduct = db.MatHangs.Where(x => x.LoaiID == 1).ToList();
+            var manProduct = db.MatHangs.Where(x => x.Gender == 1).ToList();
             return View(manProduct);
         }
 
         public ActionResult Woman()
         {
-            var womanProduct = db.MatHangs.Where(x => x.LoaiID == 2).ToList();
+            var womanProduct = db.MatHangs.Where(x => x.Gender == 0).ToList();
             return View(womanProduct);
         }
     }

@@ -1,4 +1,4 @@
-﻿@model EcommerceWeb.Models.MatHang
+﻿@model EcommerceWeb.Models.KhachHang
 
 @{
     ViewBag.Title = "Details";
@@ -8,52 +8,52 @@
 <h2>Details</h2>
 
 <div>
-    <h4>MatHang</h4>
+    <h4>KhachHang</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.LoaiHang.TenLoai)
+            @Html.DisplayNameFor(model => model.TenKH)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LoaiHang.TenLoai)
+            @Html.DisplayFor(model => model.TenKH)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TenMH)
+            @Html.DisplayNameFor(model => model.DiaChi)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TenMH)
+            @Html.DisplayFor(model => model.DiaChi)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DonGia)
+            @Html.DisplayNameFor(model => model.DienThoai)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DonGia)
+            @Html.DisplayFor(model => model.DienThoai)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
+            @Html.DisplayNameFor(model => model.Username)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MoTa)
+            @Html.DisplayFor(model => model.Username)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
+            @Html.DisplayNameFor(model => model.Password)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HinhAnh)
+            @Html.DisplayFor(model => model.Password)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MatHangID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KhachHangID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

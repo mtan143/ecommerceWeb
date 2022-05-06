@@ -12,7 +12,15 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TenMH):
+            @Html.DisplayNameFor(model => model.LoaiHang.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiHang.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenMH)
         </dt>
 
         <dd>
@@ -20,15 +28,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DonGia):
+            @Html.DisplayNameFor(model => model.DonGia)
         </dt>
 
         <dd>
-           $ @Html.DisplayFor(model => model.DonGia)
+            @Html.DisplayFor(model => model.DonGia)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MoTa):
+            @Html.DisplayNameFor(model => model.MoTa)
         </dt>
 
         <dd>
@@ -36,14 +44,40 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh):
+            @Html.DisplayNameFor(model => model.Size)
         </dt>
 
         <dd>
-            <img src="@Url.Content(Model.HinhAnh)" style="width: 450px ; height: 400px"/>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnh)
         </dd>
 
     </dl>
-
-
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MatHangID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

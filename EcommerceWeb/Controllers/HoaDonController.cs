@@ -49,7 +49,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HoaDonID,KhachHangID,MatHangID,Ngay,SoLuong")] HoaDon hoaDon)
+        public ActionResult Create([Bind(Include = "HoaDonID,KhachHangID,Ngay,TongTien")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HoaDonID,KhachHangID,MatHangID,Ngay,SoLuong")] HoaDon hoaDon)
+        public ActionResult Edit([Bind(Include = "HoaDonID,KhachHangID,Ngay,TongTien")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {

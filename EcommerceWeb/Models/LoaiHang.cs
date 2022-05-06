@@ -5,12 +5,12 @@ namespace EcommerceWeb.Models
 {
     public class LoaiHang
     {
-        public LoaiHang()
-        {
-        }
+        public LoaiHang() { }
         [Key]
         public int LoaiID { get; set; }
+
         public string TenLoai { get; set; }
+
         public ICollection<MatHang> MatHangs { get; set; }
 
     }

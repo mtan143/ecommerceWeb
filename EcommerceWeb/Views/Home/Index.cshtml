@@ -71,7 +71,7 @@
         <img class="mySlides" src="@Url.Content("~/image/cover3.jpg")" style="width:100%; height: 800px; margin:0">
         <img class="mySlides" src="@Url.Content("~/image/cover2.jpg")" style="width:100%; height: 800px; margin:0">
         <img class="mySlides" src="@Url.Content("~/image/cover1.jpg")" style="width:100%; height: 800px; margin:0">
-        <a id="btnCover" href="#" class="btn btn-primary btn-lg active" type="button" aria-pressed="true">SHOP NOW</a>
+        <a id="btnCover" href="/Home/Man" class="btn btn-primary btn-lg active" type="button" aria-pressed="true">SHOP NOW</a>
     </div>
     <script>
         var myIndex = 0;
@@ -98,85 +98,85 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("11")).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("11")).HinhAnh)" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 11).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 11).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
-                <p>@Model.First(x => x.MatHangID.Equals("11")).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID.Equals("11")).DonGia</p>
+                <p>@Model.First(x => x.MatHangID == 11).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID == 11).DonGia</p>
             </div>
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("2")).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("2")).HinhAnh)" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 2).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 2).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
-                <p>@Model.First(x => x.MatHangID.Equals("2")).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID.Equals("2")).DonGia</p>
+                <p>@Model.First(x => x.MatHangID == 2).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID == 2).DonGia</p>
             </div>
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("20")).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("20")).HinhAnh)" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 20).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 20).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
-                <p>@Model.First(x => x.MatHangID.Equals("20")).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID.Equals("20")).DonGia</p>
+                <p>@Model.First(x => x.MatHangID == 38).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID == 38).DonGia</p>
             </div>
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("12")).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("12")).HinhAnh)" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 12).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 12).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
-                <p>@Model.First(x => x.MatHangID.Equals("12")).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID.Equals("12")).DonGia</p>
+                <p>@Model.First(x => x.MatHangID == 12).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID == 12).DonGia</p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("1")).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("1")).HinhAnh)" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 1).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 1).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
-                <p>@Model.First(x => x.MatHangID.Equals("1")).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID.Equals("1")).DonGia</p>
+                <p>@Model.First(x => x.MatHangID == 1).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID == 1).DonGia</p>
             </div>
 
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("19")).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("19")).HinhAnh)" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 19).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 19).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
-                <p>@Model.First(x => x.MatHangID.Equals("19")).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID.Equals("19")).DonGia</p>
+                <p>@Model.First(x => x.MatHangID == 19).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID == 19).DonGia</p>
             </div>
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("15")).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("15")).HinhAnh)" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 15).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 15).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
-                <p>@Model.First(x => x.MatHangID.Equals("15")).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID.Equals("15")).DonGia</p>
+                <p>@Model.First(x => x.MatHangID == 15).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID == 15).DonGia</p>
             </div>
 
             <div class="col-md-3">
                 <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID.Equals("14")).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID.Equals("14")).HinhAnh)" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 14).MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 14).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
                 </div>
-                <p>@Model.First(x => x.MatHangID.Equals("14")).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID.Equals("14")).DonGia</p>
+                <p>@Model.First(x => x.MatHangID == 14).TenMH</p>
+                <p>$ @Model.First(x => x.MatHangID == 14).DonGia</p>
             </div>
         </div>
     </div>

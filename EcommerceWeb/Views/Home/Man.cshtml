@@ -11,6 +11,10 @@
         margin: 30px;
         display: inline-block;
     }
+    .zoomPic:hover {
+        transform: scale(1.5);
+        transition: transform .2s;
+    }
     div.gallery {
         margin: 30px;
         /*border: 2px solid #ccc;*/
@@ -37,7 +41,9 @@
         {
             <div class="col-md-3">
                 <div class="gallery">
-                    <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                    <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                    </a>
                 </div>
                 <p>@item.TenMH</p>
                 <p>$ @item.DonGia</p>

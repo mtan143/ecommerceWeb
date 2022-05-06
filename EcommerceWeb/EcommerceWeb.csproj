@@ -224,7 +224,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\CartItemController.cs" />
+    <Compile Include="Controllers\ChiTietHoaDonController.cs" />
     <Compile Include="Controllers\HoaDonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
@@ -236,7 +236,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\ChiTietHoaDon.cs" />
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\KhachHang.cs" />
@@ -366,38 +366,38 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\CartItem\Create.cshtml" />
-    <Content Include="Views\CartItem\Delete.cshtml" />
-    <Content Include="Views\CartItem\Details.cshtml" />
-    <Content Include="Views\CartItem\Edit.cshtml" />
-    <Content Include="Views\CartItem\Index.cshtml" />
-    <Content Include="Views\HoaDon\Create.cshtml" />
-    <Content Include="Views\HoaDon\Delete.cshtml" />
-    <Content Include="Views\HoaDon\Details.cshtml" />
-    <Content Include="Views\HoaDon\Edit.cshtml" />
-    <Content Include="Views\HoaDon\Index.cshtml" />
-    <Content Include="Views\KhachHang\Create.cshtml" />
-    <Content Include="Views\KhachHang\Delete.cshtml" />
-    <Content Include="Views\KhachHang\Details.cshtml" />
-    <Content Include="Views\KhachHang\Edit.cshtml" />
-    <Content Include="Views\KhachHang\Index.cshtml" />
+    <Content Include="Views\Home\Man.cshtml" />
+    <Content Include="Views\Home\Woman.cshtml" />
     <Content Include="Views\LoaiHang\Create.cshtml" />
     <Content Include="Views\LoaiHang\Delete.cshtml" />
     <Content Include="Views\LoaiHang\Details.cshtml" />
     <Content Include="Views\LoaiHang\Edit.cshtml" />
     <Content Include="Views\LoaiHang\Index.cshtml" />
+    <Content Include="Views\KhachHang\Create.cshtml" />
+    <Content Include="Views\KhachHang\Delete.cshtml" />
+    <Content Include="Views\KhachHang\Details.cshtml" />
+    <Content Include="Views\KhachHang\Edit.cshtml" />
+    <Content Include="Views\KhachHang\Index.cshtml" />
     <Content Include="Views\MatHang\Create.cshtml" />
     <Content Include="Views\MatHang\Delete.cshtml" />
     <Content Include="Views\MatHang\Details.cshtml" />
     <Content Include="Views\MatHang\Edit.cshtml" />
     <Content Include="Views\MatHang\Index.cshtml" />
+    <Content Include="Views\HoaDon\Create.cshtml" />
+    <Content Include="Views\HoaDon\Delete.cshtml" />
+    <Content Include="Views\HoaDon\Details.cshtml" />
+    <Content Include="Views\HoaDon\Edit.cshtml" />
+    <Content Include="Views\HoaDon\Index.cshtml" />
+    <Content Include="Views\ChiTietHoaDon\Create.cshtml" />
+    <Content Include="Views\ChiTietHoaDon\Delete.cshtml" />
+    <Content Include="Views\ChiTietHoaDon\Details.cshtml" />
+    <Content Include="Views\ChiTietHoaDon\Edit.cshtml" />
+    <Content Include="Views\ChiTietHoaDon\Index.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Home\Man.cshtml" />
-    <Content Include="Views\Home\Woman.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

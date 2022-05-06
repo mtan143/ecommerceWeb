@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EcommerceWeb.Models.MatHang>
+﻿@model IEnumerable<EcommerceWeb.Models.KhachHang>
 
 @{
     ViewBag.Title = "Index";
@@ -13,19 +13,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.LoaiHang.TenLoai)
+            @Html.DisplayNameFor(model => model.TenKH)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TenMH)
+            @Html.DisplayNameFor(model => model.DiaChi)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DonGia)
+            @Html.DisplayNameFor(model => model.DienThoai)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MoTa)
+            @Html.DisplayNameFor(model => model.Username)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HinhAnh)
+            @Html.DisplayNameFor(model => model.Password)
         </th>
         <th></th>
     </tr>
@@ -33,24 +33,24 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.LoaiHang.TenLoai)
+            @Html.DisplayFor(modelItem => item.TenKH)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TenMH)
+            @Html.DisplayFor(modelItem => item.DiaChi)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DonGia)
+            @Html.DisplayFor(modelItem => item.DienThoai)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MoTa)
+            @Html.DisplayFor(modelItem => item.Username)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HinhAnh)
+            @Html.DisplayFor(modelItem => item.Password)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MatHangID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MatHangID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MatHangID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.KhachHangID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.KhachHangID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.KhachHangID })
         </td>
     </tr>
 }

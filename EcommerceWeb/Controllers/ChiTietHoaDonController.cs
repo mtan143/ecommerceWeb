@@ -11,107 +11,116 @@ using EcommerceWeb.Models;
 
 namespace EcommerceWeb.Controllers
 {
-    public class AdminController : Controller
+    public class ChiTietHoaDonController : Controller
     {
         private EcommerceContext db = new EcommerceContext();
 
-        // GET: Admin
+        // GET: ChiTietHoaDon
         public ActionResult Index()
         {
-            return View(db.KhachHangs.ToList());
+            var chiTietHoaDons = db.ChiTietHoaDons.Include(c => c.HoaDon).Include(c => c.MatHang);
+            return View(chiTietHoaDons.ToList());
         }
 
-        // GET: Admin/Details/5
+        // GET: ChiTietHoaDon/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KhachHang khachHang = db.KhachHangs.Find(id);
-            if (khachHang == null)
+            ChiTietHoaDon chiTietHoaDon = db.ChiTietHoaDons.Find(id);
+            if (chiTietHoaDon == null)
             {
                 return HttpNotFound();
             }
-            return View(khachHang);
+            return View(chiTietHoaDon);
         }
 
-        // GET: Admin/Create
+        // GET: ChiTietHoaDon/Create
         public ActionResult Create()
         {
+            ViewBag.HoaDonID = new SelectList(db.HoaDons, "HoaDonID", "HoaDonID");
+            ViewBag.MatHangID = new SelectList(db.MatHangs, "MatHangID", "TenMH");
             return View();
         }
 
-        // POST: Admin/Create
+        // POST: ChiTietHoaDon/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "KhachHangID,TenKH,DiaChi,DienThoai,Username,Password")] KhachHang khachHang)
+        public ActionResult Create([Bind(Include = "ChiTietHoaDonID,MatHangID,HoaDonID,SoLuong,ThanhTien")] ChiTietHoaDon chiTietHoaDon)
         {
             if (ModelState.IsValid)
             {
-                db.KhachHangs.Add(khachHang);
+                db.ChiTietHoaDons.Add(chiTietHoaDon);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(khachHang);
+            ViewBag.HoaDonID = new SelectList(db.HoaDons, "HoaDonID", "HoaDonID", chiTietHoaDon.HoaDonID);
+            ViewBag.MatHangID = new SelectList(db.MatHangs, "MatHangID", "TenMH", chiTietHoaDon.MatHangID);
+            return View(chiTietHoaDon);
         }
 
-        // GET: Admin/Edit/5
+        // GET: ChiTietHoaDon/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KhachHang khachHang = db.KhachHangs.Find(id);
-            if (khachHang == null)
+            ChiTietHoaDon chiTietHoaDon = db.ChiTietHoaDons.Find(id);
+            if (chiTietHoaDon == null)
             {
                 return HttpNotFound();
             }
-            return View(khachHang);
+            ViewBag.HoaDonID = new SelectList(db.HoaDons, "HoaDonID", "HoaDonID", chiTietHoaDon.HoaDonID);
+            ViewBag.MatHangID = new SelectList(db.MatHangs, "MatHangID", "TenMH", chiTietHoaDon.MatHangID);
+            return View(chiTietHoaDon);
         }
 
-        // POST: Admin/Edit/5
+        // POST: ChiTietHoaDon/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "KhachHangID,TenKH,DiaChi,DienThoai,Username,Password")] KhachHang khachHang)
+        public ActionResult Edit([Bind(Include = "ChiTietHoaDonID,MatHangID,HoaDonID,SoLuong,ThanhTien")] ChiTietHoaDon chiTietHoaDon)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(khachHang).State = EntityState.Modified;
+                db.Entry(chiTietHoaDon).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(khachHang);
+            ViewBag.HoaDonID = new SelectList(db.HoaDons, "HoaDonID", "HoaDonID", chiTietHoaDon.HoaDonID);
+            ViewBag.MatHangID = new SelectList(db.MatHangs, "MatHangID", "TenMH", chiTietHoaDon.MatHangID);
+            return View(chiTietHoaDon);
         }
 
-        // GET: Admin/Delete/5
+        // GET: ChiTietHoaDon/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KhachHang khachHang = db.KhachHangs.Find(id);
-            if (khachHang == null)
+            ChiTietHoaDon chiTietHoaDon = db.ChiTietHoaDons.Find(id);
+            if (chiTietHoaDon == null)
             {
                 return HttpNotFound();
             }
-            return View(khachHang);
+            return View(chiTietHoaDon);
         }
 
-        // POST: Admin/Delete/5
+        // POST: ChiTietHoaDon/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            KhachHang khachHang = db.KhachHangs.Find(id);
-            db.KhachHangs.Remove(khachHang);
+            ChiTietHoaDon chiTietHoaDon = db.ChiTietHoaDons.Find(id);
+            db.ChiTietHoaDons.Remove(chiTietHoaDon);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

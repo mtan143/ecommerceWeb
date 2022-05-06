@@ -17,13 +17,19 @@ namespace EcommerceWeb.Models
 
         [Key]
         public int KhachHangID { get; set; }
+
         public string TenKH { get; set; }
+
         public string DiaChi { get; set; }
+
         public string DienThoai { get; set; }
+
         [Required(ErrorMessage ="Username Required!")]
         public string Username { get; set; }
+
         [Required(ErrorMessage = "Password Required!")]
         public string Password { get; set; }
+
         public ICollection<HoaDon> HoaDons { get; set; }
     }
 }

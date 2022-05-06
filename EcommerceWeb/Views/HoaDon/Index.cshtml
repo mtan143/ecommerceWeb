@@ -16,13 +16,10 @@
             @Html.DisplayNameFor(model => model.KhachHang.TenKH)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MatHangID)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Ngay)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SoLuong)
+            @Html.DisplayNameFor(model => model.TongTien)
         </th>
         <th></th>
     </tr>
@@ -33,13 +30,10 @@
             @Html.DisplayFor(modelItem => item.KhachHang.TenKH)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MatHangID)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Ngay)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SoLuong)
+            @Html.DisplayFor(modelItem => item.TongTien)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.HoaDonID }) |

@@ -23,7 +23,7 @@ namespace EcommerceWeb.Controllers
         }
 
         // GET: MatHang/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -49,7 +49,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MatHangID,TenMH,DonGia,MoTa,LoaiID,HinhAnh")] MatHang matHang)
+        public ActionResult Create([Bind(Include = "MatHangID,TenMH,DonGia,MoTa,Size,Color,Gender,LoaiID,HinhAnh")] MatHang matHang)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace EcommerceWeb.Controllers
         }
 
         // GET: MatHang/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -83,7 +83,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MatHangID,TenMH,DonGia,MoTa,LoaiID,HinhAnh")] MatHang matHang)
+        public ActionResult Edit([Bind(Include = "MatHangID,TenMH,DonGia,MoTa,Size,Color,Gender,LoaiID,HinhAnh")] MatHang matHang)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace EcommerceWeb.Controllers
         }
 
         // GET: MatHang/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -113,7 +113,7 @@ namespace EcommerceWeb.Controllers
         // POST: MatHang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             MatHang matHang = db.MatHangs.Find(id);
             db.MatHangs.Remove(matHang);
