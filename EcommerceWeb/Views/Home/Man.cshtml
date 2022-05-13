@@ -1,9 +1,24 @@
-﻿@model IEnumerable<EcommerceWeb.Models.MatHang>
+﻿
 
+@using System.Globalization;
 @{
-    ViewBag.Title = "Man";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
 }
+@model PagedList.IPagedList<EcommerceWeb.Models.MatHang>
+@using PagedList.Mvc;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
 <style>
     div.gallery img {
         width: 150px;
@@ -11,10 +26,12 @@
         margin: 30px;
         display: inline-block;
     }
+
     .zoomPic:hover {
         transform: scale(1.5);
         transition: transform .2s;
     }
+
     div.gallery {
         margin: 30px;
         /*border: 2px solid #ccc;*/
@@ -23,31 +40,61 @@
         display: inline-block;
         background-color: #E7E7E7;
     }
+
+
+    .pagination > li > a {
+        background-color: white;
+        color: #5A4181;
+    }
+
+        .pagination > li > a:focus,
+        .pagination > li > a:hover,
+        .pagination > li > span:focus,
+        .pagination > li > span:hover {
+            color: #5a5a5a;
+            background-color: #eee;
+            border-color: #ddd;
+        }
+
+    .pagination > .active > a {
+        color: white;
+        background-color: black !Important;
+        border: solid 1px black !Important;
+    }
+
+        .pagination > .active > a:hover {
+            background-color: black !Important;
+            border: solid 1px black;
+        }
 </style>
+<body>
 
-
-<div style="text-align:center; margin-top: 60px">
-        <div class="row">
-            <div class="col-md-9">
-                <img src="@Url.Content("~/image/man-cover.jpg")" style="width: 70%" alt="Man Cover" />
-            </div>
-            <div class="col-md-3" style="margin-top: 15%; ">
-                <h1 >for</h1><br/>
-                <h1 style="font-weight: bold">MAN</h1>
+    <div class="container-fluid" style="margin-top: 20px;">
+        <div class="container">
+            <img src="~/image/woman-banner.jpg" width="100%">
+        </div>
+        <div style="text-align:center; margin-top: 60px">
+            <h2>for MAN</h2>
+            <div class="row" style="margin-top: 50px">
+                @foreach (var item in Model)
+                {
+                    <div id="proItem" class="col-md-3">
+                        <div class="gallery">
+                            <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                                <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                            </a>
+                        </div>
+                        <p style="font-weight: bold">@item.TenMH</p>
+                        <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
+                    </div>
+                }
             </div>
         </div>
-    <div class="row" style="margin-top: 50px">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-3">
-                <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
-                </div>
-                <p>@item.TenMH</p>
-                <p>$ @item.DonGia</p>
-            </div>
-        }
+        <br />
+        <div class="text-center">
+            @Html.PagedListPager(Model, page => Url.Action("Man", new { page, pageSize = Model.PageSize }))
+        </div>
     </div>
-</div>
+
+</body>
+</html>

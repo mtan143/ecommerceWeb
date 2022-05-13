@@ -4,55 +4,85 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    a {
+        color: black;
+    }
+    a:hover {
+        color: lightgray;
+        text-decoration: none
+    }
+    #proItem {
+        border: solid 1px;
+        margin-left: 5px;
+        padding: 20px;
+    }
+    .btnDelete {
+        margin: 5px 0 0 0 ;
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 5px;
+    }
+    .btn-delete{
+        color: white;
+    }
+    table, th, tr, td {
+        border: none !important;
+    }
+    .btn-edit {
+        color: white;
+    }
+    .btnEdit{
+        margin: 15px 0 0 0;
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 5px;
+    }
+</style>
 
-<h2>Index</h2>
+<div class="container" style="font-size: 10px; margin-bottom: 50px">
+    <a href="/KhachHang/Create" title="Add New User" class="btn-create" style="float: right; margin-top: 50px;"><i class="fa fa-plus-circle fa-2x" style="color: black"></i></a>
+    <a href="/Admin/Index" title="Dashboard" class="btn-create" style="float: right; margin-top: 50px; margin-right: 10px"><i class="fa fa-arrow-left fa-2x" style="color: black"></i></a>
+    <h2 style="text-align: center; margin-top: 150px;">USER MANAGEMENT</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenKH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DienThoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th></th>
-    </tr>
+    <div class="row" style="margin-top: 50px">
+        @foreach (var item in Model)
+        {
+        <div id="proItem" class="col-md-3">
+            <table class="table">
+                <tr>
+                    <th scope="row">Name</th>
+                    <td>@item.TenKH</td>
+                </tr>
+                <tr>
+                    <th scope="row">Address</th>
+                    <td>@item.DiaChi</td>
+                </tr>
+                <tr>
+                    <th scope="row">Phone</th>
+                    <td>@item.DienThoai</td>
+                </tr>
+                <tr>
+                    <th scope="row">Username</th>
+                    <td>@item.Username</td>
+                </tr>
+                <tr>
+                    <th scope="row">Password</th>
+                    <td>@item.Password</td>
+                </tr>
+            </table>
+            <div class="btnEdit">
+                @Html.ActionLink("Edit", "Edit", new { id = item.KhachHangID }, new { @class = "btn-edit" })
+            </div>
+            <div class="btnDelete">
+                @Html.ActionLink("Delete", "Delete", new { id = item.KhachHangID }, new { @class = "btn-delete" })
+            </div>
+        </div>
+        }
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenKH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DienThoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.KhachHangID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.KhachHangID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.KhachHangID })
-        </td>
-    </tr>
-}
 
-</table>
+

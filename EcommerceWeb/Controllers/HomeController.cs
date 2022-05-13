@@ -1,4 +1,6 @@
 ﻿using EcommerceWeb.DAL;
+using EcommerceWeb.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,16 +38,22 @@ namespace EcommerceWeb.Controllers
             return View();
         }
 
-        public ActionResult Man()
+        public ActionResult Search()
         {
-            var manProduct = db.MatHangs.Where(x => x.Gender == 1).ToList();
-            return View(manProduct);
+            return View(db.MatHangs.ToList());
         }
 
-        public ActionResult Woman()
+        public ActionResult Man(int page = 1, int pageSize = 8)
         {
-            var womanProduct = db.MatHangs.Where(x => x.Gender == 0).ToList();
-            return View(womanProduct);
+            List<MatHang> products = db.MatHangs.Where(x => x.Gender == 1).ToList();
+            PagedList<MatHang> model = new PagedList<MatHang>(products, page, pageSize);
+            return View(model);
+        }
+        public ActionResult Woman(int page = 1, int pageSize = 8)
+        {
+            List<MatHang> products = db.MatHangs.Where(x => x.Gender == 0).ToList();
+            PagedList<MatHang> model = new PagedList<MatHang>(products, page, pageSize);
+            return View(model);
         }
     }
 }

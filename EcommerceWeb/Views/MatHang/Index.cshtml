@@ -1,76 +1,167 @@
 ﻿@model IEnumerable<EcommerceWeb.Models.MatHang>
-
+@using System.Globalization;
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div.gallery img {
+            width: 150px;
+            height: 150px;
+            margin: 30px;
+            display: inline-block;
+        }
 
-<h2>Index</h2>
+        /*.zoomPic:hover {
+            transform: scale(1.5);
+            transition: transform .2s;
+        }*/
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LoaiHang.TenLoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenMH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DonGia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HinhAnh)
-        </th>
-        <th></th>
-    </tr>
+        div.gallery {
+            margin-left: 30px;
+            /*border: 2px solid #ccc;*/
+            width: auto;
+            height: auto;
+            display: inline-block;
+            background-color: #E7E7E7;
+        }
+        #proItem {
+            margin-left: 5px;
+            padding: 20px;
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoaiHang.TenLoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenMH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DonGia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MoTa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HinhAnh)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MatHangID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MatHangID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MatHangID })
-        </td>
-    </tr>
-}
+        .btnDelete {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 5px;
+        }
 
-</table>
+        .btn-delete {
+            color: white;
+        }
+
+        table, th, tr, td {
+            border: none !important;
+        }
+
+        .btn-edit {
+            color: white;
+        }
+
+        .btnEdit {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 5px;
+        }
+        a {
+            color: black;
+        }
+
+            a:hover {
+                color: lightgray;
+                text-decoration: none
+            }
+          #content-product {
+              text-align: left;
+          }
+            
+    </style>
+</head>
+<body>
+    <div class="container" style="margin-bottom: 50px">
+        <a href="/MatHang/Create" title="Add New User" class="btn-create" style="float: right; margin-top: 50px;"><i class="fa fa-plus-circle fa-2x" style="color: black"></i></a>
+        <a href="/Admin/Index" title="Dashboard" class="btn-create" style="float: right; margin-top: 50px; margin-right: 10px"><i class="fa fa-arrow-left fa-2x" style="color: black"></i></a>
+        <h2 style="text-align: center; margin-top: 100px;">PRODUCT MANAGEMENT</h2>
+        <div style="text-align: center; margin-top: 100px">
+            <div class="form-group">
+                <div class="input-group" style="margin: 0 auto; width: 250px;">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" id="Search" placeholder="Search here..." class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center; margin-top: 60px">
+
+            @foreach (var item in Model)
+            {
+                <div class="row" style="margin-top: 50px">
+                    <div class="col-md-3 gallery">
+                        <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                            <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                        </a>
+                    </div>
+                    <div class="col-md-9">
+                        <table class="table">
+                            <tr>
+                                <th scope="row">Name</th>
+                                <td id="content-product">@item.TenMH</td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Price</th>
+                                <td id="content-product">$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Type</th>
+                                <td id="content-product">@item.LoaiHang.TenLoai</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Size</th>
+                                <td id="content-product">@item.Size</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Color</th>
+                                <td id="content-product">@item.Color</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">For</th>
+                                <td id="content-product">@(item.Gender == 0 ? "Woman" : "Man")</td>
+                                <td>
+                                    <div class="btnEdit">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.MatHangID }, new { @class = "btn-edit" })
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btnDelete">
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.MatHangID }, new { @class = "btn-delete" })
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1) return true;
+            }
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val().toLowerCase();
+                $(".row").each(function () {
+                    if (!Contains($(this).text().toLowerCase(), searchText)) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>
+
+

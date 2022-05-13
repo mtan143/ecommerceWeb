@@ -1,0 +1,87 @@
+﻿@model IEnumerable<EcommerceWeb.Models.MatHang>
+@using System.Globalization;
+@{
+    ViewBag.Title = "Woman";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+}
+<style>
+    div.gallery img {
+        width: 150px;
+        height: 150px;
+        margin: 30px;
+        display: inline-block;
+    }
+    .zoomPic:hover {
+        transform: scale(1.5);
+        transition: transform .2s;
+    }
+    div.gallery {
+        margin: 30px;
+        /*border: 2px solid #ccc;*/
+        width: auto;
+        height: auto;
+        display: inline-block;
+        background-color: #E7E7E7;
+    }
+</style>
+
+
+<div style="text-align:center; margin-top: 60px">
+    <div class="row">
+        <div class="col-md-9">
+            <img src="@Url.Content("~/image/woman-cover.jpg")" style="width: 60%" alt="Woman Cover" />
+        </div>
+        <div class="col-md-3" style="margin-top: 10%; ">
+            <h1>for</h1><br />
+            <h1 style="font-weight: bold">WOMAN</h1>
+        </div>
+    </div>
+    <div class="row" id="WomanD" style="margin-top: 50px">
+        <h1 style="text-align:center">DRESSES</h1>
+        @foreach (var item in Model.Where(x => x.LoaiID == 4))
+        {
+            <div class="col-md-3">
+                <div class="gallery">
+                    <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                    </a>
+                </div>
+                <p>@item.TenMH</p>
+                <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
+            </div>
+        }
+    </div>
+
+    <div id="WomanTS" class="row" style="margin-top: 50px">
+        <h1 style="text-align:center">TOPS & SHIRTS</h1>
+        @foreach (var item in Model.Where(x => x.LoaiID == 5))
+        {
+            <div class="col-md-3">
+                <div class="gallery">
+                    <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                    </a>
+                </div>
+                <p>@item.TenMH</p>
+                <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
+            </div>
+        }
+    </div>
+
+    <div id="WomanT" class="row" style="margin-top: 50px">
+        <h1 style="text-align:center">T-SHIRTS</h1>
+        @foreach (var item in Model.Where(x => x.LoaiID == 6))
+        {
+            <div class="col-md-3">
+                <div class="gallery">
+                    <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                        <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                    </a>
+                </div>
+                <p>@item.TenMH</p>
+                <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
+            </div>
+        }
+    </div>
+</div>

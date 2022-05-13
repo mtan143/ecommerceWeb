@@ -4,86 +4,31 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .btn-default:hover {
+        color: lightgray;
+    }
 
-<h2>Delete</h2>
+    .btnBack {
+        color: black;
+        margin-left: 10px;
+    }
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>MatHang</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiHang.TenLoai)
-        </dt>
+        .btnBack:hover {
+            text-decoration: none;
+            color: lightgray
+        }
+</style>
 
-        <dd>
-            @Html.DisplayFor(model => model.LoaiHang.TenLoai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TenMH)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TenMH)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DonGia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DonGia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
+<div class="container" style="margin:100px;">
+    <h3 style="margin-bottom: 50px;">Are you sure you want to delete this?</h3>
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-default" style="border-radius: 0px; background-color: black; color: white;" />
+            @Html.ActionLink("Back", "Index", null, new { @class = "btnBack" })
         </div>
     }
 </div>

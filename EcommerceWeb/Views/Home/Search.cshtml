@@ -1,0 +1,77 @@
+﻿@model IEnumerable<EcommerceWeb.Models.MatHang>
+@using System.Globalization;
+@{
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div.gallery img {
+            width: 150px;
+            height: 150px;
+            margin: 30px;
+            display: inline-block;
+        }
+
+        .zoomPic:hover {
+            transform: scale(1.5);
+            transition: transform .2s;
+        }
+
+        div.gallery {
+            margin: 30px;
+            /*border: 2px solid #ccc;*/
+            width: auto;
+            height: auto;
+            display: inline-block;
+            background-color: #E7E7E7;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 100px">
+        <div class="form-group">
+            <div class="input-group" style="margin: 0 auto; width: 250px;">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" id="Search" placeholder="Search here..." class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 60px">
+        <div class="row" style="margin-top: 50px">
+            @foreach (var item in Model)
+            {
+                <div id="proItem" class="col-md-3">
+                    <div class="gallery">
+                        <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                            <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                        </a>
+                    </div>
+                    <p>@item.TenMH</p>
+                    <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
+                </div>
+            }
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1) return true;
+            }
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val().toLowerCase();
+                $(".col-md-3").each(function () {
+                    if (!Contains($(this).text().toLowerCase(), searchText)) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

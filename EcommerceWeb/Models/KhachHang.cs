@@ -9,6 +9,13 @@ namespace EcommerceWeb.Models
         {
         }
 
+        public KhachHang(string tenKH, string diaChi, string dienThoai, string username, string password) : this(tenKH, diaChi)
+        {
+            DienThoai = dienThoai;
+            Username = username;
+            Password = password;
+        }
+
         public KhachHang(string username, string password)
         {
             Username = username;

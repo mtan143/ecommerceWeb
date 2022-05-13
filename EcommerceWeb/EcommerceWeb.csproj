@@ -82,6 +82,12 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.6.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -286,6 +292,7 @@
     <Content Include="Content\font-awesome\sprites\brands.svg" />
     <Content Include="Content\font-awesome\sprites\regular.svg" />
     <Content Include="Content\font-awesome\sprites\solid.svg" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -296,10 +303,13 @@
     <Content Include="image\cover3.jpg" />
     <Content Include="image\cover2.jpg" />
     <Content Include="image\cover1.jpg" />
+    <Content Include="image\giftbag1.jpg" />
+    <Content Include="image\giftbag2.jpg" />
     <Content Include="image\gucci1.png" />
     <Content Include="image\header.png" />
     <Content Include="image\Instagram.png" />
     <Content Include="image\LogoAron.png" />
+    <Content Include="image\man-banner.jpg" />
     <Content Include="image\man-cover.jpg" />
     <Content Include="image\shirt.png" />
     <Content Include="image\stories1.jpg" />
@@ -308,6 +318,7 @@
     <Content Include="image\stories4.jpg" />
     <Content Include="image\Thum.jpg" />
     <Content Include="image\Twitter.png" />
+    <Content Include="image\woman-banner.jpg" />
     <Content Include="image\woman-cover.jpg" />
     <Content Include="image\Youtube.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -366,8 +377,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Man.cshtml" />
-    <Content Include="Views\Home\Woman.cshtml" />
+    <Content Include="Views\LoaiHang\Man.cshtml" />
+    <Content Include="Views\LoaiHang\Woman.cshtml" />
     <Content Include="Views\LoaiHang\Create.cshtml" />
     <Content Include="Views\LoaiHang\Delete.cshtml" />
     <Content Include="Views\LoaiHang\Details.cshtml" />
@@ -398,6 +409,9 @@
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\Man.cshtml" />
+    <Content Include="Views\Home\Woman.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

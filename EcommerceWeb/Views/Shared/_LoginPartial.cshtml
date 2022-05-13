@@ -1,28 +1,47 @@
 ﻿@using Microsoft.AspNet.Identity
+<style>
+    #btnSearch:hover {
+        color: white;
+        background-color: darkgray
+    }
+
+    .dropdown:hover .dropdown-menu-dark {
+        display: block
+    }
+    .fa-user:hover {
+        cursor: pointer
+    }
+</style>
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="/Home/Search"><i title="Search" class="fa-solid fa-search" style="color: black"></i></a></li>
+    <li><a href="/Home/Search"><i class="fa fa-shopping-cart" style="color: black"></i></a></li>
+    <li class="nav-item dropdown" style="padding: 15px 15px">
+        <i class="fa fa-user" style="color: black"></i>
+        <span class="caret"></span>
+        <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="/LoaiHang/Man/#ManTS">Profile</a></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
         </ul>
+    </li>
+    
+    @*<li>
+        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    </li>
+    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>*@
+</ul>
     }
 }
 else
 {
-<ul class="nav navbar-nav navbar-right">
-    <li>
-        <div style="margin: 12px 20px 0 0">
-            <input type="text" name="search" placeholder="Search here...">
-            <a href="#"><i title="Search" class="fa-solid fa-magnifying-glass" style="color: black; margin-left: 5px"></i></a>
-        </div>     
-    </li>
-    <li><a href="@Url.Action("Register","Account")"><i title="Sign Up" class="fa-solid fa-user-plus" style="color: black"></i></a></li>
-    <li><a href="@Url.Action("Login","Account")"><i title="Login" class="fa-solid fa-arrow-right-to-bracket" style="color: black"></i></a></li>
-</ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/Home/Search"><i title="Search" class="fa-solid fa-search" style="color: black"></i></a></li>
+        <li><a href="@Url.Action("Register","Account")"><i title="Sign Up" class="fa-solid fa-user-plus" style="color: black"></i></a></li>
+        <li><a href="@Url.Action("Login","Account")"><i title="Login" class="fa-solid fa-arrow-right-to-bracket" style="color: black"></i></a></li>
+    </ul>
 }

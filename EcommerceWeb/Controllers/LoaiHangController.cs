@@ -124,5 +124,51 @@ namespace EcommerceWeb.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult Man()
+        {
+            var manProduct = db.MatHangs.Where(x => x.Gender == 1).ToList();
+            return View(manProduct);
+        }
+
+        public ActionResult Woman()
+        {
+            var womanProduct = db.MatHangs.Where(x => x.Gender == 0).ToList();
+            return View(womanProduct);
+        }
+
+
+
+        public ActionResult ManTS()
+        {
+            var womanProduct = db.MatHangs.Where(x => x.Gender == 1 && x.LoaiID == 1).ToList();
+            return View(womanProduct);
+        }
+        public ActionResult ManS()
+        {
+            var womanProduct = db.MatHangs.Where(x => x.Gender == 1 && x.LoaiID == 2).ToList();
+            return View(womanProduct);
+        }
+        public ActionResult ManPS()
+        {
+            var womanProduct = db.MatHangs.Where(x => x.Gender == 1 && x.LoaiID == 3).ToList();
+            return View(womanProduct);
+        }
+        public ActionResult WomanD()
+        {
+            var womanProduct = db.MatHangs.Where(x => x.Gender == 0 && x.LoaiID == 4).ToList();
+            return View(womanProduct);
+        }
+        public ActionResult WomanTS()
+        {
+            var womanProduct = db.MatHangs.Where(x => x.Gender == 0 && x.LoaiID == 5).ToList();
+            return View(womanProduct);
+        }
+        public ActionResult WomanT()
+        {
+            var womanProduct = db.MatHangs.Where(x => x.Gender == 0 && x.LoaiID == 6).ToList();
+            return View(womanProduct);
+        }
     }
 }

@@ -4,55 +4,33 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    #containerExtra {
+        background-color: black;
+        height: 100px;
+        width: 100px;
+        color: white;
+        padding: 40px 0;
+        border-radius: 50%;
+        margin: 30px auto;
+    }
+    a {
+        color: white
+    }
+    a:hover {
+        color: white;
+        text-decoration: none;
+    }
+    #containerExtra:hover {
+        height: 100%;
+        width: 100%;
+        border-radius: 0px;
+    }
+</style>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenKH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DienThoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenKH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DienThoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.KhachHangID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.KhachHangID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.KhachHangID })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="text-center" style="text-align: center; margin-top: 100px; ">
+    <h2 style="margin: 40px">MANAGEMENT SYSTEM</h2>
+    <div id="containerExtra"><a href="/KhachHang/Index">USER</a></div>
+    <div id="containerExtra"><a href="/MatHang/Index">PRODUCT</a></div>
+    <div id="containerExtra"><a href="/HoaDon/Index">ORDER</a></div>
+</div>

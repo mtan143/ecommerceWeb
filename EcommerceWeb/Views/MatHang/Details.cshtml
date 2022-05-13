@@ -1,83 +1,247 @@
 ﻿@model EcommerceWeb.Models.MatHang
-
+@using System.Globalization;
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .image {
+        width: 500px;
+        height: 500px;
+        display: inline-block;
+    }
 
-<h2>Details</h2>
+    .btnActionCart {
+        color: white;
+        background-color: black;
+        border-radius: 0px;
+        height: 45px;
+        width: 200px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
 
-<div>
-    <h4>MatHang</h4>
+    .form-select {
+        height: 40px;
+        width: 200px;
+        border-radius: 0px;
+        border: solid 1.5px;
+        margin-top: 10px;
+        margin-left: 10px
+    }
+
+    .size-option {
+        height: 40px;
+    }
+
+    .extra-info:hover {
+        text-decoration: none
+    }
+
+    .panel-title {
+        margin-top: 30px
+    }
+
+    .panel-body {
+        font-size: 12px;
+    }
+
+    table, th, td {
+        border: 0.2px solid black;
+    }
+
+    th, td {
+        padding: 20px;
+    }
+</style>
+
+@{
+    string[] colors = Model.Color.Split(' ');
+    string[] sizes = Model.Size.Split(',');
+    List<string> description = new List<string>
+    {
+                "The Interlocking G has remained one of the most symbolic codes of the House since its introduction. The distinguishing emblem appears as a leather detail atop this tote. Completing the design's logo feel, the bag is crafted from monogram canvas.",
+                "Reimagined within a refreshed aesthetic that instills a contemporary spirit in classic designs, sartorial jackets become the protagonist of mismatched looks mixing refined fabrics and cult casual materials. A traditional design in blue cotton, the jacket can be worn with its coordinated vest and denim pants for a disruptive take on traditional tailoring.",
+                "Reimagined within a refreshed aesthetic that instills a contemporary spirit in classic designs, sartorial jackets become the protagonist of mismatched looks mixing refined fabrics and cult casual materials. A traditional design in blue cotton, the jacket can be worn with its coordinated vest and denim pants for a disruptive take on traditional tailoring.",
+                "Gucci Aria’s tailoring collection presents formal suit separates developed on plain or patterned fabrics that feature feather details at the hems—recalling the everlasting femininity of forgotten cabaret artists. By infusing typically feminine details into the men’s collection, and vice versa, the lines between the two worlds blur creating looks characterised by an everlasting neutrality.",
+                "High-waisted skirts with side slits walked the Spring Summer 2020 runway, embodying what the Creative Director described as a beautiful cliché of sexiness, inspired by the idea of freedom that fashion experienced in the 90s. Crafted from black cady wool silk crêpe, this skirt speaks to a contemporary, streamlined aesthetic.",
+                "Details taken from the archive continue to be incorporated into the collections with contemporary take. The chevron vintage Web appears on the front of this skirt, recalling the sportswear influences that run through the House's narrative, while the pleated layers of the bottom part add a refined touch."
+            };
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+    string a = (Model.DonGia).ToString("#,###", cul.NumberFormat);
+}
+
+<div class="container">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiHang.TenLoai)
-        </dt>
+    <div class="row">
+        <div class="col-md-5">
+            <img class="image" src="@Url.Content(@Html.DisplayFor(model => model.HinhAnh).ToString())" />
+        </div>
+        <div class="col-md-7" style="text-align: center; margin-top: 50px">
+            <div class="text-center">
+                <h3>@Html.DisplayFor(model => model.TenMH)</h3>
+                <hr style="width: 70%" />
+                <h4 style="margin-top: 30px">$ @a</h4>
 
-        <dd>
-            @Html.DisplayFor(model => model.LoaiHang.TenLoai)
-        </dd>
+                <div style="margin-top: 30px">
+                    <span style="font-weight: bold">AVAILABLE</span><br />
+                    <span>
+                        Your selection is available for immediate purchase online.
+                    </span>
+                </div><br />
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Color</option>
+                    @foreach (string color in colors)
+                    {
+                        <option class="size-option" value=@color>@color</option>
+                    }
+                </select><br />
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Select Size</option>
+                    @foreach (string size in sizes)
+                    {
+                        <option class="size-option" value=@size>@size</option>
+                    }
+                </select><br />
+                <div style="margin: 30px 70px 30px 70px; text-align: justify">@description[new Random().Next(description.Count)]</div><br />
+                <button type="button" class="btnActionCart">ADD TO CART</button>
+                <button type="button" class="btnActionCart">BUY NOW</button>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 80px;">
+        <div class="col-md-8">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-title">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="extra-info" data-toggle="collapse" data-parent="#accordion" href="#collapse1">SHIPPING & RETURNS INFO <span style="font-size: 20px; float: right; font-weight: lighter">+</span></a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table>
+                                <tr>
+                                    <td>
+                                        Shipping Service & Fee
+                                    </td>
+                                    <td> Delivery Estimate from shipping</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Express Delivery
+                                        Complimentary
+                                    </td>
+                                    <td>
+                                        Metro areas: 1 – 2 business days
+                                        Regional areas: 2 – 4 business days
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Same Day Delivery*
+                                        $25
+                                    </td>
+                                    <td>
+                                        Available to selected Sydney Metropolitan postcodes, for orders placed by 1pm (AEST) Mon-Fri.
+                                        Deliveries cannot be made on public holidays.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Saturday Delivery*
+                                        $25
+                                    </td>
+                                    <td>
+                                        Available to selected Sydney Metropolitan postcodes. Orders placed Sun-Fri will be delivered the following Saturday.
+                                        Orders placed Saturday before 11am (AEST) will be delivered Same Day.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Road Express (for Beauty)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TenMH)
-        </dt>
+                                        Complimentary
+                                    </td>
+                                    <td>
+                                        Metro areas: 1 – 3 business days
+                                        Regional areas: 3 – 5 business days
+                                    </td>
+                                </tr>
+                            </table><br />
+                            <div style="text-align: left; margin-top: 20px">
+                                *Available to selected Sydney Metropolitan postcodes. If you are eligible for this service, it will appear at checkout.<br /> <br />
+                                The return window for online purchases is 30 days from the date you received your purchase. Prepaid return labels for complimentary return/exchange are included with all online orders along with detailed instructions. You may also return or exchange merchandise in any of our Gucci boutiques when accompanied by the original invoice.
+                                <br /> <br />
+                                Additional information is available during the checkout process or within the FAQs Section.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-title">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="extra-info" data-toggle="collapse" data-parent="#accordion" href="#collapse2">GIFT WRAPPING <span style="font-size: 20px; float: right; font-weight: lighter">+</span></a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body" style="text-align: center">
+                            <div>
+                                <img src="@Url.Content("~/image/giftbag1.jpg")" style="width: 30%" />
+                                <img src="@Url.Content("~/image/giftbag2.jpg")" style="width: 30%" />
+                            </div><br />
+                            <div style="margin-top: 30px">
+                                <div style="margin-bottom: 20px; font-size: 20px">Complimentary Gift Wrapping</div>
+                                <div style="margin: 0px 20px 0px 20px">Designed and sourced with the planet in mind is an all-new line of vintage-inspired green packaging—innovatively created to be completely recyclable and accompanied by a Gucci.com exclusive reusable cotton canvas shopper on most orders.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-title">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="extra-info" data-toggle="collapse" data-parent="#accordion" href="#collapse3">PAYMENT OPTIONS <span style="font-size: 20px; float: right; font-weight: lighter">+</span></a>
+                        </h4>
+                    </div>
+                    <div id="collapse3" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div style="margin-bottom: 20px">Aron accepts the following forms of payment for online purchases:</div>
+                            <ul>
+                                <li><i class="fa fa-cc-visa" style="font-size:17px"></i> VISA</li>
+                                <li><i class="fa fa-cc-stripe" style="font-size:17px"></i> STRIPE</li>
+                                <li><i class="fa fa-cc-paypal" style="font-size:17px"></i> PAYPAL</li>
+                                <li><i class="fa fa-cc-mastercard" style="font-size:17px"></i> MASTERCARD</li>
+                                <li><i class="fa fa-cc-jcb" style="font-size:17px"></i> JCB</li>
+                                <li><i class="fa fa-credit-card" style="font-size:17px"></i> CREDIT CARD</li>
+                            </ul>
+                            <div style="margin: 30px 60px 30px 30px; text-align: left">
+                                Please note that your billing address must match the address on your credit card statement. At this time we do not offer instalment payments, or payments via Gucci credit notes and/or gift cards.<br /><br />
 
-        <dd>
-            @Html.DisplayFor(model => model.TenMH)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DonGia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DonGia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh)
-        </dd>
-
-    </dl>
+                                Once your order is placed your credit card will be authorized for $1 for verification purposes. The authorised amount will be released by your credit card’s issuing bank according to its policy. The full transaction value will be charged to your credit card after we have verified your card details, received credit authorisation, confirmed availability and prepared your order for shipping. For Made To Order, DIY, personalised and selected Décor products, payment will be taken at the time the order is placed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="text-align: center">
+            <img class="image" src="@Url.Content(@Html.DisplayFor(model => model.HinhAnh).ToString())" style="width: 250px; height: 250px" /><br />
+            <div style="text-align: left; font-size: 12px; margin-top: 30px">
+                PRODUCT DETAILS <br /><br />
+                Style 669707 ZAD88 9783<br /><br /><br />
+                <div style="text-align: left">Details taken from the archive continue to be incorporated into the collections with contemporary take. The chevron vintage Web appears on the front of this skirt, recalling the sportswear influences that run through the House's narrative, while the pleated layers of the bottom part add a refined touch.</div><br /><br />
+                <ul>
+                    <li>Off-white cady crêpe silk wool</li>
+                    <li>Orange and green chevron vintage Web</li>
+                    <li>Mid-length</li>
+                    <li>Zip closure</li>
+                    <li>Length: 82cm, based on a size 40 (IT)</li>
+                    <li>Made in Italy</li>
+                    <li>The model is 179 cm tall. The item in this image is a size 40 (IT)</li>
+                    <li>Fabric: 53% Silk, 47% Wool.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MatHangID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

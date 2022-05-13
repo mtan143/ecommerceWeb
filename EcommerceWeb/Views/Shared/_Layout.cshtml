@@ -56,7 +56,7 @@
         }
 
         li {
-            margin: 10px 0;
+            margin: 20px 0;
         }
         .text-white:hover {
             text-decoration: none;
@@ -78,6 +78,7 @@
             cursor: pointer;
             border-radius: 50%;
         }
+        .dropdown:hover .dropdown-menu-dark{display: block}
     </style>
 
 </head>
@@ -104,23 +105,20 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="/Home/Index/#TsPsMen">T-shirts & Polo Shirts</a></li>
-                            <li><a class="dropdown-item" href="/Home/Index/#StMen">Shirts</a></li>
-                            <li><a class="dropdown-item" href="/Home/Index/#SPMen">Shorts & Pants</a></li>
+                            <li><a class="dropdown-item" href="/LoaiHang/Man/#ManTS">Shirts</a></li>
+                            <li><a class="dropdown-item" href="/LoaiHang/Man/#ManS">T-shirts & Polo Shirts</a></li>
+                            <li><a class="dropdown-item" href="/LoaiHang/Man/#ManPS">Pants & Shorts</a></li>
                         </ul>
+                        </li>
                     <li class="nav-item dropdown">
                         <a class="womanPage" href="/Home/Woman" style="color:black">
                             Women
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="/home/index/#dw">dresses</a></li>
-                            <li><a class="dropdown-item" href="/home/index/#tw">tops</a></li>
-                            <li><a class="dropdown-item" href="/home/index/#tsw">t-shirst</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/home/index/#psw">pants & shorts</a></li>
-                            <li><a class="dropdown-item" href="/home/index/#dmw">denim</a></li>
-                            <li><a class="dropdown-item" href="/home/index/#cw">coat</a></li>
+                            <li><a class="dropdown-item" href="/LoaiHang/Woman/#WomanD">Dresses</a></li>
+                            <li><a class="dropdown-item" href="/LoaiHang/Woman/#WomanTS">Tops & Shirts</a></li>
+                            <li><a class="dropdown-item" href="/LoaiHang/Woman/#WomanT">T-Shirts</a></li>
                         </ul>
                     </li>
 
@@ -130,7 +128,6 @@
             </div>
         </div>
     </div>
-    @*<div class="container body-content"></div>*@
     @RenderBody()
     <hr />
 
@@ -176,7 +173,7 @@
                 <!--Grid row-->
                 <div class="row">
                     <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: left">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: center">
                         <h5 class="text-uppercase">EXCLUSIVE SERVICES</h5>
 
                         <ul class="list-unstyled mb-0">
@@ -193,7 +190,7 @@
                     </div>
                     <!--Grid column-->
                     <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: left">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: center">
                         <h5 class="text-uppercase">NEED HELP?</h5>
 
                         <ul class="list-unstyled mb-0">
@@ -213,7 +210,7 @@
                     </div>
                     <!--Grid column-->
                     <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: left">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: center">
                         <h5 class="text-uppercase">THE COMPANY</h5>
 
                         <ul class="list-unstyled mb-0">
@@ -236,7 +233,7 @@
                     </div>
                     <!--Grid column-->
                     <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: left">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: center">
                         <h5 class="text-uppercase">FIND US ON</h5>
 
                         <ul class="list-unstyled mb-0">
