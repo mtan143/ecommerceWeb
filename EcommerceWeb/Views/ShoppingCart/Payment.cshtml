@@ -1,0 +1,58 @@
+﻿@model EcommerceWeb.Models.Cart
+
+@{
+    ViewBag.Title = "Payment";
+}
+<head>
+    <style>
+        .payment{
+            color: white;
+            background-color: black;
+            border-radius: 0px;
+            height: 45px;
+            width: 200px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    </style>
+    <script>
+        function paymentAlert() {
+            if (window.confirm("Payment Successfull")) {
+                window.location = "/";
+            }
+            else {
+
+            }
+            
+        }
+    </script>
+</head>
+<div class="container-fluid">
+    <a href="/ShoppingCart/ShowToCart"><i title="back" class="fa-solid fa-arrow-left-long" style="color: black; margin-top: 65px; font-size: 30px; text-align: left"></i></a>
+</div>
+<div class=" container-fluid" style="text-align: center">
+    <h2>PAYMENT CONFIRM</h2>
+    <hr />
+    @*<dl class="dl-horizontal">
+        </dl>*@
+    <div class="container" style="border: .2px solid; text-align: center; margin: auto; width: 50%">
+        @foreach (var item in Model.Items.ToList())
+        {
+            double tongtien = Convert.ToDouble(item.shoppingProduct.DonGia * item.shoppingQuantity);
+            <div class="row" style="margin: 15px 15px">
+                <div class="col-md-3">
+                    <img src="@Url.Content(@item.shoppingProduct.HinhAnh.ToString())" alt="ảnh lỗi rồi" style="width:100px" />
+                </div>
+                <div class="col-md-8">
+                    <p style="font-size: 20px">@item.shoppingProduct.TenMH</p>
+                    <p style="margin-top: 27px;margin-left:127px ; float: left">Quantity: @item.shoppingQuantity</p>
+                    <p style="margin-top: 27px;margin-right: 27px ; float: right">Price: $ @tongtien</p>
+                </div>
+            </div>
+            <hr />
+        }
+        <h4 style="text-align: right">Total Price: $ @Model.TotalPrice()</h4>
+    </div>
+    <button type="button" onclick="paymentAlert()" class="payment">PAYMENT</button>
+</div>
+

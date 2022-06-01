@@ -1,0 +1,95 @@
+﻿@model EcommerceWeb.Models.Cart
+
+@{
+    ViewBag.Title = "ShowToCart";
+}
+<head>
+    <style>
+        #buttonBuyNow{
+            color: black;
+            border-radius: 0px;
+            background: transparent;
+            border: solid 2px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        @if (Model.Items.Count() != 0)
+        {
+            <a href="/"><i title="back" class="fa-solid fa-arrow-left-long" style="color: black; margin-top: 75px; font-size: 30px"></i></a>
+            <h1 style="margin-bottom: 0px; margin-bottom: 15px">Your cart</h1>
+
+            <table class="table" style="border: .1px solid #BDBDBD">
+                <thead>
+                    <tr>
+                        <th style="border: .1px solid #BDBDBD; font-size: 20px">Product Name</th>
+                        <th style="border: .1px solid #BDBDBD; font-size: 20px">Image</th>
+                        <th style="border: .1px solid #BDBDBD; font-size: 20px">Product Price</th>
+                        <th style="border: .1px solid #BDBDBD; font-size: 20px">Quantity</th>
+                        <th style="border: .1px solid #BDBDBD; font-size: 20px">Price</th>
+                        <th style="border: .1px solid #BDBDBD; font-size: 20px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+                        double tongtien = Convert.ToDouble(item.shoppingProduct.DonGia * item.shoppingQuantity);
+                        <tr>
+                            <td style="border: .1px solid #BDBDBD; font-size: 18px">
+                                @Html.DisplayFor(model => item.shoppingProduct.TenMH)
+                            </td>
+                            <td style="border: .1px solid #BDBDBD; text-align: center">
+                                <img src="@Url.Content(item.shoppingProduct.HinhAnh)" style="width: 200px;" />
+                            </td>
+                            <td style="border: .1px solid #BDBDBD; font-size: 18px">
+                                $ @Html.DisplayFor(model => item.shoppingProduct.DonGia)
+                            </td>
+                            <td style="border: .1px solid #BDBDBD; font-size: 18px">
+                                @using (Html.BeginForm("UpdateQuantityInCart", "ShoppingCart"))
+                                {
+                                    <input type="hidden" value="@item.shoppingProduct.MatHangID" name="ID_MatHang" />
+                                    <input type="number" min="1" max="30" value="@item.shoppingQuantity" name="SoLuong_MH" style="width: 60px" />
+                                    <input type="submit" value="Update" />
+                                }
+                            </td>
+                            <td style="border: .1px solid #BDBDBD; font-size: 18px">
+                                Price: $ @tongtien
+                            </td>
+                            <td style="border: .1px solid #BDBDBD; font-size: 18px; text-align:center;">
+                                <a class="remove" href="/ShoppingCart/RemoveProductInCart/@item.shoppingProduct.MatHangID" style="color: black; text-decoration: none">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr style="border: .1px solid #BDBDBD; font-size: 25px; text-align: right; font-weight: bold">
+                        <td colspan="6" style="border: .1px solid #BDBDBD">Total Price: $ @Model.TotalPrice()</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="purchase" style="text-align: right">
+                <a href="/ShoppingCart/Payment" id="buttonBuyNow" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">
+                    Purchase
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="container">
+                <img src="~/image/empty-cart.png" style="margin-left: 368px; width: 30%; margin-top:65px" />
+                <h1 style="margin-top: 0px;margin-bottom: 0px; text-align: center; font-weight: bold">
+                    Your cart is empty
+                </h1>
+                <h3 style="text-align: center">
+                    Looks like you have not added anything to your cart. Click <a href="/" style="color: black">here</a> for shopping
+                </h3>
+            </div>
+        }
+    </div>
+</body>
+

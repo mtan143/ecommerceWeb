@@ -8,38 +8,73 @@
     .dropdown:hover .dropdown-menu-dark {
         display: block
     }
+
     .fa-user:hover {
         cursor: pointer
     }
 </style>
+<header>
+    @*<script>
+            //function add to cart
+            $(document).ready(function () {
+                $('#addtocart').on('click', function () {
+
+                    var button = $(this);
+                    var cart = $('#cart');
+                    var cartTotal = cart.attr('data-totalitems');
+                    var newCartTotal = parseInt(cartTotal) + 1;
+
+                    button.addClass('sendtocart');
+                    setTimeout(function () {
+                        button.removeClass('sendtocart');
+                        cart.addClass('shake').attr('data-totalitems', newCartTotal);
+                        setTimeout(function () {
+                            cart.removeClass('shake');
+                        }, 500)
+                    }, 1000)
+                })
+            })
+        </script>*@
+</header>
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
 
-<ul class="nav navbar-nav navbar-right">
-    <li><a href="/Home/Search"><i title="Search" class="fa-solid fa-search" style="color: black"></i></a></li>
-    <li><a href="/Home/Search"><i class="fa fa-shopping-cart" style="color: black"></i></a></li>
-    <li class="nav-item dropdown" style="padding: 15px 15px">
-        <i class="fa fa-user" style="color: black"></i>
-        <span class="caret"></span>
-        <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="/LoaiHang/Man/#ManTS">Profile</a></li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/Home/Search"><i title="Search" class="fa-solid fa-search" style="color: black"></i></a></li>
+            <li>
+                <a href="/ShoppingCart/ShowToCart">
+                    <i class="fa fa-shopping-cart" style="color: black"></i>
+                    @Html.Action("BagCart", "ShoppingCart")
+                </a>
+            </li>
+            <li class="nav-item dropdown" style="padding: 15px 15px">
+                <i class="fa fa-user" style="color: black"></i>
+                <span class="caret"></span>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="/LoaiHang/Man/#ManTS">Profile</a></li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
+                </ul>
+            </li>
+
+            @*<li>
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>*@
         </ul>
-    </li>
-    
-    @*<li>
-        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-    </li>
-    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>*@
-</ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="/ShoppingCart/ShowToCart">
+                <i title="Cart" class="fa-solid fa-cart-shopping" style="color: black"></i>
+                @Html.Action("BagCart", "ShoppingCart")
+            </a>            
+        </li>
         <li><a href="/Home/Search"><i title="Search" class="fa-solid fa-search" style="color: black"></i></a></li>
         <li><a href="@Url.Action("Register","Account")"><i title="Sign Up" class="fa-solid fa-user-plus" style="color: black"></i></a></li>
         <li><a href="@Url.Action("Login","Account")"><i title="Login" class="fa-solid fa-arrow-right-to-bracket" style="color: black"></i></a></li>

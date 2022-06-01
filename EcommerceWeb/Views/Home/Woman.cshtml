@@ -17,53 +17,78 @@
           href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
-<style>
-    div.gallery img {
-        width: 150px;
-        height: 150px;
-        margin: 30px;
-        display: inline-block;
-    }
 
-    .zoomPic:hover {
-        transform: scale(1.5);
-        transition: transform .2s;
-    }
-
-    div.gallery {
-        margin: 30px;
-        /*border: 2px solid #ccc;*/
-        width: auto;
-        height: auto;
-        display: inline-block;
-        background-color: #E7E7E7;
-    }
-    .pagination > li > a {
-        background-color: white;
-        color: #5A4181;
-    }
-
-        .pagination > li > a:focus,
-        .pagination > li > a:hover,
-        .pagination > li > span:focus,
-        .pagination > li > span:hover {
-            color: #5a5a5a;
-            background-color: #eee;
-            border-color: #ddd;
+    <style>
+        div.gallery img {
+            width: 150px;
+            height: 150px;
+            margin: 30px;
+            display: inline-block;
         }
 
-    .pagination > .active > a {
-        color: white;
-        background-color: black !Important;
-        border: solid 1px black !Important;
-    }
+        .zoomPic:hover {
+            transform: scale(1.5);
+            transition: transform .2s;
+        }
 
-        .pagination > .active > a:hover {
+        div.gallery {
+            margin: 30px;
+            /*border: 2px solid #ccc;*/
+            width: auto;
+            height: auto;
+            display: inline-block;
+            background-color: #E7E7E7;
+        }
+
+        .pagination > li > a {
+            background-color: white;
+            color: #5A4181;
+        }
+
+            .pagination > li > a:focus,
+            .pagination > li > a:hover,
+            .pagination > li > span:focus,
+            .pagination > li > span:hover {
+                color: #5a5a5a;
+                background-color: #eee;
+                border-color: #ddd;
+            }
+
+        .pagination > .active > a {
+            color: white;
             background-color: black !Important;
-            border: solid 1px black;
+            border: solid 1px black !Important;
         }
-</style>
+
+            .pagination > .active > a:hover {
+                background-color: black !Important;
+                border: solid 1px black;
+            }
+
+        #buttonCart {
+            color: black;
+            border-radius: 0px;
+            background: transparent;
+            border: solid 2px;
+            font-weight: bold;
+        }
+
+        .TwoButton {
+            transition: .4s ease;
+            opacity: 0;
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .col-md-3:hover .TwoButton {
+            opacity: 1;
+        }
+    </style>
+</head>
 <body>
 
     <div class="container-fluid" style="margin-top: 20px;">
@@ -75,15 +100,18 @@
             <div class="row" style="margin-top: 50px">
                 @foreach (var item in Model)
                 {
-                    <div id="proItem" class="col-md-3">
-                        <div class="gallery">
-                            <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
-                                <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
-                            </a>
-                        </div>
-                        <p style="font-weight: bold">@item.TenMH</p>
-                        <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
+                <div id="proItem" class="col-md-3">
+                    <div class="gallery">
+                        <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                            <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                        </a>
                     </div>
+                    <div class="TwoButton">
+                        <a href="/ShoppingCart/AddtoCart/@item.MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
+                    </div>
+                    <p style="font-weight: bold">@item.TenMH</p>
+                    <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
+                </div>
                 }
             </div>
         </div>

@@ -24,6 +24,29 @@
         display: inline-block;
         background-color: #E7E7E7;
     }
+
+    #buttonCart {
+            color: black;
+            border-radius: 0px;
+            background: transparent;
+            border: solid 2px;
+            font-weight: bold;
+        }
+
+        .TwoButton {
+            transition: .4s ease;
+            opacity: 0;
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .col-md-3:hover .TwoButton {
+            opacity: 1;
+        }
 </style>
 
 
@@ -41,15 +64,18 @@
         <h1 style="text-align:center">DRESSES</h1>
         @foreach (var item in Model.Where(x => x.LoaiID == 4))
         {
-            <div class="col-md-3">
-                <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
-                </div>
-                <p style="font-weight: bold">@item.TenMH</p>
-                <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
-            </div>
+    <div class="col-md-3">
+        <div class="gallery">
+            <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+            </a>
+        </div>
+        <div class="TwoButton">
+            <a href="/ShoppingCart/AddtoCart/@item.MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
+        </div>
+        <p style="font-weight: bold">@item.TenMH</p>
+        <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
+    </div>
         }
     </div>
 
@@ -57,15 +83,18 @@
         <h1 style="text-align:center">TOPS & SHIRTS</h1>
         @foreach (var item in Model.Where(x => x.LoaiID == 5))
         {
-            <div class="col-md-3">
-                <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
-                </div>
-                <p style="font-weight: bold">@item.TenMH</p>
-                <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
-            </div>
+    <div class="col-md-3">
+        <div class="gallery">
+            <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+            </a>
+        </div>
+        <div class="TwoButton">
+            <a href="/ShoppingCart/AddtoCart/@item.MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
+        </div>
+        <p style="font-weight: bold">@item.TenMH</p>
+        <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
+    </div>
         }
     </div>
 
@@ -73,15 +102,18 @@
         <h1 style="text-align:center">T-SHIRTS</h1>
         @foreach (var item in Model.Where(x => x.LoaiID == 6))
         {
-            <div class="col-md-3">
-                <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
-                </div>
-                <p style="font-weight: bold">@item.TenMH</p>
-                <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
-            </div>
+    <div class="col-md-3">
+        <div class="gallery">
+            <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+            </a>
+        </div>
+        <div class="TwoButton">
+            <a href="/ShoppingCart/AddtoCart/@item.MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
+        </div>
+        <p style="font-weight: bold">@item.TenMH</p>
+        <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
+    </div>
         }
     </div>
 </div>

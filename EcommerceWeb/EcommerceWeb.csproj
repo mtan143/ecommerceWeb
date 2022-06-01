@@ -237,11 +237,13 @@
     <Compile Include="Controllers\LoaiHangController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MatHangController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="DAL\EcommerceContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\ChiTietHoaDon.cs" />
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -299,6 +301,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="image\anh.jpg" />
     <Content Include="image\ARON.png" />
+    <Content Include="image\empty-cart.png" />
     <Content Include="image\Facebook.png" />
     <Content Include="image\cover3.jpg" />
     <Content Include="image\cover2.jpg" />
@@ -412,6 +415,10 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Man.cshtml" />
     <Content Include="Views\Home\Woman.cshtml" />
+    <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
+    <Content Include="Views\ShoppingCart\BagCart.cshtml" />
+    <Content Include="Views\Shared\_Admin_Layout.cshtml" />
+    <Content Include="Views\ShoppingCart\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

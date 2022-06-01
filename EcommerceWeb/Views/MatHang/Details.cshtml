@@ -105,8 +105,7 @@
                     }
                 </select><br />
                 <div style="margin: 30px 70px 30px 70px; text-align: justify">@description[new Random().Next(description.Count)]</div><br />
-                <button type="button" class="btnActionCart">ADD TO CART</button>
-                <button type="button" class="btnActionCart">BUY NOW</button>
+                <button type="button" class="btnActionCart"><a href="/ShoppingCart/AddtoCart/@Html.DisplayFor(model => model.MatHangID).ToString()" style="color: white; text-decoration: none">ADD TO CART</a></button>
             </div>
         </div>
     </div>

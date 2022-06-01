@@ -105,39 +105,18 @@
                 </button>
                 @Html.ActionLink("ARON", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a class="homeNav" href="/Home/Index" style="color:black">Home</a></li>
-                    <li><a class="newArrivalsNav" href="/Home/Index/#newArrivals" style="color:black">New Arrivals</a></li>
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
 
-                    <li class="nav-item dropdown">
-                        <a class="manPage" href="/Home/Man" style="color:black">
-                            Man
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="/LoaiHang/Man/#ManTS">Shirts</a></li>
-                            <li><a class="dropdown-item" href="/LoaiHang/Man/#ManS">T-shirts & Polo Shirts</a></li>
-                            <li><a class="dropdown-item" href="/LoaiHang/Man/#ManPS">Pants & Shorts</a></li>
-                        </ul>
-                        </li>
-                    <li class="nav-item dropdown">
-                        <a class="womanPage" href="/Home/Woman" style="color:black">
-                            Women
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="/LoaiHang/Woman/#WomanD">Dresses</a></li>
-                            <li><a class="dropdown-item" href="/LoaiHang/Woman/#WomanTS">Tops & Shirts</a></li>
-                            <li><a class="dropdown-item" href="/LoaiHang/Woman/#WomanT">T-Shirts</a></li>
-                        </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item dropdown" style="padding: 0px">
+                        <a href="javascript:document.getElementById('logoutForm').submit()" style="color: black">LOG OUT</a>
                     </li>
-
-                    <li><a class="infoNav" href="/Home/Index/#info" style="color:black">Info</a></li>
                 </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+            }
         </div>
+
     </div>
     @RenderBody()
     <hr />

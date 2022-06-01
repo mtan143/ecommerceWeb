@@ -1,74 +1,111 @@
 ﻿@model IEnumerable<EcommerceWeb.Models.MatHang>
 @using System.Globalization;
-@{ 
+@{
     CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
 }
-<head>
-    <link rel="stylesheet" href="~/Content/Site.css">
-    <style>
-        div.gallery img {
-            width: 150px;
-            height: 150px;
-            margin: 30px;
-            display: inline-block;
-        }
 
-        .zoomPic:hover {
-            transform: scale(1.5);
-            transition: transform .2s;
-        }
-
-        div.gallery {
-            margin: 30px;
-            /*border: 2px solid #ccc;*/
-            width: auto;
-            height: auto;
-            display: inline-block;
-            background-color: #E7E7E7;
-        }
-
-        #btnCover {
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            background-color: transparent;
-            color: white;
-            font-size: 16px;
-            padding: 12px 24px;
-            border: none;
-            cursor: pointer;
-            border-radius: 0px;
-            text-align: center;
-            border: solid 2px;
-            width: 20%;
-            bottom: 10%;
-            z-index: 2;
-        }
-
-        .stories {
-            width: 50%;
-        }
-
-        #stories {
-            margin-top: 50px;
-        }
-
-        .title-stories {
-            margin-top: 30px;
-            font-size: medium;
-        }
-
-        .stories-link {
-            color: lightgrey;
-        }
-
-            .stories-link:hover {
-                text-decoration: none;
-                color: black
+    <head>
+        <link rel="stylesheet" href="~/Content/Site.css">
+        <style>
+            div.item img {
+                width: 150px;
+                height: 150px;
+                margin: 30px;
+                display: inline-block;
             }
-    </style>
-</head>
+
+            .zoomPic:hover {
+                transform: scale(1.5);
+                transition: transform .2s;
+            }
+
+            div.item {
+                margin: 30px;
+                /*border: 2px solid #ccc;*/
+                width: auto;
+                height: auto;
+                display: inline-block;
+                background-color: #E7E7E7;
+            }
+
+            #btnCover {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                background-color: transparent;
+                color: white;
+                font-size: 16px;
+                padding: 12px 24px;
+                border: none;
+                cursor: pointer;
+                border-radius: 0px;
+                text-align: center;
+                border: solid 2px;
+                width: 20%;
+                bottom: 10%;
+                z-index: 2;
+            }
+
+            .stories {
+                width: 50%;
+            }
+
+            #stories {
+                margin-top: 50px;
+            }
+
+            .title-stories {
+                margin-top: 30px;
+                font-size: medium;
+            }
+
+            .stories-link {
+                color: lightgrey;
+            }
+
+                .stories-link:hover {
+                    text-decoration: none;
+                    color: black
+                }
+
+
+
+            #buttonCart {
+                color: black;
+                border-radius: 0px;
+                background: transparent;
+                border: solid 2px;
+                font-weight: bold;
+            }
+
+            #addtocart {
+                color: black;
+                border-radius: 0px;
+                background: transparent;
+                border: solid 2px;
+                font-weight: bold;
+            }
+
+
+
+
+            .page-wrapper {
+                transition: .4s ease;
+                opacity: 0;
+                position: absolute;
+                top: 65%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                text-align: center;
+            }
+
+            .col-md-3:hover .page-wrapper {
+                opacity: 1;
+            }
+        </style>
+    </head>
 
 <header>
     <div class="w3-content w3-section" @*style="max-width: 500%; max-height: 100%"*@>
@@ -93,6 +130,27 @@
             setTimeout(carousel, 5000); // Change image every 5 seconds
         }
     </script>
+    <script>
+        //function add to cart
+        $(document).ready(function () {
+            $('#addtocart').on('click', function () {
+
+                var button = $(this);
+                var cart = $('#cart');
+                var cartTotal = cart.attr('data-totalitems');
+                var newCartTotal = parseInt(cartTotal) + 1;
+
+                button.addClass('sendtocart');
+                setTimeout(function () {
+                    button.removeClass('sendtocart');
+                    cart.addClass('shake').attr('data-totalitems', newCartTotal);
+                    setTimeout(function () {
+                        cart.removeClass('shake');
+                    }, 500)
+                }, 1000)
+            })
+        })
+    </script>
 </header>
 <div class="content">
     <h2 id="newArrivals" style="font-family: inherit; color: #5f5b57; margin: 100px 0px 50px 0px">
@@ -101,40 +159,52 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                <div class="gallery">
+                <div class="item">
                     <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 11).MatHangID})">
                         <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 11).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
+                </div>
+                <div class="page-wrapper">
+                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 11).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
                 </div>
                 <p style="font-weight: bold">@Model.First(x => x.MatHangID == 11).TenMH</p>
                 <p>$ @Model.First(x => x.MatHangID == 11).DonGia.ToString("#,###", @cul.NumberFormat)</p>
             </div>
 
             <div class="col-md-3">
-                <div class="gallery">
+                <div class="item">
                     <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 2).MatHangID})">
                         <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 2).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
+                </div>
+                <div class="page-wrapper">
+                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 2).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
                 </div>
                 <p style="font-weight: bold">@Model.First(x => x.MatHangID == 2).TenMH</p>
                 <p>$ @Model.First(x => x.MatHangID == 2).DonGia.ToString("#,###", @cul.NumberFormat)</p>
             </div>
 
             <div class="col-md-3">
-                <div class="gallery">
+                <div class="item">
                     <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 20).MatHangID})">
                         <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 20).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
+                </div>
+                <div class="page-wrapper">
+                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 20).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
                 </div>
                 <p style="font-weight: bold">@Model.First(x => x.MatHangID == 38).TenMH</p>
                 <p>$ @Model.First(x => x.MatHangID == 38).DonGia.ToString("#,###", @cul.NumberFormat)</p>
             </div>
 
             <div class="col-md-3">
-                <div class="gallery">
+                <div class="item">
                     <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 12).MatHangID})">
                         <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 12).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
+                </div>
+                <div class="page-wrapper">
+                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 12).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
                 </div>
                 <p style="font-weight: bold">@Model.First(x => x.MatHangID == 12).TenMH</p>
                 <p>$ @Model.First(x => x.MatHangID == 12).DonGia.ToString("#,###", @cul.NumberFormat)</p>
@@ -143,10 +213,13 @@
 
         <div class="row">
             <div class="col-md-3">
-                <div class="gallery">
+                <div class="item">
                     <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 1).MatHangID})">
                         <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 1).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
+                </div>
+                <div class="page-wrapper">
+                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 1).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>            
                 </div>
                 <p style="font-weight: bold">@Model.First(x => x.MatHangID == 1).TenMH</p>
                 <p>$ @Model.First(x => x.MatHangID == 1).DonGia.ToString("#,###", @cul.NumberFormat)</p>
@@ -154,30 +227,39 @@
 
 
             <div class="col-md-3">
-                <div class="gallery">
+                <div class="item">
                     <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 19).MatHangID})">
                         <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 19).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
+                </div>
+                <div class="page-wrapper">
+                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 19).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
                 </div>
                 <p style="font-weight: bold">@Model.First(x => x.MatHangID == 19).TenMH</p>
                 <p>$ @Model.First(x => x.MatHangID == 19).DonGia.ToString("#,###", @cul.NumberFormat)</p>
             </div>
 
             <div class="col-md-3">
-                <div class="gallery">
+                <div class="item">
                     <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 15).MatHangID})">
                         <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 15).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
+                </div>
+                <div class="page-wrapper">
+                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 15).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
                 </div>
                 <p style="font-weight: bold">@Model.First(x => x.MatHangID == 15).TenMH</p>
                 <p>$ @Model.First(x => x.MatHangID == 15).DonGia.ToString("#,###", @cul.NumberFormat)</p>
             </div>
 
             <div class="col-md-3">
-                <div class="gallery">
+                <div class="item">
                     <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 14).MatHangID})">
                         <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 14).HinhAnh)" alt="ảnh lỗi rồi">
                     </a>
+                </div>
+                <div class="page-wrapper">
+                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 14).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
                 </div>
                 <p style="font-weight: bold">@Model.First(x => x.MatHangID == 14).TenMH</p>
                 <p>$ @Model.First(x => x.MatHangID == 14).DonGia.ToString("#,###", @cul.NumberFormat)</p>

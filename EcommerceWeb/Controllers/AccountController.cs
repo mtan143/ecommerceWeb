@@ -13,7 +13,7 @@ using EcommerceWeb.DAL;
 
 namespace EcommerceWeb.Controllers
 {
-    [Authorize(Roles = "ADMIN")]
+    //[Authorize(Roles = "ADMIN")]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

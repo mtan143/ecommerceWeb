@@ -2,6 +2,7 @@
 @using System.Globalization;
 @{
     CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
 }
 <!DOCTYPE html>
 <html>
@@ -91,7 +92,7 @@
             {
                 <div class="row" style="margin-top: 50px">
                     <div class="col-md-3 gallery">
-                        <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                        <a>
                             <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
                         </a>
                     </div>
