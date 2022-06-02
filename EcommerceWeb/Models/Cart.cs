@@ -58,5 +58,10 @@ namespace EcommerceWeb.Models
         {
             return items.Sum(x => x.shoppingQuantity);
         }
+
+        public void RemoveAll()
+        {
+            items.Clear();
+        }
     }
 }

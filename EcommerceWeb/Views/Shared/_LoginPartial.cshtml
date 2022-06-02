@@ -14,27 +14,9 @@
     }
 </style>
 <header>
-    @*<script>
-            //function add to cart
-            $(document).ready(function () {
-                $('#addtocart').on('click', function () {
-
-                    var button = $(this);
-                    var cart = $('#cart');
-                    var cartTotal = cart.attr('data-totalitems');
-                    var newCartTotal = parseInt(cartTotal) + 1;
-
-                    button.addClass('sendtocart');
-                    setTimeout(function () {
-                        button.removeClass('sendtocart');
-                        cart.addClass('shake').attr('data-totalitems', newCartTotal);
-                        setTimeout(function () {
-                            cart.removeClass('shake');
-                        }, 500)
-                    }, 1000)
-                })
-            })
-        </script>*@
+    @{
+            var db = new EcommerceWeb.DAL.EcommerceContext();
+    }
 </header>
 @if (Request.IsAuthenticated)
 {
@@ -54,15 +36,11 @@
                 <i class="fa fa-user" style="color: black"></i>
                 <span class="caret"></span>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" href="/LoaiHang/Man/#ManTS">Profile</a></li>
+                    <li><a class="dropdown-item" href="/KhachHang/Details/@db.KhachHangs.FirstOrDefault(x => x.Username == User.Identity.Name).KhachHangID">Profile</a></li>
                     <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
                 </ul>
             </li>
 
-            @*<li>
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                </li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>*@
         </ul>
     }
 }

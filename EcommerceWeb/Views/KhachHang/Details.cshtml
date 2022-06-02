@@ -4,56 +4,140 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/font-awesome/css/all.css" rel="stylesheet" />
+<style>
+    a {
+        color: black;
+    }
 
-<h2>Details</h2>
+        a:hover {
+            color: lightgray;
+            text-decoration: none
+        }
 
-<div>
-    <h4>KhachHang</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenKH)
-        </dt>
+    #proItem {
+        border: solid 1px;
+        margin-left: 5px;
+        padding: 20px;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.TenKH)
-        </dd>
+    .btnDelete {
+        margin: 5px 0 0 0;
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 5px;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
+    .btn-delete {
+        color: white;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.DiaChi)
-        </dd>
+    table, th, tr, td {
+        border: none !important;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DienThoai)
-        </dt>
+    .btn-edit {
+        color: white;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.DienThoai)
-        </dd>
+    .btnEdit {
+        margin: 15px 0 0 0;
+        background-color: black;
+        color: white;
+        text-align: center;
+        height: 30px;
+        padding: 5px;
+    }
+    .hidetext {
+        -webkit-text-security: disc;
+    }
+    .fab {
+        color: black;
+    }
+    .fab:hover {
+        color: darkgray
+    }
+</style>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+<div class="container" style="margin-top: 100px;">
+    
+    <div class="row" style="margin-top: 50px">
+        <div class="col-md-2"></div>
+        <div id="proItem" class="col-md-8">
+            <div class="row">
+                <h2 class="text-center">MY PROFILE</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4" style="display: flex; justify-content: center">
+                    <img width="80%" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="profile-image" />
+                </div>
+                <div class="col-md-8" style="margin-top: 20px;">
+                    <table class="table">
+                        <tr>
+                            <th scope="row">Name</th>
+                            <td>@Model.TenKH</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Address</th>
+                            <td>@Model.DiaChi</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Phone</th>
+                            <td>@Model.DienThoai</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Username</th>
+                            <td title="To change username, please contact to ADMIN!">@Model.Username</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Password</th>
+                            <td class="hidetext" title="To change password, please contact to ADMIN!">@Model.Password</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div style="display: flex; justify-content: center; padding: 50px;">
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://vi-vn.facebook.com/" role="button">
+                        <i class="fab fa-facebook-f fa-2x"></i>
+                    </a>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+                    <!-- Twitter -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/" role="button">
+                        <i class="fab fa-twitter fa-2x"></i>
+                    </a>
 
-    </dl>
+                    <!-- Google -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://google.com/" role="button">
+                        <i class="fab fa-google fa-2x"></i>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+
+                    <!-- Github -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/" role="button">
+                        <i class="fab fa-github fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="btnEdit">
+                    <a href="/HoaDon/OrderUser?KhachHangID=@Model.KhachHangID" style="text-decoration: none; color: white;">TRANSACTIONS</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="btnEdit">
+                    <a href="mailto: nguyentantnnn82@gmail.com" style="text-decoration: none; color: white;">CONTACT ADMIN TO CHANGE YOUR INFORMATION</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.KhachHangID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

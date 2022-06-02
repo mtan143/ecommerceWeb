@@ -121,6 +121,12 @@ namespace EcommerceWeb.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult OrderUser(int KhachHangID)
+        {
+            var list = db.HoaDons.Where(x => x.KhachHangID == KhachHangID).ToList();
+            return View(list);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

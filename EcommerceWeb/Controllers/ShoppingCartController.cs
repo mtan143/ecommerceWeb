@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace EcommerceWeb.Controllers
 {
     public class ShoppingCartController : Controller
     {
         private EcommerceContext db = new EcommerceContext();
+        private ApplicationDbContext applicationDbContext = new ApplicationDbContext();
         // GET: ShoppingCart
         public Cart GetCart()
         {
@@ -34,10 +36,15 @@ namespace EcommerceWeb.Controllers
 
         public ActionResult ShowToCart()
         {
-            //if (Session["Cart"] == null)
-            //    return RedirectToAction("ShowToCart", "ShoppingCart");
+            if (Session["Cart"] == null)
+                return RedirectToAction("NullCart", "ShoppingCart");
             Cart cart = Session["Cart"] as Cart;
             return View(cart);
+        }
+
+        public ActionResult NullCart()
+        {
+            return View();
         }
 
         public ActionResult UpdateQuantityInCart(FormCollection form)
@@ -54,6 +61,44 @@ namespace EcommerceWeb.Controllers
             Cart cart = Session["Cart"] as Cart;
             cart.RemoveProduct(id);
             return RedirectToAction("ShowToCart", "ShoppingCart");
+        }
+
+        public ActionResult CreateOrder()
+        {
+            Cart cart = Session["Cart"] as Cart;
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = applicationDbContext.Users.FirstOrDefault(x => x.Id == currentUserId);
+            var hoaDon = new HoaDon
+            {
+                KhachHangID = db.KhachHangs.FirstOrDefault(x => x.Username == currentUser.Email).KhachHangID,
+                Ngay = DateTime.Now,
+                MatHangs = new List<ChiTietHoaDon>()
+            };
+            foreach (var item in cart.Items)
+            {
+                var cthd = new ChiTietHoaDon
+                {
+                    HoaDonID = hoaDon.HoaDonID,
+                    MatHangID = item.shoppingProduct.MatHangID,
+                    SoLuong = item.shoppingQuantity,
+                    ThanhTien = item.shoppingProduct.DonGia * item.shoppingQuantity
+            };
+                db.ChiTietHoaDons.Add(cthd);
+                hoaDon.MatHangs.Add(cthd);
+                hoaDon.TongTien = cart.TotalPrice();
+                db.HoaDons.Add(hoaDon);
+            }
+            int result = db.SaveChanges();
+
+            if (result > 0)
+            {
+                cart.RemoveAll();
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction("Payment", "ShoppingCart");
+            //cart.RemoveAll();
+            //return RedirectToAction("Index", "Home");
         }
 
         [Authorize]

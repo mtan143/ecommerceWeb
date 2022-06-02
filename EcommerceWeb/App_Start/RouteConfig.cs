@@ -18,6 +18,11 @@ namespace EcommerceWeb
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "CreateOrder",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "ShoppingCart", action = "CreateOrder", id = UrlParameter.Optional }
+            );
         }
     }
 }

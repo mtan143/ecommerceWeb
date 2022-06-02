@@ -5,7 +5,7 @@
 }
 <head>
     <style>
-        .payment{
+        .payment {
             color: white;
             background-color: black;
             border-radius: 0px;
@@ -14,14 +14,18 @@
             margin-top: 10px;
             margin-left: 10px;
         }
+        #buttonBuyNow {
+            color: white;
+            border-radius: 0px;
+            background: transparent;
+            font-size: 15px;
+            text-decoration: none;
+        }
     </style>
     <script>
         function paymentAlert() {
             if (window.confirm("Payment Successfull")) {
                 window.location = "/";
-            }
-            else {
-
             }
             
         }
@@ -53,6 +57,8 @@
         }
         <h4 style="text-align: right">Total Price: $ @Model.TotalPrice()</h4>
     </div>
-    <button type="button" onclick="paymentAlert()" class="payment">PAYMENT</button>
+    <button type="button" onclick="paymentAlert()" class="payment"><a href="/ShoppingCart/CreateOrder" id="buttonBuyNow"  type="button" aria-pressed="true">
+    PAYMENT
+</a></button>
 </div>
 

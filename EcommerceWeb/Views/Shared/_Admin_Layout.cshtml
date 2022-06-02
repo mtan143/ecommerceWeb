@@ -103,7 +103,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("ARON", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("ARON", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
             {

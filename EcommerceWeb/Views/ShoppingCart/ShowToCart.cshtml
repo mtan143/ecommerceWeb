@@ -17,6 +17,7 @@
 </head>
 <body>
     <div class="container-fluid">
+
         @if (Model.Items.Count() != 0)
         {
             <a href="/"><i title="back" class="fa-solid fa-arrow-left-long" style="color: black; margin-top: 75px; font-size: 30px"></i></a>
@@ -82,12 +83,12 @@
         {
             <div class="container">
                 <img src="~/image/empty-cart.png" style="margin-left: 368px; width: 30%; margin-top:65px" />
-                <h1 style="margin-top: 0px;margin-bottom: 0px; text-align: center; font-weight: bold">
+                <h4 style="margin-top: 0px;margin-bottom: 0px; text-align: center; font-weight: bold">
                     Your cart is empty
-                </h1>
-                <h3 style="text-align: center">
+                </h4>
+                <h5 style="text-align: center">
                     Looks like you have not added anything to your cart. Click <a href="/" style="color: black">here</a> for shopping
-                </h3>
+                </h5>
             </div>
         }
     </div>
