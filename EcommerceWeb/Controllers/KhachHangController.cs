@@ -60,7 +60,7 @@ namespace EcommerceWeb.Controllers
         // GET: KhachHang
         public ActionResult Index()
         {
-            
+
             return View(db.KhachHangs.ToList());
         }
 
@@ -203,6 +203,38 @@ namespace EcommerceWeb.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        // GET: KhachHang/Edit/5
+        public ActionResult EditCustomer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            KhachHang khachHang = db.KhachHangs.Find(id);
+            if (khachHang == null)
+            {
+                return HttpNotFound();
+            }
+            return View(khachHang);
+        }
+
+        // POST: KhachHang/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCustomer([Bind(Include = "KhachHangID,TenKH,DiaChi,DienThoai,Username,Password")] KhachHang khachHang)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(khachHang).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Details", "KhachHang", new { id = khachHang.KhachHangID});
+            }
+            return View(khachHang);
         }
     }
 }

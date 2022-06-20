@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<EcommerceWeb.Models.HoaDon>
-
+@using System.Globalization;
 @{
     Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
 }
 <style>
     a {
@@ -47,12 +48,27 @@
         padding: 5px;
     }
 
+    .btnUpdate {
+        margin: 15px 0 0 0;
+        color: black;
+        text-align: center;
+        padding: 5px;
+    }
+
     .extra-info:hover {
         color: black;
     }
 
     #custom {
         text-align: left
+    }
+
+    .form-select {
+        height: 30px;
+        border-radius: 0px;
+        border: solid 1.5px;
+        margin-top: 10px;
+        margin-left: 10px
     }
 </style>
 
@@ -74,7 +90,20 @@
         <h2 class="text-center">ORDERS MANAGEMENT</h2>
     }
     @foreach (var item in Model)
-    {<div class="row" style="margin-top: 50px; font-size: 14px">
+    {
+        var status = "";
+        switch (item.TrangThai)
+        {
+            case 0: status = "Ordered"; break;
+            case 1: status = "Processing"; break;
+            case 2: status = "Delivery"; break;
+            case 3: status = "Success"; break;
+            case 4: status = "Cancel Request"; break;
+            case 5: status = "Cancelled"; break;
+            default: status = "Failed Cancel"; break;
+
+        }
+        <div class="row" style="margin-top: 50px; font-size: 14px">
             <div class="col-md-2"></div>
             <div id="proItem" class="col-md-8" style="margin-bottom: 30px">
                 <table class="table">
@@ -88,7 +117,11 @@
                     </tr>
                     <tr>
                         <th scope="row">Total Price</th>
-                        <td style="font-weight: bold">$ @item.TongTien</td>
+                        <td style="font-weight: bold">$ @item.TongTien.ToString("#,###", @cul.NumberFormat)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Status</th>
+                        <td style="font-weight: bold">@status.ToUpper()</td>
                     </tr>
                 </table>
                 <div class="panel-group" id="accordion">
@@ -115,7 +148,7 @@
                                                     <td>Quantity: @b.SoLuong</td>
                                                 </tr>
                                                 <tr id="custom">
-                                                    <td style="font-weight: bold">$ @b.ThanhTien</td>
+                                                    <td style="font-weight: bold">$ @b.ThanhTien.ToString("#,###", @cul.NumberFormat)</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -126,10 +159,42 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="btnEdit" title="If you've problem, please contact ADMIN now!">
-                    <a class="disabled" style="text-decoration: none; color: white;">CONFIRMED</a>
-                </div>
+                @if (status == "Ordered")
+                {
+                    <div class="btnEdit">
+                        <a href="/HoaDon/UpdateOrder?id=@item.HoaDonID" style="text-decoration: none; color: white;">PROCESS</a>
+                    </div>
+                }
+                else if (status == "Processing")
+                {
+                    <div class="btnEdit">
+                        <a href="/HoaDon/UpdateOrder?id=@item.HoaDonID" style="text-decoration: none; color: white;">DELIVERY</a>
+                    </div>
+                }
+                else if (status == "Delivery")
+                {
+                    <div class="btnEdit">
+                        <a href="/HoaDon/UpdateOrder?id=@item.HoaDonID" style="text-decoration: none; color: white;">SUCCESS</a>
+                    </div>
+                }
+                else if (status == "Success")
+                {
+                    <div class="btnEdit">
+                        <a style="text-decoration: none; color: white;">SUCCESS DELIVERY</a>
+                    </div>
+                }
+                else if (status == "Cancelled")
+                {
+                    <div class="btnEdit">
+                        <a style="text-decoration: none; color: white;">SUCCESS CANCELLED</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="btnEdit">
+                        <a href="/HoaDon/UpdateOrder?id=@item.HoaDonID" style="text-decoration: none; color: white;">ACCEPT CANCEL REQUEST</a>
+                    </div>
+                }
                 <div class="btnEdit">
                     <a href="/HoaDon/Delete?id=@item.HoaDonID" style="text-decoration: none; color: white;">REMOVE</a>
                 </div>

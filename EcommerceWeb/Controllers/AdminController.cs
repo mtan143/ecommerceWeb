@@ -124,5 +124,11 @@ namespace EcommerceWeb.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Statistic()
+        {
+            var tupleModel = new Tuple<List<KhachHang>, List<MatHang>, List<HoaDon>, List<ChiTietHoaDon>>(db.KhachHangs.ToList(), db.MatHangs.ToList(), db.HoaDons.ToList(), db.ChiTietHoaDons.ToList());
+            return View(tupleModel);
+        }
     }
 }

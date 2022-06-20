@@ -1,7 +1,8 @@
 ﻿@model EcommerceWeb.Models.Cart
-
+@using System.Globalization;
 @{
     ViewBag.Title = "Payment";
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
 }
 <head>
     <style>
@@ -14,6 +15,7 @@
             margin-top: 10px;
             margin-left: 10px;
         }
+
         #buttonBuyNow {
             color: white;
             border-radius: 0px;
@@ -27,7 +29,7 @@
             if (window.confirm("Payment Successfull")) {
                 window.location = "/";
             }
-            
+
         }
     </script>
 </head>
@@ -50,15 +52,17 @@
                 <div class="col-md-8">
                     <p style="font-size: 20px">@item.shoppingProduct.TenMH</p>
                     <p style="margin-top: 27px;margin-left:127px ; float: left">Quantity: @item.shoppingQuantity</p>
-                    <p style="margin-top: 27px;margin-right: 27px ; float: right">Price: $ @tongtien</p>
+                    <p style="margin-top: 27px;margin-right: 27px ; float: right">Price: $ @tongtien.ToString("#,###", @cul.NumberFormat)</p>
                 </div>
             </div>
             <hr />
         }
-        <h4 style="text-align: right">Total Price: $ @Model.TotalPrice()</h4>
+        <h4 style="text-align: right">Total Price: $ @Model.TotalPrice().ToString("#,###", @cul.NumberFormat)</h4>
     </div>
-    <button type="button" onclick="paymentAlert()" class="payment"><a href="/ShoppingCart/CreateOrder" id="buttonBuyNow"  type="button" aria-pressed="true">
-    PAYMENT
-</a></button>
+    <button type="button" onclick="paymentAlert()" class="payment">
+        <a href="/ShoppingCart/CreateOrder" id="buttonBuyNow" type="button" aria-pressed="true">
+            PAYMENT
+        </a>
+    </button>
 </div>
 

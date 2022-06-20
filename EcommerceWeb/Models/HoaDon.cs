@@ -21,6 +21,15 @@ namespace EcommerceWeb.Models
 
         public int TongTien { get; set; }
 
+        //0 đã đặt
+        //1 đang xử lý
+        //2 đang giao hàng
+        //3 giao thành công
+        //4 đang gửi yêu cầu huỷ
+        //5 đã huỷ
+        //6 huỷ không thành công
+        public int TrangThai { get; set; }
+
         public virtual ICollection<ChiTietHoaDon> MatHangs { get; set; }
     }
 }

@@ -1,0 +1,169 @@
+﻿@model Tuple<List<EcommerceWeb.Models.KhachHang>, List<EcommerceWeb.Models.MatHang>, List<EcommerceWeb.Models.HoaDon>, List<EcommerceWeb.Models.ChiTietHoaDon>>
+@using System.Globalization;
+
+@{
+    ViewBag.Title = "Statistic";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+    var successOrder = Model.Item3.Where(x => x.TrangThai == 3).Select(x => x.HoaDonID).ToList();
+    var bestSeller = Model.Item4.Where(x => successOrder.Contains(x.HoaDonID)).GroupBy(p => p.MatHangID).OrderByDescending(pi => pi.Sum(pii => pii.SoLuong)).Take(1).Select(p => p.Key);
+}
+<style>
+    .nav-tabs > li {
+        float: none;
+        display: inline-block;
+        zoom: 1;
+    }
+
+    .nav-tabs {
+        text-align: center;
+    }
+
+    div.gallery img {
+        width: 90px;
+        height: 90px;
+        margin: 10px;
+        display: inline-block;
+    }
+
+
+    div.gallery {
+        width: auto;
+        height: auto;
+        display: inline-block;
+        background-color: #E7E7E7;
+    }
+
+    .table {
+        font-size: 15px
+    }
+
+        .table > tbody > tr > td {
+            text-align: left;
+            vertical-align: middle;
+            border-top: 0.2px
+        }
+
+        .table > thead > tr > th {
+            border-bottom: 0.2px
+        }
+</style>
+
+<div class="container" style="font-size: 10px; margin-bottom: 50px">
+    <h2 style="text-align: center; margin-top: 100px;">STATISTIC MANAGEMENT</h2>
+    <div class="row text-center">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#menu1" style="font-size: 15px; color: black">PRODUCT</a></li>
+            <li><a data-toggle="tab" href="#menu2" style="font-size: 15px; color: black">CUSTOMER</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="menu1" class="tab-pane fade in active">
+                <div style="text-align:center; margin-top: 20px">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Pic.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Purchased</th>
+                                <th scope="col">Venue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Item2)
+                            {
+                                var purchased = Model.Item4.Where(x => x.MatHangID == item.MatHangID && successOrder.Contains(x.HoaDonID)).Select(x => x.SoLuong).AsEnumerable().Sum();
+                                var venue = purchased * item.DonGia;
+                                <tr>
+                                    <th style="border-top: 0px">
+                                        <div class="gallery">
+                                            <a>
+                                                <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                                            </a>
+                                        </div>
+                                    </th>
+                                    <td>@item.TenMH @if (bestSeller.Contains(item.MatHangID))
+                                    {<span class="badge">Best Seller</span>}</td>
+                                    <td>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</td>
+                                    <td>@purchased</td>
+                                    @if (venue == 0) { <td>$0</td>}
+                                    else { <td>$ @venue.ToString("#,###", @cul.NumberFormat)</td>}
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+
+            <div id="menu2" class="tab-pane fade">
+                <div style="text-align:center; margin-top: 20px">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Phone No.</th>
+                                <th scope="col">Orders</th>
+                                <th scope="col">Products</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Item1)
+                            {
+                                var general = Model.Item3.Where(x => x.TrangThai == 3 && x.KhachHangID == item.KhachHangID);
+                                var order = general.Select(k => k.HoaDonID).ToList();
+                                var orders = general.AsEnumerable().Count();
+                                var products = Model.Item4.Where(y => order.Contains(y.HoaDonID)).AsEnumerable().Count();
+                                var amount = general.Select(y => y.TongTien).AsEnumerable().Sum();
+                            <tr>
+                                <td>@item.KhachHangID</td>
+                                @if (item.TenKH == null || item.TenKH == "")
+                                {
+                                    <td>not given</td>
+                                }
+                                else
+                                {
+                                    <td>@item.TenKH</td>
+                                }
+                                @if (item.DiaChi == null || item.DiaChi == "")
+                                {
+                                    <td>not given</td>
+                                }
+                                else
+                                {
+                                    <td>@item.DiaChi</td>
+                                }
+                                @if (item.DienThoai == null || item.DienThoai == "")
+                                {
+                                    <td>not given</td>
+                                }
+                                else
+                                {
+                                    <td>@item.DienThoai</td>
+                                }
+                                <td>@orders</td>
+                                <td>@products</td>
+                                @if (amount == 0)
+                                {
+                                    <td>$0</td>
+}
+                                else
+                                {
+                                    <td>$ @amount.ToString("#,###", @cul.NumberFormat)</td>
+}
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

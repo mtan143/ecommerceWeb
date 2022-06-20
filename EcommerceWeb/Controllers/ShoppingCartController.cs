@@ -72,7 +72,8 @@ namespace EcommerceWeb.Controllers
             {
                 KhachHangID = db.KhachHangs.FirstOrDefault(x => x.Username == currentUser.Email).KhachHangID,
                 Ngay = DateTime.Now,
-                MatHangs = new List<ChiTietHoaDon>()
+                MatHangs = new List<ChiTietHoaDon>(),
+                TrangThai = 0
             };
             foreach (var item in cart.Items)
             {

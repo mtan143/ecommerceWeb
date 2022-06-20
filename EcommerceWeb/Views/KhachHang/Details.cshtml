@@ -1,8 +1,13 @@
 ﻿@model EcommerceWeb.Models.KhachHang
-
+@using System.Globalization;
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+
+    var db = new EcommerceWeb.DAL.EcommerceContext();
+    var orderCount = db.HoaDons.Where(x => x.KhachHangID == Model.KhachHangID && x.TrangThai == 3).Count();
+    var priceCount = db.HoaDons.Where(x => x.KhachHangID == Model.KhachHangID && x.TrangThai == 3).AsEnumerable().Sum(x => x.TongTien);
 }
 <link href="~/Content/font-awesome/css/all.css" rel="stylesheet" />
 <style>
@@ -49,21 +54,24 @@
         height: 30px;
         padding: 5px;
     }
+
     .hidetext {
         -webkit-text-security: disc;
     }
+
     .fab {
         color: black;
     }
-    .fab:hover {
-        color: darkgray
-    }
+
+        .fab:hover {
+            color: darkgray
+        }
 </style>
 
 
 
 <div class="container" style="margin-top: 100px;">
-    
+
     <div class="row" style="margin-top: 50px">
         <div class="col-md-2"></div>
         <div id="proItem" class="col-md-8">
@@ -99,41 +107,51 @@
                     </table>
                 </div>
             </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-md-6 text-center">
+                    <h5 title="The number of orders that you've ordered successfully">ORDERS</h5>
+                    <h1 style="font-weight: bold">@orderCount</h1>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h5 title="Total amount of your own orders">AMOUNT</h5>
+                    <h1 style="font-weight: bold">$ @priceCount.ToString("#,###", @cul.NumberFormat)</h1>
+                </div>
+            </div>
             <div class="row">
                 <div style="display: flex; justify-content: center; padding: 50px;">
-                    <a class="btn btn-outline-light btn-floating m-1" href="https://vi-vn.facebook.com/" role="button">
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://vi-vn.facebook.com/" target="_blank" role="button">
                         <i class="fab fa-facebook-f fa-2x"></i>
                     </a>
 
                     <!-- Twitter -->
-                    <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/" role="button">
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/" target="_blank" role="button">
                         <i class="fab fa-twitter fa-2x"></i>
                     </a>
 
                     <!-- Google -->
-                    <a class="btn btn-outline-light btn-floating m-1" href="https://google.com/" role="button">
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://google.com/" target="_blank" role="button">
                         <i class="fab fa-google fa-2x"></i>
                     </a>
 
                     <!-- Instagram -->
-                    <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button">
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" target="_blank" role="button">
                         <i class="fab fa-instagram fa-2x"></i>
                     </a>
 
                     <!-- Github -->
-                    <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/" role="button">
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/" target="_blank" role="button">
                         <i class="fab fa-github fa-2x"></i>
                     </a>
                 </div>
             </div>
             <div class="row">
                 <div class="btnEdit">
-                    <a href="/HoaDon/OrderUser?KhachHangID=@Model.KhachHangID" style="text-decoration: none; color: white;">TRANSACTIONS</a>
+                    <a href="/HoaDon/OrderUser?KhachHangID=@Model.KhachHangID" style="text-decoration: none; color: white;">SEE YOUR ORDERS</a>
                 </div>
             </div>
             <div class="row">
                 <div class="btnEdit">
-                    <a href="mailto: nguyentantnnn82@gmail.com" style="text-decoration: none; color: white;">CONTACT ADMIN TO CHANGE YOUR INFORMATION</a>
+                    <a href="/KhachHang/EditCustomer?id=@Model.KhachHangID" style="text-decoration: none; color: white;">CHANGE YOUR INFORMATION</a>
                 </div>
             </div>
 

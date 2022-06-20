@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using EcommerceWeb.DAL;
 using EcommerceWeb.Models;
 
@@ -49,7 +50,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HoaDonID,KhachHangID,Ngay,TongTien")] HoaDon hoaDon)
+        public ActionResult Create([Bind(Include = "HoaDonID,KhachHangID,Ngay,TongTien,TrangThai")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +84,7 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HoaDonID,KhachHangID,Ngay,TongTien")] HoaDon hoaDon)
+        public ActionResult Edit([Bind(Include = "HoaDonID,KhachHangID,Ngay,TongTien,TrangThai")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -125,6 +126,26 @@ namespace EcommerceWeb.Controllers
         {
             var list = db.HoaDons.Where(x => x.KhachHangID == KhachHangID).ToList();
             return View(list);
+        }
+
+        public ActionResult Cancel(int id)
+        {
+            HoaDon hoaDon = db.HoaDons.Find(id);
+            hoaDon.TrangThai = 4;
+            db.SaveChanges();
+            return RedirectToAction("OrderUser", "HoaDon", new { KhachHangID = hoaDon.KhachHangID});
+        }
+
+        public ActionResult UpdateOrder(int id)
+        {
+            HoaDon hoaDon = db.HoaDons.Find(id);
+            if (hoaDon.TrangThai == 0) { hoaDon.TrangThai = 1; }
+            else if (hoaDon.TrangThai == 1) { hoaDon.TrangThai = 2; }
+            else if (hoaDon.TrangThai == 2) { hoaDon.TrangThai = 3; }
+            else if (hoaDon.TrangThai == 4) { hoaDon.TrangThai = 5; }
+            else { hoaDon.TrangThai = 6; }
+            db.SaveChanges();
+            return RedirectToAction("Index", "HoaDon");
         }
 
         protected override void Dispose(bool disposing)
