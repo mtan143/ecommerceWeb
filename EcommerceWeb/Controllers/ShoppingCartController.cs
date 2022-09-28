@@ -96,7 +96,6 @@ namespace EcommerceWeb.Controllers
                 cart.RemoveAll();
                 return RedirectToAction("Index", "Home");
             }
-
             return RedirectToAction("Payment", "ShoppingCart");
             //cart.RemoveAll();
             //return RedirectToAction("Index", "Home");

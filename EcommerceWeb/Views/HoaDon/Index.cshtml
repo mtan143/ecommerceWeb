@@ -148,6 +148,9 @@
                                                     <td>Quantity: @b.SoLuong</td>
                                                 </tr>
                                                 <tr id="custom">
+                                                    <td>@db.MatHangs.FirstOrDefault(x => x.MatHangID == b.MatHangID).DonGia</td>
+                                                </tr>
+                                                <tr id="custom">
                                                     <td style="font-weight: bold">$ @b.ThanhTien.ToString("#,###", @cul.NumberFormat)</td>
                                                 </tr>
                                             </table>

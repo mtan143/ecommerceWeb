@@ -441,6 +441,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\EcommerceWeb20220602155355 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -535,7 +536,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Logic\" />
-    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\MatHangs\" />
   </ItemGroup>
   <ItemGroup>

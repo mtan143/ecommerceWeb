@@ -7,26 +7,28 @@
 <head>
     <style>
         .payment {
+            display: inline-block;
             color: white;
             background-color: black;
             border-radius: 0px;
-            height: 45px;
-            width: 200px;
+            height: 40px;
+            width: 100px;
+            padding: 10px 0;
             margin-top: 10px;
             margin-left: 10px;
+            text-decoration: none;
+            text-decoration-color: white;
         }
 
-        #buttonBuyNow {
+        .payment:hover {
             color: white;
-            border-radius: 0px;
-            background: transparent;
-            font-size: 15px;
             text-decoration: none;
+            text-decoration-color: white;
         }
     </style>
     <script>
         function paymentAlert() {
-            if (window.confirm("Payment Successfull")) {
+            if (window.confirm("Payment Successfully")) {
                 window.location = "/";
             }
 
@@ -59,10 +61,14 @@
         }
         <h4 style="text-align: right">Total Price: $ @Model.TotalPrice().ToString("#,###", @cul.NumberFormat)</h4>
     </div>
-    <button type="button" onclick="paymentAlert()" class="payment">
+    <!--<button type="button"--> @*onclick="paymentAlert()"*@
+    <!--class="payment">
         <a href="/ShoppingCart/CreateOrder" id="buttonBuyNow" type="button" aria-pressed="true">
             PAYMENT
         </a>
-    </button>
+    </button>-->
+        <a href="/ShoppingCart/CreateOrder" type="button" aria-pressed="true" onclick="paymentAlert()" class="payment">
+            PAYMENT
+        </a>
 </div>
 

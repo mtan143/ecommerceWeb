@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using PagedList;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,6 +20,7 @@ namespace EcommerceWeb.Controllers
         public ActionResult Index()
         {
             var matHangs = db.MatHangs.Include(m => m.LoaiHang);
+
             return View(matHangs.ToList());
         }
 
