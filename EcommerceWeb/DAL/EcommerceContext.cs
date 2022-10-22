@@ -1,15 +1,16 @@
-﻿using EcommerceWeb.Models;
-using System;
-using System.Collections.Generic;
+﻿using EcommerceWeb.Migrations;
+using EcommerceWeb.Models;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace EcommerceWeb.DAL
 {
     public class EcommerceContext : DbContext
     {
-        public EcommerceContext() : base("name=EcommerceConnection") { }
+        public EcommerceContext() : base("name=EcommerceConnection") {
+                var initializer = new MigrateDatabaseToLatestVersion<EcommerceContext, Configuration>();
+                Database.SetInitializer(initializer);
+           
+        }
 
         public DbSet<LoaiHang> LoaiHangs { get; set; }
         public DbSet<MatHang> MatHangs { get; set; }
