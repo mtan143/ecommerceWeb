@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace EcommerceWeb.Models
 {
@@ -33,7 +34,10 @@ namespace EcommerceWeb.Models
 
         [Required(ErrorMessage = "Image Required!")]
         public string HinhAnh { get; set; }
-
+        public DateTime NSX { get; set; }
+        public DateTime HSD { get; set; }
+        public int TongSoLuong { get; set; }
+        public int SoLuongTonKho { get; set; }
         public virtual ICollection<ChiTietHoaDon> HoaDons { get; set; }
         public virtual ICollection<ChiNhanh> ChiNhanhs { get; set; }
     }
