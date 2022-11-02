@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EcommerceWeb</RootNamespace>
     <AssemblyName>EcommerceWeb</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -183,7 +183,6 @@
       <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -219,7 +218,6 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -253,7 +251,6 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
@@ -278,8 +275,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\ChiNhanh.cs" />
     <Compile Include="Models\ChiTietHoaDon.cs" />
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -337,11 +336,45 @@
     <Content Include="Content\Site.css" />
     <Content Include="image\anh.jpg" />
     <Content Include="image\ARON.png" />
+    <Content Include="image\bur1.jpg" />
+    <Content Include="image\bur10.jpg" />
+    <Content Include="image\bur11.jpg" />
+    <Content Include="image\bur12.jpg" />
+    <Content Include="image\bur2.jpg" />
+    <Content Include="image\bur3.jpg" />
+    <Content Include="image\bur4.jpg" />
+    <Content Include="image\bur5.jpg" />
+    <Content Include="image\bur6.jpg" />
+    <Content Include="image\bur7.jpg" />
+    <Content Include="image\bur8.jpg" />
+    <Content Include="image\bur9.jpg" />
+    <Content Include="image\cb1.jpg" />
+    <Content Include="image\cb2.jpg" />
+    <Content Include="image\cb3.jpg" />
+    <Content Include="image\cb4.jpg" />
+    <Content Include="image\cb5.jpg" />
+    <Content Include="image\cbn1.jpg" />
+    <Content Include="image\cbn2.jpg" />
+    <Content Include="image\cbn3.jpg" />
+    <Content Include="image\cbn4.jpg" />
+    <Content Include="image\COM.jpg" />
+    <Content Include="image\COMBO1.jpg" />
+    <Content Include="image\COMBO2.jpg" />
+    <Content Include="image\COMBO3.jpg" />
+    <Content Include="image\COMBO4.jpg" />
+    <Content Include="image\COMBONHOM.jpg" />
     <Content Include="image\empty-cart.png" />
     <Content Include="image\Facebook.png" />
     <Content Include="image\cover3.jpg" />
     <Content Include="image\cover2.jpg" />
     <Content Include="image\cover1.jpg" />
+    <Content Include="image\GA.jpg" />
+    <Content Include="image\ga1.jpg" />
+    <Content Include="image\ga2.jpg" />
+    <Content Include="image\ga3.jpg" />
+    <Content Include="image\ga4.jpg" />
+    <Content Include="image\ga5.jpg" />
+    <Content Include="image\ga6.jpg" />
     <Content Include="image\giftbag1.jpg" />
     <Content Include="image\giftbag2.jpg" />
     <Content Include="image\gucci1.png" />
@@ -414,7 +447,40 @@
     <Content Include="image\LogoAron.png" />
     <Content Include="image\man-banner.jpg" />
     <Content Include="image\man-cover.jpg" />
+    <Content Include="image\mm1.jpg" />
+    <Content Include="image\mm10.jpg" />
+    <Content Include="image\mm11.jpg" />
+    <Content Include="image\mm12.jpg" />
+    <Content Include="image\mm13.jpg" />
+    <Content Include="image\mm14.jpg" />
+    <Content Include="image\mm15.jpg" />
+    <Content Include="image\mm16.jpg" />
+    <Content Include="image\mm17.jpg" />
+    <Content Include="image\mm18.jpg" />
+    <Content Include="image\mm19.jpg" />
+    <Content Include="image\mm2.jpg" />
+    <Content Include="image\mm20.jpg" />
+    <Content Include="image\mm21.jpg" />
+    <Content Include="image\mm22.jpg" />
+    <Content Include="image\mm23.jpg" />
+    <Content Include="image\mm24.jpg" />
+    <Content Include="image\mm25.jpg" />
+    <Content Include="image\mm3.jpg" />
+    <Content Include="image\mm4.jpg" />
+    <Content Include="image\mm5.jpg" />
+    <Content Include="image\mm6.jpg" />
+    <Content Include="image\mm7.jpg" />
+    <Content Include="image\mm8.jpg" />
+    <Content Include="image\mm9.jpg" />
+    <Content Include="image\MONANNHE.jpg" />
+    <Content Include="image\MONMOI.jpg" />
     <Content Include="image\shirt.png" />
+    <Content Include="image\slideShow1.png" />
+    <Content Include="image\slideShow2.png" />
+    <Content Include="image\slideShow3.png" />
+    <Content Include="image\slideShow4.png" />
+    <Content Include="image\slideShow5.png" />
+    <Content Include="image\slideShow6.png" />
     <Content Include="image\stories1.jpg" />
     <Content Include="image\stories2.jpg" />
     <Content Include="image\stories3.jpg" />
@@ -455,7 +521,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
