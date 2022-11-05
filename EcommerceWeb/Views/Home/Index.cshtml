@@ -4,310 +4,624 @@
     CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
 }
 
-    <head>
-        <link rel="stylesheet" href="~/Content/Site.css">
-        <style>
-            div.item img {
-                width: 150px;
-                height: 150px;
-                margin: 30px;
-                display: inline-block;
+<head>
+    <link rel="stylesheet" href="~/Content/Site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,100&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+
+
+        div.item img {
+            width: 150px;
+            height: 150px;
+            margin: 30px;
+            display: inline-block;
+        }
+
+        .zoomPic:hover {
+            transform: scale(1.5);
+            transition: transform .2s;
+        }
+
+        div.item {
+            margin: 30px;
+            /*border: 2px solid #ccc;*/
+            width: auto;
+            height: auto;
+            display: inline-block;
+            background-color: #E7E7E7;
+        }
+
+        #btnCover {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            background-color: transparent;
+            color: white;
+            font-size: 16px;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            border-radius: 0px;
+            text-align: center;
+            border: solid 2px;
+            width: 20%;
+            bottom: 10%;
+            z-index: 2;
+        }
+
+        .stories {
+            width: 50%;
+        }
+
+        #stories {
+            margin-top: 50px;
+        }
+
+        .title-stories {
+            margin-top: 30px;
+            font-size: medium;
+        }
+
+        .stories-link {
+            color: lightgrey;
+        }
+
+            .stories-link:hover {
+                text-decoration: none;
+                color: black
             }
 
-            .zoomPic:hover {
-                transform: scale(1.5);
-                transition: transform .2s;
-            }
 
-            div.item {
-                margin: 30px;
-                /*border: 2px solid #ccc;*/
-                width: auto;
-                height: auto;
-                display: inline-block;
-                background-color: #E7E7E7;
-            }
 
-            #btnCover {
-                position: absolute;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                background-color: transparent;
-                color: white;
-                font-size: 16px;
-                padding: 12px 24px;
-                border: none;
+        #buttonCart {
+            color: black;
+            border-radius: 0px;
+            background: transparent;
+            border: solid 2px;
+            font-weight: bold;
+        }
+
+        #addtocart {
+            color: black;
+            border-radius: 0px;
+            background: transparent;
+            border: solid 2px;
+            font-weight: bold;
+        }
+
+
+
+
+        .page-wrapper {
+            transition: .4s ease;
+            opacity: 0;
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .col-md-3:hover .page-wrapper {
+            opacity: 1;
+        }
+
+        /* FOOD SECTION*/
+        .food_section .filters_menu {
+            padding: 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            list-style-type: none;
+            margin: 45px 0 20px 0;
+        }
+
+            .food_section .filters_menu li {
+                padding: 7px 25px;
                 cursor: pointer;
-                border-radius: 0px;
-                text-align: center;
-                border: solid 2px;
-                width: 20%;
-                bottom: 10%;
-                z-index: 2;
+                border-radius: 25px;
             }
 
-            .stories {
-                width: 50%;
-            }
-
-            #stories {
-                margin-top: 50px;
-            }
-
-            .title-stories {
-                margin-top: 30px;
-                font-size: medium;
-            }
-
-            .stories-link {
-                color: lightgrey;
-            }
-
-                .stories-link:hover {
-                    text-decoration: none;
-                    color: black
+                .food_section .filters_menu li.active {
+                    background-color: #222831;
+                    color: #ffffff;
                 }
 
-
-
-            #buttonCart {
-                color: black;
-                border-radius: 0px;
-                background: transparent;
-                border: solid 2px;
-                font-weight: bold;
-            }
-
-            #addtocart {
-                color: black;
-                border-radius: 0px;
-                background: transparent;
-                border: solid 2px;
-                font-weight: bold;
-            }
-
-
-
-
-            .page-wrapper {
-                transition: .4s ease;
-                opacity: 0;
-                position: absolute;
-                top: 65%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                text-align: center;
-            }
-
-            .col-md-3:hover .page-wrapper {
-                opacity: 1;
-            }
-        </style>
-    </head>
-
-<header>
-    <div class="w3-content w3-section" @*style="max-width: 500%; max-height: 100%"*@>
-        <img class="mySlides" src="@Url.Content("~/image/cover3.jpg")" style="width:100%; height: 800px; margin:0">
-        <img class="mySlides" src="@Url.Content("~/image/cover2.jpg")" style="width:100%; height: 800px; margin:0">
-        <img class="mySlides" src="@Url.Content("~/image/cover1.jpg")" style="width:100%; height: 800px; margin:0">
-        <a id="btnCover" href="/Home/Man" class="btn btn-primary btn-lg active" type="button" aria-pressed="true">SHOP NOW</a>
-    </div>
-    <script>
-        var myIndex = 0;
-        carousel();
-
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            myIndex++;
-            if (myIndex > x.length) { myIndex = 1 }
-            x[myIndex - 1].style.display = "block";
-            setTimeout(carousel, 5000); // Change image every 5 seconds
+        .food_section .box {
+            position: relative;
+            margin-top: 25px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            color: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
         }
-    </script>
-    <script>
-        //function add to cart
-        $(document).ready(function () {
-            $('#addtocart').on('click', function () {
 
-                var button = $(this);
-                var cart = $('#cart');
-                var cartTotal = cart.attr('data-totalitems');
-                var newCartTotal = parseInt(cartTotal) + 1;
+            .food_section .box .img-box {
+                background: #f1f2f3;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                height: 215px;
+                border-radius: 0 0 0 45px;
+                margin: -1px;
+                padding: 25px;
+            }
 
-                button.addClass('sendtocart');
-                setTimeout(function () {
-                    button.removeClass('sendtocart');
-                    cart.addClass('shake').attr('data-totalitems', newCartTotal);
-                    setTimeout(function () {
-                        cart.removeClass('shake');
-                    }, 500)
-                }, 1000)
-            })
-        })
-    </script>
-</header>
-<div class="content">
-    <h2 id="newArrivals" style="font-family: inherit; color: #5f5b57; margin: 100px 0px 50px 0px">
-        NEW ARRIVALS
-    </h2>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="item">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 11).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 11).HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
-                </div>
-                <div class="page-wrapper">
-                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 11).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
-                </div>
-                <p style="font-weight: bold">@Model.First(x => x.MatHangID == 11).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID == 11).DonGia.ToString("#,###", @cul.NumberFormat)</p>
-            </div>
+                .food_section .box .img-box img {
+                    max-width: 100%;
+                    max-height: 145px;
+                    -webkit-transition: all .2s;
+                    transition: all .2s;
+                }
 
-            <div class="col-md-3">
-                <div class="item">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 2).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 2).HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
-                </div>
-                <div class="page-wrapper">
-                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 2).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
-                </div>
-                <p style="font-weight: bold">@Model.First(x => x.MatHangID == 2).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID == 2).DonGia.ToString("#,###", @cul.NumberFormat)</p>
-            </div>
+            .food_section .box .detail-box {
+                padding: 25px;
+            }
 
-            <div class="col-md-3">
-                <div class="item">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 20).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 20).HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
-                </div>
-                <div class="page-wrapper">
-                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 20).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
-                </div>
-                <p style="font-weight: bold">@Model.First(x => x.MatHangID == 20).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID == 38).DonGia.ToString("#,###", @cul.NumberFormat)</p>
-            </div>
+                .food_section .box .detail-box h5 {
+                    font-weight: 600;
+                }
 
-            <div class="col-md-3">
-                <div class="item">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 12).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 12).HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
-                </div>
-                <div class="page-wrapper">
-                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 12).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
-                </div>
-                <p style="font-weight: bold">@Model.First(x => x.MatHangID == 12).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID == 12).DonGia.ToString("#,###", @cul.NumberFormat)</p>
-            </div>
+                .food_section .box .detail-box p {
+                    font-size: 15px;
+                }
+
+                .food_section .box .detail-box h6 {
+                    margin-top: 10px;
+                }
+
+            .food_section .box .options {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+            }
+
+                .food_section .box .options a {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 100%;
+                    background: #ffbe33;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                    justify-content: center;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                }
+
+                    .food_section .box .options a svg {
+                        width: 18px;
+                        height: auto;
+                        fill: #ffffff;
+                    }
+
+            .food_section .box:hover .img-box img {
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+            }
+
+        .food_section .btn-box {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            margin-top: 45px;
+        }
+
+            .food_section .btn-box a {
+                display: inline-block;
+                padding: 10px 55px;
+                background-color: #ffbe33;
+                color: #ffffff;
+                border-radius: 45px;
+                -webkit-transition: all 0.3s;
+                transition: all 0.3s;
+                border: none;
+            }
+
+                .food_section .btn-box a:hover {
+                    background-color: #e69c00;
+                }
+                @*-------------------------------------------------------------------------------------------------------------------*@
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+        }
+
+
+
+        img {
+            vertical-align: middle;
+        }
+
+        .slideshow-container {
+
+            position: relative;
+            margin: auto;
+        }
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+           
+        }
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active {
+            background-color: #717171;
+        }
+        .fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+@@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+
+        .product-item:hover{
+            text-decoration:none;
+        }
+
+
+        @*--------------------Button Order Now *@ 
+        .wrapper {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-top:50px;
+        }
+
+        .wrapper_a {
+            display: block;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            font-family: sans-serif;
+            text-decoration: none;
+            color: #333;
+            border: 2px solid #333;
+            letter-spacing: 2px;
+            text-align: center;
+            position: relative;
+            transition: all .35s;
+        }
+
+        .wrapper_span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .wrapper_a:after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #ff003b;
+            transition: all .35s;
+        }
+
+        .wrapper_a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+            .wrapper_a:hover:after {
+                width: 100%;
+            }
+    </style>
+</head>
+
+<div>
+    <div>
+        <div class="w3-content w3-section">
+            <img class="imgSlides" src="@Url.Content("~/image/hero-bg.jpg")" style="width:100%; height: 800px; margin:0; z-index: 0; position: relative">
         </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                <div class="item">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 1).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 1).HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
+
+        @*Slide show*@
+        <div class="content" style="position:absolute; z-index: 1; top: 50%; left: 10%; text-align:left">
+            @*  <h2>Automatic Slideshow</h2>
+        <p>Change image every 2 seconds:</p> *@
+
+            <div class="slideshow-container">
+
+                <div class="mySlides fade">
+                    <div class="numbertext"></div>
+                    <h5 style="color:white;"> Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad <br />mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, <br />   labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam. </h5>
+                    <div class="text" style=" font-family: 'Dancing Script', cursive; color:white; font-size: 48px; font-weight:bold; top: -100px; left:-45px">FAST FOOD  RETAURANT</div>
+                    <div class="wrapper">
+                        <a class="wrapper_a" href="#"><span class="wrapper_span">Orther Now</span></a>
+                    </div>
                 </div>
-                <div class="page-wrapper">
-                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 1).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>            
+
+                <div class="mySlides fade">
+                    <div class="numbertext"></div>
+                    <h5 style="color:white;"> Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad <br />mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, <br />   labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam. </h5>
+                    <div class="text" style=" font-family: 'Dancing Script', cursive; color:white; font-size: 48px; font-weight:bold; top: -100px; left:-45px">FAST FOOD  RETAURANT</div>
+                    <div class="wrapper">
+                        <a class="wrapper_a" href="#"><span class="wrapper_span">Orther Now</span></a>
+                    </div>
                 </div>
-                <p style="font-weight: bold">@Model.First(x => x.MatHangID == 1).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID == 1).DonGia.ToString("#,###", @cul.NumberFormat)</p>
+
+                <div class="mySlides fade">
+                    <div class="numbertext"></div>
+                    <h5 style="color:white;"> Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad <br />mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, <br />   labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam. </h5>
+                    <div class="text" style=" font-family: 'Dancing Script', cursive; color:white; font-size: 48px; font-weight:bold; top: -100px; left:-45px">FAST FOOD  RETAURANT</div>
+                    <div class="wrapper">
+                        <a class="wrapper_a" href="#"><span class="wrapper_span">Orther Now</span></a>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
 
 
-            <div class="col-md-3">
-                <div class="item">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 19).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 19).HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
-                </div>
-                <div class="page-wrapper">
-                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 19).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
-                </div>
-                <p style="font-weight: bold">@Model.First(x => x.MatHangID == 19).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID == 19).DonGia.ToString("#,###", @cul.NumberFormat)</p>
-            </div>
 
-            <div class="col-md-3">
-                <div class="item">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 15).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 15).HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
-                </div>
-                <div class="page-wrapper">
-                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 15).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
-                </div>
-                <p style="font-weight: bold">@Model.First(x => x.MatHangID == 15).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID == 15).DonGia.ToString("#,###", @cul.NumberFormat)</p>
-            </div>
 
-            <div class="col-md-3">
-                <div class="item">
-                    <a href="@Url.Action("Details","MatHang", new { id= @Model.First(x => x.MatHangID == 14).MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(@Model.First(x => x.MatHangID == 14).HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
-                </div>
-                <div class="page-wrapper">
-                    <a href="/ShoppingCart/AddtoCart/@Model.First(x => x.MatHangID == 14).MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
-                </div>
-                <p style="font-weight: bold">@Model.First(x => x.MatHangID == 14).TenMH</p>
-                <p>$ @Model.First(x => x.MatHangID == 14).DonGia.ToString("#,###", @cul.NumberFormat)</p>
-            </div>
         </div>
+
     </div>
-
-    <h2 id="stories" style="font-family: inherit; color: #5f5b57; margin: 100px 0px 50px 0px">
-        STORIES
-    </h2>
-    <div class="container-fluid">
-        <div id="stories" class="row">
-            <div class="col-md-6">
-                <div>
-                    <img class="stories" src="~/image/stories1.jpg" alt="ảnh lỗi rồi">
+    @*Our menu*@
+    <div>
+        <section class="food_section layout_padding-bottom">
+            <div class="container">
+                <div class="heading_container heading_center">
+                    <h2 style="text-align:center">
+                        Our Menu
+                    </h2>
                 </div>
-                <p class="title-stories">Guests Attending Exquisite Gucci</p>
-                <a href="https://www.gucci.com/us/en/st/stories/runway/article/exquisite-fashion-show-guests-gallery" class="stories-link" target="_blank">A PHOTO GALLERY </a>
-            </div>
 
-            <div class="col-md-6">
-                <div>
-                    <img class="stories" src="~/image/stories4.jpg" alt="ảnh lỗi rồi">
-                </div>
-                <p class="title-stories">Exquisite Beauty</p>
-                <a href="https://www.gucci.com/us/en/st/stories/article-category-beauty/article/exquisite-fashion-show-beauty-details" class="stories-link" target="_blank">THE MAKEUP AT THE SHOW</a>
-            </div>
-        </div>
+                <ul class="filters_menu">
+                    <li class="active" data-filter="*">All</li>
+                    <li data-filter=".burger">Burger</li>
+                    <li data-filter=".pizza">Pizza</li>
+                    <li data-filter=".pasta">Pasta</li>
+                    <li data-filter=".fries">Fries</li>
+                </ul>
 
-        <div id="stories" class="row">
-
-            <div class="col-md-6">
-                <div>
-                    <img class="stories" src="~/image/stories3.jpg" alt="ảnh lỗi rồi">
-                </div>
-                <p class="title-stories">Fashioning Masculinities</p>
-                <a href="https://www.gucci.com/us/en/st/capsule/va-fashioning-masculinities" class="stories-link" target="_blank">THE ART OF MENSWEAR</a>
-            </div>
-
-            <div class="col-md-6">
-                <div>
-                    <img class="stories" src="~/image/stories2.jpg" alt="ảnh lỗi rồi">
-                </div>
-                <p class="title-stories">Magical Mirrors</p>
-                <a href="https://www.gucci.com/us/en/st/stories/runway/article/exquisite-fashion-show-looks-gallery" class="stories-link" target="_blank">THE LOOKS</a>
-            </div>
-        </div>
-    </div>
-
-
+                <div class="filters-content">
+                    <div class="row grid">
+                        @foreach (var item in Model) {
+                        <a class="product-item" href="@Url.Action("Details","MatHang", new { id= item.MatHangID})" style="color: white">
+                            <div class="col-sm-6 col-lg-4 all pizza">
+                                <div class="box">
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="@Url.Content(item.HinhAnh)" alt="">
+                                        </div>
+                                        <div class="detail-box">
+                                            <h5>
+                                                @item.TenMH
+                                            </h5>
+                                            <p>
+                                                @item.MoTa
+                                            </p>
+                                            <div class="options">
+                                                <h6>
+                                                    $@item.DonGia
+                                                </h6>
+                                                <a href="">
+                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                                                    <g>
+                                                    <g>
+                                                    <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" /></g>
+                        </g>
+                                                    <g>
+                                                    <g>
+                                                    <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                         C457.728,97.71,450.56,86.958,439.296,84.91z" /></g>
+                        </g>
+                                                    <g>
+                                                    <g>
+                                                    <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+</g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                                                    <g>
+                        </g>
+                      </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                            }
 </div>
+                </div>
+                <div class="btn-box">
+                    <a href="">
+                        View More
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script>
+    //function add to cart
+    $(document).ready(function () {
+        $('#addtocart').on('click', function () {
+
+                                var button = $(this);
+                                var cart = $('#cart');
+                                var cartTotal = cart.attr('data-totalitems');
+                                var newCartTotal = parseInt(cartTotal) + 1;
+
+                                button.addClass('sendtocart');
+                                setTimeout(function () {
+                                    button.removeClass('sendtocart');
+                                    cart.addClass('shake').attr('data-totalitems', newCartTotal);
+                                    setTimeout(function () {
+                                        cart.removeClass('shake');
+                                    }, 500)
+            }, 1000)
+        })
+    })
+
+
+</script>
+@*Slide Show JS*@
+<script>
+    let slideIndex = 0;
+    showSlides();
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+            slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>
+<script>
+    $(window).on('load', function () {
+        $('.filters_menu li').click(function () {
+            $('.filters_menu li').removeClass('active');
+            $(this).addClass('active');
+
+            var data = $(this).attr('data-filter');
+            $grid.isotope({
+                filter: data
+            })
+        });
+
+        var $grid = $(".grid").isotope({
+            itemSelector: ".all",
+            percentPosition: false,
+            masonry: {
+                columnWidth: ".all"
+            }
+        })
+    });
+</script>
+<script>
+
+    $(window).on('load', function () {
+        $('.filters_menu li').click(function () {
+            $('.filters_menu li').removeClass('active');
+            $(this).addClass('active');
+
+            var data = $(this).attr('data-filter');
+            $grid.isotope({
+                filter: data
+            })
+        });
+
+        var $grid = $(".grid").isotope({
+            itemSelector: ".all",
+            percentPosition: false,
+            masonry: {
+                columnWidth: ".all"
+            }
+        })
+    });
+
+
+</script>
+

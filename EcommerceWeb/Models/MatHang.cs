@@ -26,13 +26,13 @@ namespace EcommerceWeb.Models
         public int SoLuong { get; set; }
 
         //0: Female, 1: Male
-        public byte Gender { get; set; }
+        public byte? Gender { get; set; }
 
         public int LoaiID { get; set; }
         [ForeignKey("LoaiID")]
         public LoaiHang LoaiHang{ get; set; }
 
-        [Required(ErrorMessage = "Image Required!")]
+        //[Required(ErrorMessage = "Image Required!")]
         public string HinhAnh { get; set; }
         public DateTime NSX { get; set; }
         public DateTime HSD { get; set; }

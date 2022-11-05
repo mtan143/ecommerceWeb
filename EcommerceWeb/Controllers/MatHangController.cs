@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using EcommerceWeb.DAL;
 using EcommerceWeb.Models;
+using System.IO;
 
 namespace EcommerceWeb.Controllers
 {
@@ -51,18 +52,35 @@ namespace EcommerceWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MatHangID,TenMH,DonGia,MoTa,Size,Color,Gender,LoaiID,HinhAnh")] MatHang matHang)
+        public ActionResult Create(HttpPostedFileBase file, [Bind(Include = "MatHangID,TenMH,DonGia,MoTa,LoaiID,NSX,HSD,TongSoLuong")] MatHang matHang)
         {
             if (ModelState.IsValid)
             {
-                db.MatHangs.Add(matHang);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var allowedExtensions = new[] { ".Jpg", ".png", ".jpg", "jpeg" };
+                var ext = Path.GetExtension(file.FileName);
+
+                if (allowedExtensions.Contains(ext)) //check what type of extension
+                {
+                    var path = Path.Combine(Server.MapPath("~/image"), Path.GetFileName(file.FileName));
+                    var imgLink = "~/image/" + file.FileName;
+                    matHang.HinhAnh = imgLink;
+                    matHang.SoLuongTonKho = matHang.TongSoLuong;
+                    db.MatHangs.Add(matHang);
+                    ViewBag.FileStatus = "File uploaded successfully.";
+                    db.SaveChanges();
+                    file.SaveAs(path);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.message = "Please choose only Image file";
+                }
             }
 
             ViewBag.LoaiID = new SelectList(db.LoaiHangs, "LoaiID", "TenLoai", matHang.LoaiID);
             return View(matHang);
         }
+
 
         // GET: MatHang/Edit/5
         public ActionResult Edit(int? id)

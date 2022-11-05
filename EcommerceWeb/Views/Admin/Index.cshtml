@@ -4,45 +4,151 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Admin_Layout.cshtml";
 }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <style>
-    #containerExtra {
-        background-color: black;
-        height: 100px;
-        width: 100px;
-        color: white;
-        padding: 40px 0;
-        border-radius: 50%;
-        margin: 30px auto;
-    }
-    a {
-        color: white
-    }
-    a:hover {
-        color: white;
-        text-decoration: none;
-        text-decoration-color: white;
-    }
-    #containerExtra:hover {
-        height: 100%;
+    .css {
         width: 100%;
-        border-radius: 0px;
-        color: white;
+        background-color: black;
+        height: 300px;
     }
-    #containerExtra {
-        color: white;
+
+    body {
+        background-color: #202020;
+        font-family: 'Poppins', sans-serif;
     }
-    #item:hover {
-        color: white;
+
+    .boxes {
+        text-align: center;
+        position: relative;
+        width: 1260px;
+        margin: 0 auto;
     }
-    #item {
-        color: white;
-    }
+
+        .boxes .box {
+            display: block;
+            float: left;
+            position: relative;
+            width: 400px;
+            height: 350px;
+            text-align: center;
+            border-collapse: collapse;
+            text-decoration: none;
+            color: #fff;
+            margin: 0 10px;
+        }
+
+            .boxes .box h3 {
+                transition: all 0.5s;
+                padding-top: 50px;
+                padding-bottom: 60px;
+                margin: 0;
+                font-size: 2em;
+                text-transform: uppercase;
+            }
+
+            .boxes .box i {
+                transition: all 0.4s;
+                font-size: 4em;
+            }
+
+            .boxes .box p {
+                transition: all 0.5s;
+                margin-top: 70px;
+            }
+
+            .boxes .box:before {
+                transition: all 0.4s;
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 50%;
+                left: 50%;
+                margin-left: -50%;
+                top: 25%;
+                border-color: rgba(200, 200, 200, 0);
+                border-style: solid;
+                border-width: 0 1px;
+            }
+
+            .boxes .box:after {
+                transition: all 0.4s;
+                position: absolute;
+                content: "";
+                width: 50%;
+                height: 100%;
+                left: 50%;
+                margin-left: -25%;
+                top: 0;
+                border-color: rgba(200, 200, 200, 0);
+                border-style: solid;
+                border-width: 1px 0;
+            }
+
+            .boxes .box:hover {
+                color: yellow;
+            }
+
+                .boxes .box:hover h3 {
+                    padding-top: 80px;
+                    padding-bottom: 30px;
+                }
+
+                .boxes .box:hover p {
+                    margin-top: 30px;
+                }
+
+              
+
+    @*-----------------------------------------*@
+  
+            .container {
+                width: 1270px;
+            }
+
+
 </style>
 
-<div class="text-center" style="text-align: center; margin-top: 100px; ">
-    <h2 style="margin: 40px">MANAGEMENT SYSTEM</h2>
-    <div id="containerExtra"><a id="item" href="/KhachHang/Index" style="text-decoration: none">USER</a></div>
-    <div id="containerExtra"><a id="item" href="/MatHang/Index" style="text-decoration: none">PRODUCT</a></div>
-    <div id="containerExtra"><a id="item" href="/HoaDon/Index" style="text-decoration: none">ORDER</a></div>
-    <div id="containerExtra"><a id="item" href="/Admin/Statistic" style="text-decoration: none">STATISTIC</a></div>
+<div class="container">
+    <h2 style="margin: 335px 0 60px 460px; color:white">MANAGEMENT SYSTEM</h2>
+
+
+    <div class="boxes">
+
+        <a class="box" href="/KhachHang/Index">
+            <h3>User</h3>
+            <i class="fa fa-user"></i>
+        </a>
+
+        <a class="box" href="/MatHang/Index">
+            <h3>Product</h3>
+            <i class="fa fa-cutlery" aria-hidden="true"></i>
+        </a>
+
+
+        <a class="box" href="/HoaDon/Index">
+            <h3>BILLS</h3>
+            <i class="fa-solid fa-money-bill"></i>
+        </a>
+
+        <a class="box" href="/Admin/Statistic">
+            <h3>STATISTICS</h3>
+            <i class="fa fa-cart-arrow-down"></i>
+        </a>
+
+        <a class="box" href="/Admin/Statistic">
+            <h3>PAYMENT</h3>
+
+            <i class="fa-regular fa-credit-card"></i>
+        </a>
+
+        <a class="box" href="/Admin/Statistic">
+            <h3>Images</h3>
+            <i class="fa-solid fa-image"></i>
+        </a>
+
+        <div class="boxes"> </div>
+    </div>
 </div>
