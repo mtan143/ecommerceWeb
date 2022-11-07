@@ -39,82 +39,104 @@
         display: inline-block;
         vertical-align: middle;
     }
+#label {
+        text-align: left
+    }
+    .form-group {
+        margin: 20px;
+    }
 </style>
-
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 <div class="container" style="margin-top: 100px;">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "MatHang", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
-        <h2 style="text-align: center; margin: 40px">ADD NEW PRODUCT</h2>
+        <h2 style="text-align: center; margin: 40px; margin-bottom: 70px">ADD NEW PRODUCT</h2>
         <div class="form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <label class="control-label col-md-2">Name</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TenMH, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TenMH, "", new { @class = "text-danger" })
+            <div class="row" style="text-align: -webkit-center">
+                <div class="col-md-6 form-group">
+                    <label class="control-label col-md-2" id="label">Name</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TenMH, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TenMH, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label class="control-label col-md-2" id="label">Price</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DonGia, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DonGia, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
+            <div class="row" style="text-align: -webkit-center">
+                <div class="col-md-6 form-group">
+                    <label class="control-label col-md-2" id="label">Description</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-2">Price</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DonGia, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DonGia, "", new { @class = "text-danger" })
+                <div class="col-md-6 form-group">
+                    <label class="control-label col-md-2" id="label">Type</label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("LoaiID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.LoaiID, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
+            <div class="row" style="text-align: -webkit-center">
+                <div class="col-md-6 form-group">
+                    <label class="control-label col-md-2" id="label">Manufacture Date</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NSX, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NSX, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-2">Description</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                <div class="col-md-6 form-group">
+                    <label class="control-label col-md-2" id="label">Expire Date</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.HSD, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HSD, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Size</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
+            <div class="row" style="text-align: -webkit-center">
+                <div class="col-md-6 form-group">
+                    <label class="control-label col-md-2" id="label">Total Amount</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TongSoLuong, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TongSoLuong, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="control-label col-md-2" id="label">Picture</label>
+                    <div class="col-md-10">
+                        <input type="file" name="file" id="file" onchange="show(this);" /><br />
+                        <div>
+                            <img id="user_img" width="50%" height="50%" />
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="form-group" style="margin-top: 30px; text-align: center">
 
-            <div class="form-group">
-                <label class="control-label col-md-2">Color</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Gender (0: Female <br /> 1: Male)</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Type</label>
-                <div class="col-md-10">
-                    @Html.DropDownList("LoaiID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.LoaiID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Picture</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HinhAnh, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group" style="margin-top: 30px">
-
-                <div class="col-md-offset-2 child">
+                <div class="col-md-offset-2 child" style="margin-left: 0px">
                     <input type="submit" value="Create" class="btn btn-default" />
                 </div>
                 <div class="col-md-offset-2 child" style="margin-left: 10px;">

@@ -1,0 +1,66 @@
+﻿@model EcommerceWeb.Models.DanhGia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DanhGia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang.TenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.TenKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatHang.TenMH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatHang.TenMH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGian)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LanCuoiChinhSua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LanCuoiChinhSua)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DanhGiaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

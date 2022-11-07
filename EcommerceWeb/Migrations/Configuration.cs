@@ -10,6 +10,7 @@ namespace EcommerceWeb.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "EcommerceWeb.DAL.EcommerceContext";
         }
 

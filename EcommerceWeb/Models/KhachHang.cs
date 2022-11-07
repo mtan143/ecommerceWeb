@@ -38,5 +38,6 @@ namespace EcommerceWeb.Models
         public string Password { get; set; }
 
         public ICollection<HoaDon> HoaDons { get; set; }
+        public ICollection<DanhGia> DanhGias{ get; set; }
     }
 }
