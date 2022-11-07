@@ -40,5 +40,6 @@ namespace EcommerceWeb.Models
         public int SoLuongTonKho { get; set; }
         public virtual ICollection<ChiTietHoaDon> HoaDons { get; set; }
         public virtual ICollection<ChiNhanh> ChiNhanhs { get; set; }
+        public virtual ICollection<DanhGia> DanhGias{ get; set; }
     }
 }

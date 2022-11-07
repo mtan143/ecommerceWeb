@@ -198,6 +198,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.5.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
@@ -264,6 +265,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ChiTietHoaDonController.cs" />
+    <Compile Include="Controllers\DanhGiaController.cs" />
     <Compile Include="Controllers\HoaDonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
@@ -285,6 +287,7 @@
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\LoaiHang.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\DanhGia.cs" />
     <Compile Include="Models\MatHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -543,6 +546,11 @@
     <Content Include="Views\HoaDon\OrderUser.cshtml" />
     <Content Include="Views\KhachHang\EditCustomer.cshtml" />
     <Content Include="Views\Admin\Statistic.cshtml" />
+    <Content Include="Views\DanhGias\Create.cshtml" />
+    <Content Include="Views\DanhGias\Delete.cshtml" />
+    <Content Include="Views\DanhGias\Details.cshtml" />
+    <Content Include="Views\DanhGias\Edit.cshtml" />
+    <Content Include="Views\DanhGias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
