@@ -236,5 +236,12 @@ namespace EcommerceWeb.Controllers
             }
             return View(khachHang);
         }
+
+        public ActionResult ChatBox()
+        {
+            var isAdmin = User.IsInRole("ADMIN");
+            System.Diagnostics.Debug.WriteLine("isAdmin: " + isAdmin);
+            return View();
+        }
     }
 }
