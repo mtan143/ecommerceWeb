@@ -136,17 +136,8 @@ namespace EcommerceWeb.Controllers
             }
             base.Dispose(disposing);
         }
-
-        public List<DanhGia> getDanhGiaByProductId(String productId)
-        {
-            if (productId.Equals(null))
-            {
-                return new List<DanhGia>();
-            }
-            return db.DanhGias.Where(cmt => cmt.MatHangID.Equals(productId)).ToList();
-        }
-
-        public int totalDanhGiaByProductId(String productId)
+        
+        public int totalDanhGiaByProductId(int productId)
         {
             if (productId.Equals(null))
             {
@@ -155,7 +146,7 @@ namespace EcommerceWeb.Controllers
             return db.DanhGias.Where(cmt => cmt.MatHangID.Equals(productId)).ToList().Count;
         }
 
-        public List<DanhGia> getDanhGiaByUserId(String userId)
+        public List<DanhGia> getDanhGiaByUserId(int userId)
         {
             if (userId.Equals(null))
             {

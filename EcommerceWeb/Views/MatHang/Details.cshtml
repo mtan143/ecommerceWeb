@@ -1,8 +1,9 @@
-﻿@model EcommerceWeb.Models.MatHang
+﻿@*@model Tuple<EcommerceWeb.Models.MatHang, List<EcommerceWeb.Models.DanhGia>>*@
+@model EcommerceWeb.Models.MatHang
 @using System.Globalization;
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/DetailProductLayout.cshtml";
 }
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -202,14 +203,14 @@ s
     string[] colors = Model.Color.Split(' ');
     string[] sizes = Model.Size.Split(',');
     List<string> description = new List<string>
-    {
-                "The Interlocking G has remained one of the most symbolic codes of the House since its introduction. The distinguishing emblem appears as a leather detail atop this tote. Completing the design's logo feel, the bag is crafted from monogram canvas.",
-                "Reimagined within a refreshed aesthetic that instills a contemporary spirit in classic designs, sartorial jackets become the protagonist of mismatched looks mixing refined fabrics and cult casual materials. A traditional design in blue cotton, the jacket can be worn with its coordinated vest and denim pants for a disruptive take on traditional tailoring.",
-                "Reimagined within a refreshed aesthetic that instills a contemporary spirit in classic designs, sartorial jackets become the protagonist of mismatched looks mixing refined fabrics and cult casual materials. A traditional design in blue cotton, the jacket can be worn with its coordinated vest and denim pants for a disruptive take on traditional tailoring.",
-                "Gucci Aria’s tailoring collection presents formal suit separates developed on plain or patterned fabrics that feature feather details at the hems—recalling the everlasting femininity of forgotten cabaret artists. By infusing typically feminine details into the men’s collection, and vice versa, the lines between the two worlds blur creating looks characterised by an everlasting neutrality.",
-                "High-waisted skirts with side slits walked the Spring Summer 2020 runway, embodying what the Creative Director described as a beautiful cliché of sexiness, inspired by the idea of freedom that fashion experienced in the 90s. Crafted from black cady wool silk crêpe, this skirt speaks to a contemporary, streamlined aesthetic.",
-                "Details taken from the archive continue to be incorporated into the collections with contemporary take. The chevron vintage Web appears on the front of this skirt, recalling the sportswear influences that run through the House's narrative, while the pleated layers of the bottom part add a refined touch."
-            };
+{
+        "The Interlocking G has remained one of the most symbolic codes of the House since its introduction. The distinguishing emblem appears as a leather detail atop this tote. Completing the design's logo feel, the bag is crafted from monogram canvas.",
+        "Reimagined within a refreshed aesthetic that instills a contemporary spirit in classic designs, sartorial jackets become the protagonist of mismatched looks mixing refined fabrics and cult casual materials. A traditional design in blue cotton, the jacket can be worn with its coordinated vest and denim pants for a disruptive take on traditional tailoring.",
+        "Reimagined within a refreshed aesthetic that instills a contemporary spirit in classic designs, sartorial jackets become the protagonist of mismatched looks mixing refined fabrics and cult casual materials. A traditional design in blue cotton, the jacket can be worn with its coordinated vest and denim pants for a disruptive take on traditional tailoring.",
+        "Gucci Aria’s tailoring collection presents formal suit separates developed on plain or patterned fabrics that feature feather details at the hems—recalling the everlasting femininity of forgotten cabaret artists. By infusing typically feminine details into the men’s collection, and vice versa, the lines between the two worlds blur creating looks characterised by an everlasting neutrality.",
+        "High-waisted skirts with side slits walked the Spring Summer 2020 runway, embodying what the Creative Director described as a beautiful cliché of sexiness, inspired by the idea of freedom that fashion experienced in the 90s. Crafted from black cady wool silk crêpe, this skirt speaks to a contemporary, streamlined aesthetic.",
+        "Details taken from the archive continue to be incorporated into the collections with contemporary take. The chevron vintage Web appears on the front of this skirt, recalling the sportswear influences that run through the House's narrative, while the pleated layers of the bottom part add a refined touch."
+    };
     CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
     string a = (Model.DonGia).ToString("#,###", cul.NumberFormat);
 }
@@ -217,7 +218,6 @@ s
 <div class="container">
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v15.0" nonce="7DpEz43Y"></script>
-    <hr />
     <div class="row">
         <div class="col-md-5">
             <img class="image" src="@Url.Content(@Html.DisplayFor(model => model.HinhAnh).ToString())" style="object-fit:contain; margin-top:55px" />
@@ -367,22 +367,26 @@ s
                         <div class="row">
                             <div class="col-sm-8" style="width:63.666667%;">
                                 @*  <form>
-            <h3 class="pull-left">New Comment</h3>
-            <button type="submit" class="btn btn-normal pull-right">Submit</button>
-            <fieldset>
-                <div class="row">
-                    <div class="col-sm-3 col-lg-2 hidden-xs">
-                        <img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                    </div>
-                    <div class="form-group col-xs-12 col-sm-9 col-lg-10">
-                        <textarea class="form-control" id="message" placeholder="Your message" required=""></textarea>
-                    </div>
-                </div>
-            </fieldset>
-        </form> *@
+                                        <h3 class="pull-left">New Comment</h3>
+                                        <button type="submit" class="btn btn-normal pull-right">Submit</button>
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-sm-3 col-lg-2 hidden-xs">
+                                                    <img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                                                </div>
+                                                <div class="form-group col-xs-12 col-sm-9 col-lg-10">
+                                                    <textarea class="form-control" id="message" placeholder="Your message" required=""></textarea>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form> *@
 
-                                <h3>4 Comments</h3>
+                                @*<h3>@Html.Action("totalDanhGiaByProductId", "DanhGia", new { productId = Model.MatHangID }) Comments</h3>*@
+                                <h3>1 Comments</h3>
 
+
+                                @*@foreach (var item in Model.Item2)
+                                    {*@
                                 <!-- COMMENT 1 - START -->
                                 <div class="media">
                                     <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
@@ -403,9 +407,7 @@ s
                                     </div>
                                 </div>
                                 <!-- COMMENT 1 - END -->
-
-
-
+                                @*}*@
                             </div>
                         </div>
                     </div>
