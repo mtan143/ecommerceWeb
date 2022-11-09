@@ -46,11 +46,14 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-
+        <h2 style="text-align: center; margin: 40px; margin-bottom: 70px">EDIT PRODUCT</h2>
         <div class="form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.MatHangID)
-
+            @Html.HiddenFor(model => model.Size)
+            @Html.HiddenFor(model => model.Color)
+            @Html.HiddenFor(model => model.Gender)
+            @Html.HiddenFor(model => model.HinhAnh)
             <div class="form-group">
                 <label class="control-label col-md-2">Name</label>
                 <div class="col-md-10">
@@ -75,43 +78,12 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-2">Size</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Color</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Gender (0: Female<br /> 1: Male)</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
             <div class="form-group">
                 <label class="control-label col-md-2">Type</label>
                 <div class="col-md-10">
                     @Html.DropDownList("LoaiID", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.LoaiID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Picture</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HinhAnh, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
                 </div>
             </div>
 

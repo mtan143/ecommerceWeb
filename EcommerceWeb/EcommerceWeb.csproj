@@ -551,6 +551,7 @@
     <Content Include="Views\DanhGias\Details.cshtml" />
     <Content Include="Views\DanhGias\Edit.cshtml" />
     <Content Include="Views\DanhGias\Index.cshtml" />
+    <Content Include="Views\Shared\AnotherLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
