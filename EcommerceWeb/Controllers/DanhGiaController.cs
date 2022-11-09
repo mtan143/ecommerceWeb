@@ -136,5 +136,32 @@ namespace EcommerceWeb.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public List<DanhGia> getDanhGiaByProductId(String productId)
+        {
+            if (productId.Equals(null))
+            {
+                return new List<DanhGia>();
+            }
+            return db.DanhGias.Where(cmt => cmt.MatHangID.Equals(productId)).ToList();
+        }
+
+        public int totalDanhGiaByProductId(String productId)
+        {
+            if (productId.Equals(null))
+            {
+                return 0;
+            }
+            return db.DanhGias.Where(cmt => cmt.MatHangID.Equals(productId)).ToList().Count;
+        }
+
+        public List<DanhGia> getDanhGiaByUserId(String userId)
+        {
+            if (userId.Equals(null))
+            {
+                return new List<DanhGia>();
+            }
+            return db.DanhGias.Where(cmt => cmt.MatHangID.Equals(userId)).ToList();
+        }
     }
 }

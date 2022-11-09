@@ -1,4 +1,5 @@
-﻿using EcommerceWeb.Models;
+﻿using EcommerceWeb.Hubs;
+using EcommerceWeb.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNetCore.Identity;
@@ -15,6 +16,7 @@ namespace EcommerceWeb
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            app.MapSignalR();
         }
     }
 }
