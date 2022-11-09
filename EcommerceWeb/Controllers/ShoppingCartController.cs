@@ -67,10 +67,10 @@ namespace EcommerceWeb.Controllers
         {
             Cart cart = Session["Cart"] as Cart;
             string currentUserId = User.Identity.GetUserId();
-            ApplicationUser currentUser = applicationDbContext.Users.FirstOrDefault(x => x.Id == currentUserId);
+            ApplicationUser currentUser = applicationDbContext.Users.First(x => x.Id == currentUserId);
             var hoaDon = new HoaDon
             {
-                KhachHangID = db.KhachHangs.FirstOrDefault(x => x.Username == currentUser.Email).KhachHangID,
+                KhachHangID = db.KhachHangs.First(x => x.Username == currentUser.Email).KhachHangID,
                 Ngay = DateTime.Now,
                 MatHangs = new List<ChiTietHoaDon>(),
                 TrangThai = 0
@@ -113,10 +113,10 @@ namespace EcommerceWeb.Controllers
             return View(cart);
         }
 
-        public PartialViewResult BagCart()
+        public ActionResult BagCart()
         {
             int tongMH = 0;
-            Cart cart = Session["Cart"] as Cart;
+            Cart cart = (Session["Cart"] as Cart) ?? new Cart();
             if(cart != null)
             {
                 tongMH = cart.TotalQuantity();

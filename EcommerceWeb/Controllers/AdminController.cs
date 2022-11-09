@@ -130,5 +130,10 @@ namespace EcommerceWeb.Controllers
             var tupleModel = new Tuple<List<KhachHang>, List<MatHang>, List<HoaDon>, List<ChiTietHoaDon>>(db.KhachHangs.ToList(), db.MatHangs.ToList(), db.HoaDons.ToList(), db.ChiTietHoaDons.ToList());
             return View(tupleModel);
         }
+
+        public ActionResult ChatBox()
+        {
+            return View();
+        }
     }
 }
