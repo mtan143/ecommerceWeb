@@ -563,8 +563,10 @@
     <Content Include="Views\DanhGias\Details.cshtml" />
     <Content Include="Views\DanhGias\Edit.cshtml" />
     <Content Include="Views\DanhGias\Index.cshtml" />
+    <Content Include="Views\Shared\AnotherLayout.cshtml" />
     <Content Include="Views\KhachHang\ChatBox.cshtml" />
     <Content Include="Views\Admin\ChatBox.cshtml" />
+    <Content Include="Views\Shared\DetailProductLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

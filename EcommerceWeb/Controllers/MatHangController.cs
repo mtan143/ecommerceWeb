@@ -37,6 +37,11 @@ namespace EcommerceWeb.Controllers
             {
                 return HttpNotFound();
             }
+
+            //var commentList = db.DanhGias.Where(cmt => cmt.MatHangID.Equals(id)).ToList();
+
+            //var tupleResult = new Tuple<MatHang, List<DanhGia>>(matHang, commentList);
+             
             return View(matHang);
         }
 

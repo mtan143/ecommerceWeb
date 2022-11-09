@@ -24,7 +24,7 @@
         }
 
         .navbar-brand {
-            color: white;
+            color: black;
             margin-top: 20px;
             font-family: 'Dancing Script', cursive;
         }
@@ -35,7 +35,7 @@
 
 
         .homeNav, .newArrivalsNav, .infoNav {
-            color: white;
+            color: black;
         }
 
             .infoNav:hover {
@@ -109,7 +109,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("fFOOD", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("fFOOD", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "font-family: 'Dancing Script', cursive;" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -132,8 +132,6 @@
 
     <!-- Footer -->
     <footer class="bg-dark text-center text-white" id="info" style="background-color: #262626; color: white">
-
-
         <!-- Grid container -->
         <div class="container p-4" style="margin-bottom: 30px">
             <!-- Section: Social media -->
