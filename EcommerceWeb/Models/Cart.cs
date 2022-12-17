@@ -12,6 +12,25 @@ namespace EcommerceWeb.Models
     }
     public class Cart
     {
+        static Cart instance;
+
+        private static object locker = new object();
+        public static Cart GetCart()
+        {
+            if (instance == null)
+            {
+                lock (locker)
+                {
+                    if (instance == null)
+                    {
+                        instance = new Cart();
+                    }
+                }
+            }
+            return instance;
+        }
+
+
         List<CartItem> items = new List<CartItem>();
         public IEnumerable<CartItem> Items
         {

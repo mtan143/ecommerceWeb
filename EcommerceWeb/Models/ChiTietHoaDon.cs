@@ -9,6 +9,24 @@ namespace EcommerceWeb.Models
 {
     public class ChiTietHoaDon
     {
+        static ChiTietHoaDon instance;
+
+        private static object locker = new object();
+        public static ChiTietHoaDon GetCart()
+        {
+            if (instance == null)
+            {
+                lock (locker)
+                {
+                    if (instance == null)
+                    {
+                        instance = new ChiTietHoaDon();
+                    }
+                }
+            }
+            return instance;
+        }
+
         [Key]
         public int ChiTietHoaDonID { get; set; }
 

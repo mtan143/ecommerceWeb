@@ -5,6 +5,24 @@ namespace EcommerceWeb.Models
 {
     public class LoaiHang
     {
+        static LoaiHang instance;
+
+        private static object locker = new object();
+        public static LoaiHang GetCart()
+        {
+            if (instance == null)
+            {
+                lock (locker)
+                {
+                    if (instance == null)
+                    {
+                        instance = new LoaiHang();
+                    }
+                }
+            }
+            return instance;
+        }
+
         public LoaiHang() { }
         [Key]
         public int LoaiID { get; set; }

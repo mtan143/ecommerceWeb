@@ -8,7 +8,25 @@ namespace EcommerceWeb.Models
 {
     public class HoaDon
     {
-        public HoaDon() { }
+        static HoaDon instance;
+
+        private static object locker = new object();
+        public static HoaDon GetCart()
+        {
+            if (instance == null)
+            {
+                lock (locker)
+                {
+                    if (instance == null)
+                    {
+                        instance = new HoaDon();
+                    }
+                }
+            }
+            return instance;
+        }
+
+            public HoaDon() { }
 
         [Key]
         public int HoaDonID { get; set; }

@@ -340,6 +340,9 @@
     <Content Include="Content\font-awesome\sprites\brands.svg" />
     <Content Include="Content\font-awesome\sprites\regular.svg" />
     <Content Include="Content\font-awesome\sprites\solid.svg" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\chatbox.js" />
+    <Content Include="Content\js\wow.min.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -429,6 +432,8 @@
     <Content Include="image\LogoAron.png" />
     <Content Include="image\man-banner.jpg" />
     <Content Include="image\man-cover.jpg" />
+    <Content Include="image\nocoment.png" />
+    <Content Include="image\noComentYet.png" />
     <Content Include="image\pasta1.png" />
     <Content Include="image\pasta2.png" />
     <Content Include="image\pizza1.png" />
@@ -567,6 +572,8 @@
     <Content Include="Views\KhachHang\ChatBox.cshtml" />
     <Content Include="Views\Admin\ChatBox.cshtml" />
     <Content Include="Views\Shared\DetailProductLayout.cshtml" />
+    <Content Include="Views\Admin\AdminChatting.cshtml" />
+    <Content Include="Views\Shared\SearchLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

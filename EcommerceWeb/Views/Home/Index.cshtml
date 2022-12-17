@@ -2,6 +2,7 @@
 @using System.Globalization;
 @{
     CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+    IEnumerable<EcommerceWeb.Models.MatHang> getTypeList = Model;
 }
 
 <head>
@@ -524,17 +525,18 @@
                 </div>
 
                 <ul class="filters_menu" style="font-size: 20px;">
-                    <li class="active" data-filter="*">All</li>
-                    <li data-filter=".burger">Burger</li>
-                    <li data-filter=".pizza">Pizza</li>
-                    <li data-filter=".pasta">Pasta</li>
-                    <li data-filter=".fries">Fries</li>
-                </ul>
+                    <li class="active" data-filter="*" id="all">All</li>
+                    <li data-filter=".burger" id="burger">Burger</li>
+                    <li data-filter=".pizza" id="pizza">Pizza</li>
+                    <li data-filter=".pasta" id="pasta">Pasta</li>
+                    <li data-filter=".fries" id="fries">Fries</li>
+                </ul>  
 
-                <div class="filters-content">
+                <div class="filters-content" style="margin-bottom: 50px ">
                     <div class="row grid">
-                        @foreach (var item in Model)
+                        @foreach (var item in getTypeList)
                         {
+                        <div class="each-item">
                             <a class="product-item" href="@Url.Action("Details","MatHang", new { id= item.MatHangID})" style="color: white">
                                 <div class="col-sm-6 col-lg-4 all pizza">
                                     <div class="box">
@@ -571,6 +573,14 @@
                                                         <g>
                                                         <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
                          c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+
+
+
+
+
+
+
+
 
 
 
@@ -618,41 +628,15 @@
                                     </div>
                                 </div>
                             </a>
+                        </div>
                         }
                     </div>
-                </div>
-                <div class="btn-box" style="margin:35px">
-                    <a href="">
-                        View More
-                    </a>
                 </div>
             </div>
         </section>
     </div>
 
     @*----------------------------------------------------------------Comment and Rates ---------------------------------------------------------*@
-    @* <div class="card">
-            <div class="row" style="display:flex; margin:10px">
-                <div class="col-2"> <img src="https://i.imgur.com/xELPaag.jpg" width="70"  style="border-radius:30px" class="rounded-circle mt-2"> </div>
-                <div class="col-10">
-                    <div class="comment-box ml-2">
-                        <h4>Add a comment</h4>
-                        <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> </div>
-                        <div class="comment-area"> <textarea class="form-control" placeholder="what is your view?" rows="4"></textarea> </div>
-                        <div class="comment-btns mt-2">
-                            <div class="row" style="margin:10px 0 0 0">
-                                <div class="col-6">
-                                    <div class="pull-left"> <button class="btn btn-success btn-sm">Cancel</button> </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="pull-right"> <button class="btn btn-success send btn-sm">Send <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> *@
 
 </div>
 <script>
@@ -741,7 +725,66 @@
             }
         })
     });
-
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1) return true;
+        }
+        $("#burger").click(function () {
+            $('.filters_menu li').removeClass('active');
+            $(this).addClass('active');
+            $(".each-item").each(function () {
+                if (!Contains($(this).text(), "Burger")) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            })
+        })
+        $("#pizza").click(function () {
+            $('.filters_menu li').removeClass('active');
+            $(this).addClass('active');
+            $(".each-item").each(function () {
+                if (!Contains($(this).text(), "Pizza")) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            })
+        })
+        $("#pasta").click(function () {
+            $('.filters_menu li').removeClass('active');
+            $(this).addClass('active');
+            $(".each-item").each(function () {
+                if (!Contains($(this).text(), "Pasta")) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            })
+        })
+        $("#fries").click(function () {
+            $('.filters_menu li').removeClass('active');
+            $(this).addClass('active');
+            $(".each-item").each(function () {
+                if (!Contains($(this).text(), "Fries")) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            })
+        })
+        $("#all").click(function () {
+            $('.filters_menu li').removeClass('active');
+            $(this).addClass('active');
+            $(".each-item").each(function () {
+                if (!Contains($(this).text(), "")) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            })
+        })
+    })
 
 </script>
 

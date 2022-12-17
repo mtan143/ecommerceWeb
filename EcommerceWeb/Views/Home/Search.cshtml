@@ -2,6 +2,7 @@
 @using System.Globalization;
 @{
     CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+    Layout = "~/Views/Shared/SearchLayout.cshtml";
 }
 <!DOCTYPE html>
 <html>
@@ -62,22 +63,34 @@
         </div>
     </div>
 
+    <div style="text-align: center; margin: 10px">
+        <div class="form-group">
+            <div class="btn-group" id="btn-group">
+                <button style="color: black" type="button" class="btn active" id="all">All</button>
+                <button style="color: black" type="button" class="btn" id="burger">Burger</button>
+                <button style="color: black" type="button" class="btn" id="pizza">Pizza</button>
+                <button style="color: black" type="button" class="btn" id="pasta">Pasta</button>
+                <button style="color: black" type="button" class="btn" id="fries">Fries</button>
+            </div>
+        </div>
+    </div>
+
     <div style="text-align:center; margin-top: 60px">
         <div class="row" style="margin-top: 50px">
             @foreach (var item in Model)
             {
-            <div id="proItem" class="col-md-3">
-                <div class="gallery">
-                    <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
-                        <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
-                    </a>
+                <div id="proItem" class="col-md-3">
+                    <div class="gallery">
+                        <a href="@Url.Action("Details","MatHang", new { id= item.MatHangID})">
+                            <img class="zoomPic" src="@Url.Content(item.HinhAnh)" alt="ảnh lỗi rồi">
+                        </a>
+                    </div>
+                    <div class="TwoButton">
+                        <a href="/ShoppingCart/AddtoCart/@item.MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
+                    </div>
+                    <p>@item.TenMH</p>
+                    <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
                 </div>
-                <div class="TwoButton">
-                    <a href="/ShoppingCart/AddtoCart/@item.MatHangID" id="buttonCart" class="btn btn-primary btn-sm active" type="button" aria-pressed="true">Add To Cart</a>
-                </div>
-                <p>@item.TenMH</p>
-                <p>$ @item.DonGia.ToString("#,###", @cul.NumberFormat)</p>
-            </div>
             }
         </div>
     </div>
@@ -91,6 +104,61 @@
                 var searchText = $("#Search").val().toLowerCase();
                 $(".col-md-3").each(function () {
                     if (!Contains($(this).text().toLowerCase(), searchText)) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                })
+            })
+            $("#burger").click(function () {
+                $('.btn').removeClass('active');
+                $(this).addClass('active');
+                $(".col-md-3").each(function () {
+                    if (!Contains($(this).text(), "Burger")) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                })
+            })
+            $("#pizza").click(function () {
+                $('.btn').removeClass('active');
+                $(this).addClass('active');
+                $(".col-md-3").each(function () {
+                    if (!Contains($(this).text(), "Pizza")) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                })
+            })
+            $("#pasta").click(function () {
+                $('.btn').removeClass('active');
+                $(this).addClass('active');
+                $(".col-md-3").each(function () {
+                    if (!Contains($(this).text(), "Pasta")) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                })
+            })
+            $("#fries").click(function () {
+                $('.btn').removeClass('active');
+                $(this).addClass('active');
+                $(".col-md-3").each(function () {
+                    if (!Contains($(this).text(), "Fries")) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                })
+            })
+            $("#all").click(function () {
+                $('.btn').removeClass('active');
+                $(this).addClass('active');
+                $(".col-md-3").each(function () {
+                    if (!Contains($(this).text(), "")) {
                         $(this).hide();
                     } else {
                         $(this).show();

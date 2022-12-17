@@ -2,10 +2,12 @@
 @using System.Globalization;
 @{
     ViewBag.Title = "ShowToCart";
-    Layout = "~/Views/Shared/AnotherLayout.cshtml";
+    Layout = "~/Views/Shared/SearchLayout.cshtml";
     CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
 }
 <head>
+
+
     <style>
         #buttonBuyNow {
             color: black;
@@ -165,76 +167,567 @@
             color: black;
         }
 
+        @*---------------------------------------------------------PROCESS ORTHER STATUS----------------------------------- *@
+   .container {
+       margin-top:50px;
+       margin-bottom: 50px
+
+   }
+   .card {
+       position: relative;
+       display: -webkit-box;
+       display: -ms-flexbox;
+       display: flex;
+       -webkit-box-orient: vertical;
+       -webkit-box-direction: normal;
+       -ms-flex-direction: column;
+       flex-direction: column;
+       min-width: 0;
+       word-wrap: break-word;
+       background-color: #fff;
+       background-clip: border-box;
+       border-radius: 0.10rem
+
+   }
+   .card-header:first-child {
+       border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0
+
+   }
+   .card-header {
+       padding: 0.75rem 1.25rem;
+       margin-bottom: 0;
+       background-color: #fff;
+       border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+
+   }
+   .track {
+       position: relative;
+       background-color: #ddd;
+       height: 7px;
+       display: -webkit-box;
+       display: -ms-flexbox;
+       display: flex;
+       margin-bottom: 60px;
+       margin-top: 50px
+
+   }
+   .track .step {
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        width: 25%;
+        margin-top: -18px;
+        text-align: center;
+        position: relative
+
+    }
+    .track .step.active:before {
+        background: black;
+
+    }
+    .track .step::before {
+        height: 7px;
+        position: absolute;
+        content: "";
+        width: 100%;
+        left: 0;
+        top: 18px
+
+    }
+    .track .step.active .icon {
+        background: black;
+        color: #fff
+
+    }
+    .track .icon {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        position: relative;
+        border-radius: 100%;
+        background: #ddd
+
+    }
+    .track .step.active .text {
+        font-weight: 400;
+        color: #000
+
+    }
+    .track .text {
+        display: block;
+        margin-top: 7px
+
+    }
+    .itemside {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%
+
+    }.itemside .aside {
+         position: relative;
+         -ms-flex-negative: 0;
+         flex-shrink: 0
+
+     }
+     .img-sm {
+         width: 80px;
+         height: 80px;
+         padding: 7px
+
+     }
+     ul.row, ul.row-sm {
+         list-style: none;
+         padding: 0
+
+     }
+     .itemside .info {
+         padding-left: 15px;
+         padding-right: 7px
+
+     }
+     .itemside .title{
+         display: block;
+         margin-bottom: 5px;
+         color: #212529
+
+     }
+     p{margin-top: 0;
+       margin-bottom: 1rem
+
+     }
+     .btn-warning {
+         color: #ffffff;
+         background-color: black;
+         border-color: black;
+         border-radius: 5px;
+
+     }
+     .btn-warning:hover {
+         color: #ffffff;
+         background-color: black;
+         border-color: black;
+         border-radius: 5px;
+
+     }
+        .rowInfoDelivery {
+            display: flex;
+            justify-content: space-between;
+            border: 0.5px solid #ddd;
+            border-radius: 6px;
+            margin: 10px 0;
+            list-style: none;
+            padding:0 40px;
+        }
+
+        .rowProductDetail {
+            display: flex;
+            justify-content: space-between;
+            border: 0.5px solid #ddd;
+            border-radius: 6px;
+            margin: 10px 0;
+            list-style:none;
+        }
+
+        .col{
+            margin:30px 0;
+        }
+
+        @*-----------------------------------------FORM INFOMATION USER WHEN OTHER----------------------------------*@ .wrapper {
+            margin-top: 5%;
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            font-family: "Arimo";
+            margin-left: 300px;
+            background-color: #FFCC00;
+            -webkit-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+            -moz-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+            box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+            animation: slideUp 2000ms ease;
+            border-radius: 10px;
+        }
+
+@@keyframes slideUp {
+  0% {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+.container1 {
+  width: 65%;
+  padding: 5% 10%;
+}
+
+h1 {
+  align-self: center;
+}
+
+form {
+  width: 100%;
+}
+form > * {
+  margin-top: 20px;
+}
+form input {
+  width: 100%;
+  min-height: 25px;
+  border: 0;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  margin-top: 5px;
+  color: #8e2807;
+  border-radius: 4px;
+}
+form label {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: white;
+}
+form h1 {
+  font-size: 24px;
+  line-height: 10px;
+  color:black;
+  letter-spacing: 1px;
+}
+form h1:nth-of-type(2) {
+  margin-top: 10%;
+}
+
+.name {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+}
+.name div {
+  width: 45%;
+}
+
+.address-info {
+  display: flex;
+  justify-content: space-between;
+}
+.address-info div {
+  width: 30%;
+}
+
+.cc-info {
+  display: flex;
+  justify-content: space-between;
+}
+.cc-info div {
+  width: 45%;
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content:space-between;
+}
+.btns button {
+  margin: 3px 0;
+  height: 30px;
+  width: 40%;
+  color: #cfc9e1;
+  background-color: black;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 0.3rem;
+  letter-spacing: 2px;
+}
+.btns button:hover {
+  animation-name: btn-hov;
+  animation-duration: 550ms;
+  animation-fill-mode: forwards;
+}
+
+@@keyframes btn-hov {
+  100% {
+    background-color: #cfc9e1;
+    color: #4a3b76;
+    transform: scale(1.05);
+  }
+}
+input:focus,
+button:focus {
+  outline: none;
+}
+
+@@media (max-width: 736px) {
+  .wrapper {
+    width: 100%;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .btns {
+    align-items: center;
+  }
+  .btns button {
+    width: 50%;
+  }
+
+  form h1 {
+    text-align: center;
+  }
+
+  .name,
+.address-info,
+.cc-info {
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .name div,
+.address-info div,
+.cc-info div {
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+  }
+
+  .street,
+.cc-num {
+    text-align: center;
+  }
+
+  input {
+    margin: 5px 0;
+    min-height: 30px;
+  }
+}
+
+
+        .addressInput{
+            max-width:370px;
+        }
+
+
+        @*----------------------------DESIGN UI CHATTING---------------------------------- *@ @**@ .bubbleWrapper {
+            padding: 10px 10px;
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            align-self: flex-end;
+            color: #fff;
+        }
+
+        .inlineContainer {
+            display: inline-flex;
+        }
+
+            .inlineContainer.own {
+                flex-direction: row-reverse;
+            }
+
+        .inlineIcon {
+            width: 20px;
+            object-fit: contain;
+        }
+
+        .ownBubble {
+            min-width: 60px;
+            max-width: 700px;
+            padding: 14px 18px;
+            margin: 6px 8px;
+            background-color: #5b5377;
+            border-radius: 16px 16px 0 16px;
+            border: 1px solid #443f56;
+        }
+
+        .otherBubble {
+            min-width: 60px;
+            max-width: 700px;
+            padding: 14px 18px;
+            margin: 6px 8px;
+            background-color: #6C8EA4;
+            border-radius: 16px 16px 16px 0;
+            border: 1px solid #54788e;
+        }
+
+        .own {
+            align-self: flex-end;
+        }
+
+        .other {
+            align-self: flex-start;
+        }
+
+        span.own,
+        span.other {
+            font-size: 14px;
+            color: grey;
+        }
     </style>
+    <script>
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: "Monthly Revenue Chart"
+                },
+                axisX: {
+                    valueFormatString: "MMM,YY"
+                },
+                axisY: {
+                    title: "Total Revenue (VNĐ)",
+                    suffix: " vnđ"
+                },
+                legend: {
+                    cursor: "pointer",
+                    fontSize: 16,
+                    itemclick: toggleDataSeries
+                },
+                toolTip: {
+                    shared: true
+                },
+                data: [{
+                    name: "Revenue Product",
+                    type: "spline",
+                    yValueFormatString: "#0.## ##",
+                    showInLegend: true,
+                    dataPoints: [
+                        { x: new Date(2017, 6), y: 1000000 },
+                        { x: new Date(2017, 7), y: 3500000 },
+                        { x: new Date(2017, 8), y: 3500000 },
+                        { x: new Date(2017, 9), y: 2500000 },
+                        { x: new Date(2017, 10), y: 4000000 },
+                        { x: new Date(2017, 11), y: 1900000 },
+                        { x: new Date(2017, 12), y: 3700000 }
+                    ]
+                },
+
+
+                ]
+            });
+            chart.render();
+
+            function toggleDataSeries(e) {
+                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                }
+                else {
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+            }
+
+            var chartCircle = new CanvasJS.Chart("chartContainerCircle", {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title: {
+                    text: "Chart Of Total Revenue Of Each Type In The Month"
+                },
+                data: [{
+                    type: "pie",
+                    startAngle: 25,
+                    toolTipContent: "<b>{label}</b>: {y}%",
+                    showInLegend: "true",
+                    legendText: "{label}",
+                    indexLabelFontSize: 16,
+                    indexLabel: "{label} - {y}%",
+                    dataPoints: [
+                        { y: 59.08, label: "Burger" },
+                        { y: 31.34, label: "Pizza" },
+                        { y: 8.26, label: "Pasta" },
+                        { y: 1.32, label: "Fries" },
+
+                    ]
+                }]
+            });
+            chartCircle.render();
+
+        }
+    </script>
+
+    @*-----------------------CHART CIRCLE-------------------------------*@
+
 </head>
+
 <body>
+
+
     <div class="container-fluid">
 
         @if (Model.Items.Count() != 0)
         {
-            <a href="/"><i title="back" class="fa-solid fa-arrow-left-long" style="color: black; margin-top: 75px; font-size: 30px"></i></a>
+            <a href="/"><i title="back" class="fa-solid fa-arrow-left-long" style="color: white; margin-top: 75px; font-size: 30px"></i></a>
             <h1 style="margin-bottom: 20px; text-align: center">YOUR CART</h1>
-                    foreach (var item in Model.Items)
-                    {
-                        double tongtien = Convert.ToDouble(item.shoppingProduct.DonGia * item.shoppingQuantity);
-                        <div class="row" style="margin-top: 50px">
-                            <div class="col-md-3 gallery">
-                                <a>
-                                    <img class="zoomPic" src="@Url.Content(item.shoppingProduct.HinhAnh)" alt="ảnh lỗi rồi">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <table class="table">
-                                    <tr>
-                                        <th scope="row">Name</th>
-                                        <td id="content-product">@Html.DisplayFor(model => item.shoppingProduct.TenMH)</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Price</th>
-                                        <td id="content-product">$ @item.shoppingProduct.DonGia.ToString("#,###", @cul.NumberFormat)</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Quantity</th>
-                                        <td id="content-product">
-                                            @using (Html.BeginForm("UpdateQuantityInCart", "ShoppingCart"))
-                                            {
-                                                <input type="hidden" value="@item.shoppingProduct.MatHangID" name="ID_MatHang" />
-                                                <input id="box" type="number" min="1" max="30" value="@item.shoppingQuantity" name="SoLuong_MH" style="width: 60px" />
-                                                <input id="box" style="background-color: black; color: white" type="submit" value="Update" />
-                                            }
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Total Price</th>
-                                        <td id="content-product">$ @tongtien.ToString("#,###", @cul.NumberFormat)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div style="position:absolute; top:170px">
-                                                <a class="button" href="/ShoppingCart/RemoveProductInCart/@item.shoppingProduct.MatHangID" role="button">
-                                                    <span>Remove</span>
-                                                    <div class="icon">
-                                                        <i class="fa fa-remove"></i>
-
-                                                    </div>
-                                                </a>
-
+            foreach (var item in Model.Items)
+            {
+                double tongtien = Convert.ToDouble(item.shoppingProduct.DonGia * item.shoppingQuantity);
+                <div class="row" style="margin-top: 50px">
+                    <div class="col-md-3 gallery">
+                        <a>
+                            <img class="zoomPic" src="@Url.Content(item.shoppingProduct.HinhAnh)" alt="ảnh lỗi rồi">
+                        </a>
+                    </div>
+                    <div class="col-md-9">
+                        <table class="table">
+                            <tr>
+                                <th scope="row">Name</th>
+                                <td id="content-product">@Html.DisplayFor(model => item.shoppingProduct.TenMH)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Price</th>
+                                <td id="content-product">$ @item.shoppingProduct.DonGia.ToString("#,###", @cul.NumberFormat)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Quantity</th>
+                                <td id="content-product">
+                                    @using (Html.BeginForm("UpdateQuantityInCart", "ShoppingCart"))
+                                    {
+                                        <input type="hidden" value="@item.shoppingProduct.MatHangID" name="ID_MatHang" />
+                                        <input id="box" type="number" min="1" max="30" value="@item.shoppingQuantity" name="SoLuong_MH" style="width: 60px" />
+                                        <input id="box" style="background-color: black; color: white; width:10%" type="submit" value="Update" />
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Total Price</th>
+                                <td id="content-product">$ @tongtien.ToString("#,###", @cul.NumberFormat)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="position:absolute; top:170px">
+                                        <a class="button" href="/ShoppingCart/RemoveProductInCart/@item.shoppingProduct.MatHangID" role="button">
+                                            <span>Remove</span>
+                                            <div class="icon">
+                                                <i class="fa fa-remove"></i>
 
                                             </div>
-                                        </td>
-                                    </tr>
-                                </table>
+                                        </a>
 
-                            </div>
-                        </div>
-                    }
-    <div class="purchase" style="text-align: right">
-        <br />
-        <span style="padding-bottom: 10px; font-weight: bold; font-size: 15px;">TOTAL PRICE: $ @Model.TotalPrice().ToString("#,###", @cul.NumberFormat)</span><br /><br /><br />
-        <a href="/ShoppingCart/Payment" id="buttonBuyNow" class="btn btn-primary btn-sm" type="button" aria-pressed="true">
-            PURCHASE
-        </a>
-    </div>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            }
+            <div class="purchase" style="text-align: right">
+                <br />
+                <span style="padding-bottom: 10px; font-weight: bold; font-size: 15px;">TOTAL PRICE: $ @Model.TotalPrice().ToString("#,###", @cul.NumberFormat)</span><br /><br /><br />
+                <a href="/ShoppingCart/Payment" id="buttonBuyNow" class="btn btn-primary btn-sm" type="button" aria-pressed="true">
+                    PURCHASE
+                </a>
+            </div>
         }
         else
         {
