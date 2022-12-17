@@ -7,6 +7,24 @@ namespace EcommerceWeb.Models
 {
     public class MatHang
     {
+        static MatHang instance;
+
+        private static object locker = new object();
+        public static MatHang GetCart()
+        {
+            if (instance == null)
+            {
+                lock (locker)
+                {
+                    if (instance == null)
+                    {
+                        instance = new MatHang();
+                    }
+                }
+            }
+            return instance;
+        }
+
         public MatHang(){}
 
         [Key]

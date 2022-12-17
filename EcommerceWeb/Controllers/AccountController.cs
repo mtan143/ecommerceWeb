@@ -89,6 +89,7 @@ namespace EcommerceWeb.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    Session["User"] = user;
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

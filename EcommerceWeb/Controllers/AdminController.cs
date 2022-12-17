@@ -135,5 +135,10 @@ namespace EcommerceWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult AdminChatting()
+        {
+            return View();
+        }
     }
 }

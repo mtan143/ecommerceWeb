@@ -7,6 +7,24 @@ namespace EcommerceWeb.Models
 {
     public class DanhGia
     {
+        static DanhGia instance;
+
+        private static object locker = new object();
+        public static DanhGia GetCart()
+        {
+            if (instance == null)
+            {
+                lock (locker)
+                {
+                    if (instance == null)
+                    {
+                        instance = new DanhGia();
+                    }
+                }
+            }
+            return instance;
+        }
+
         public DanhGia(){}
 
         [Key]

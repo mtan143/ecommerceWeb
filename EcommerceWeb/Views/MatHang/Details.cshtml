@@ -1,5 +1,5 @@
-﻿@*@model Tuple<EcommerceWeb.Models.MatHang, List<EcommerceWeb.Models.DanhGia>>*@
-@model EcommerceWeb.Models.MatHang
+﻿@model Tuple<EcommerceWeb.Models.MatHang, List<EcommerceWeb.Models.DanhGia>>
+@*@model EcommerceWeb.Models.MatHang*@
 @using System.Globalization;
 @{
     ViewBag.Title = "Details";
@@ -200,19 +200,19 @@ s
 </style>
 
 @{
-    string[] colors = Model.Color.Split(' ');
-    string[] sizes = Model.Size.Split(',');
+    string[] colors = Model.Item1.Color.Split(' ');
+    string[] sizes = Model.Item1.Size.Split(',');
     List<string> description = new List<string>
 {
-        "The Interlocking G has remained one of the most symbolic codes of the House since its introduction. The distinguishing emblem appears as a leather detail atop this tote. Completing the design's logo feel, the bag is crafted from monogram canvas.",
-        "Reimagined within a refreshed aesthetic that instills a contemporary spirit in classic designs, sartorial jackets become the protagonist of mismatched looks mixing refined fabrics and cult casual materials. A traditional design in blue cotton, the jacket can be worn with its coordinated vest and denim pants for a disruptive take on traditional tailoring.",
-        "Reimagined within a refreshed aesthetic that instills a contemporary spirit in classic designs, sartorial jackets become the protagonist of mismatched looks mixing refined fabrics and cult casual materials. A traditional design in blue cotton, the jacket can be worn with its coordinated vest and denim pants for a disruptive take on traditional tailoring.",
-        "Gucci Aria’s tailoring collection presents formal suit separates developed on plain or patterned fabrics that feature feather details at the hems—recalling the everlasting femininity of forgotten cabaret artists. By infusing typically feminine details into the men’s collection, and vice versa, the lines between the two worlds blur creating looks characterised by an everlasting neutrality.",
-        "High-waisted skirts with side slits walked the Spring Summer 2020 runway, embodying what the Creative Director described as a beautiful cliché of sexiness, inspired by the idea of freedom that fashion experienced in the 90s. Crafted from black cady wool silk crêpe, this skirt speaks to a contemporary, streamlined aesthetic.",
-        "Details taken from the archive continue to be incorporated into the collections with contemporary take. The chevron vintage Web appears on the front of this skirt, recalling the sportswear influences that run through the House's narrative, while the pleated layers of the bottom part add a refined touch."
-    };
+"The Interlocking G has remained one of the most symbolic codes of the House since its introduction. The distinguishing emblem appears as a leather detail atop this tote. Completing the design's logo feel, the bag is crafted from monogram canvas.",
+"Reimagined within a refreshed aesthetic that instills a contemporary spirit in classic designs, sartorial jackets become the protagonist of mismatched looks mixing refined fabrics and cult casual materials. A traditional design in blue cotton, the jacket can be worn with its coordinated vest and denim pants for a disruptive take on traditional tailoring.",
+"Reimagined within a refreshed aesthetic that instills a contemporary spirit in classic designs, sartorial jackets become the protagonist of mismatched looks mixing refined fabrics and cult casual materials. A traditional design in blue cotton, the jacket can be worn with its coordinated vest and denim pants for a disruptive take on traditional tailoring.",
+"Gucci Aria’s tailoring collection presents formal suit separates developed on plain or patterned fabrics that feature feather details at the hems—recalling the everlasting femininity of forgotten cabaret artists. By infusing typically feminine details into the men’s collection, and vice versa, the lines between the two worlds blur creating looks characterised by an everlasting neutrality.",
+"High-waisted skirts with side slits walked the Spring Summer 2020 runway, embodying what the Creative Director described as a beautiful cliché of sexiness, inspired by the idea of freedom that fashion experienced in the 90s. Crafted from black cady wool silk crêpe, this skirt speaks to a contemporary, streamlined aesthetic.",
+"Details taken from the archive continue to be incorporated into the collections with contemporary take. The chevron vintage Web appears on the front of this skirt, recalling the sportswear influences that run through the House's narrative, while the pleated layers of the bottom part add a refined touch."
+};
     CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
-    string a = (Model.DonGia).ToString("#,###", cul.NumberFormat);
+    string a = (Model.Item1.DonGia).ToString("#,###", cul.NumberFormat);
 }
 
 <div class="container">
@@ -220,11 +220,11 @@ s
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v15.0" nonce="7DpEz43Y"></script>
     <div class="row">
         <div class="col-md-5">
-            <img class="image" src="@Url.Content(@Html.DisplayFor(model => model.HinhAnh).ToString())" style="object-fit:contain; margin-top:55px" />
+            <img class="image" src="@Url.Content(@Html.DisplayFor(model => Model.Item1.HinhAnh).ToString())" style="object-fit:contain; margin-top:55px" />
         </div>
         <div class="col-md-7" style="text-align: center; margin-top: 50px">
             <div class="text-center">
-                <h3>@Html.DisplayFor(model => model.TenMH)</h3>
+                <h3>@Html.DisplayFor(model => Model.Item1.TenMH)</h3>
                 <hr style="width: 70%" />
                 <h4 style="margin-top: 30px">$ @a</h4>
 
@@ -243,7 +243,7 @@ s
                 </select><br />
                 <br />
                 <div style="margin: 30px 70px 30px 70px; text-align: justify">@description[new Random().Next(description.Count)]</div><br />
-                <button type="button" class="btnActionCart"><a href="/ShoppingCart/AddtoCart/@Html.DisplayFor(model => model.MatHangID).ToString()" style="color: white; text-decoration: none">ADD TO CART</a></button>
+                <button type="button" class="btnActionCart"><a href="/ShoppingCart/AddtoCart/@Html.DisplayFor(model => Model.Item1.MatHangID).ToString()" style="color: white; text-decoration: none">ADD TO CART</a></button>
             </div>
         </div>
     </div>
@@ -366,48 +366,41 @@ s
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-8" style="width:63.666667%;">
-                                @*  <form>
-                                        <h3 class="pull-left">New Comment</h3>
-                                        <button type="submit" class="btn btn-normal pull-right">Submit</button>
-                                        <fieldset>
-                                            <div class="row">
-                                                <div class="col-sm-3 col-lg-2 hidden-xs">
-                                                    <img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                                </div>
-                                                <div class="form-group col-xs-12 col-sm-9 col-lg-10">
-                                                    <textarea class="form-control" id="message" placeholder="Your message" required=""></textarea>
-                                                </div>
+                                @if (Model.Item2.Count == 0)
+                                {
+                                    <img style="margin:0 73px" src="~/image/noComentYet.png" />
+                                    <p style="font-size:25px;text-align:center; margin-top:-50px"><i>No Comment Yet</i> </p>
+                                    <p style="color:#DDDDDD;text-align:center">Currently the system does not have any comments, please login to be able to comment</p>
+                                }
+                                else
+                                {
+                                    <h3>@Html.Action("totalDanhGiaByProductId", "DanhGia", new { productId = Model.Item1.MatHangID }) Comments</h3>
+                                    foreach (var item in Model.Item2)
+                                    {
+                                        <!-- COMMENT 1 - START -->
+                                        <div class="media">
+                                            <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">@item.KhachHang.TenKH</h4>
+                                                @for (var i = 0; i < item.Sao; i++)
+                                                {
+                                                    <span class="fa fa-star checked"></span>
+                                                }
+                                                <p>@item.NoiDung</p>
+                                                <ul class="list-unstyled list-inline media-detail pull-left">
+                                                    @{ 
+                                                        DateTime dt = DateTime.ParseExact(item.LanCuoiChinhSua.ToString(), "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                                                        string s = dt.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                                                    }
+                                                    <li><i class="fa fa-calendar"></i>@item.LanCuoiChinhSua</li>
+
+                                                </ul>
+
                                             </div>
-                                        </fieldset>
-                                    </form> *@
-
-                                @*<h3>@Html.Action("totalDanhGiaByProductId", "DanhGia", new { productId = Model.MatHangID }) Comments</h3>*@
-                                <h3>1 Comments</h3>
-
-
-                                @*@foreach (var item in Model.Item2)
-                                    {*@
-                                <!-- COMMENT 1 - START -->
-                                <div class="media">
-                                    <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">John Doe</h4>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        <ul class="list-unstyled list-inline media-detail pull-left">
-                                            <li><i class="fa fa-calendar"></i>27/02/2014</li>
-
-                                        </ul>
-
-                                    </div>
-                                </div>
-                                <!-- COMMENT 1 - END -->
-                                @*}*@
+                                        </div>
+                                        <!-- COMMENT 1 - END -->
+                                    }
+                                }
                             </div>
                         </div>
                     </div>
@@ -415,7 +408,7 @@ s
             </div>
         </div>
         <div class="col-md-4" style="text-align: center">
-            <img class="image" src="@Url.Content(@Html.DisplayFor(model => model.HinhAnh).ToString())" style="width: 250px; height: 250px" /><br />
+            <img class="image" src="@Url.Content(@Html.DisplayFor(model => Model.Item1.HinhAnh).ToString())" style="width: 250px; height: 250px" /><br />
             <div style="text-align: left; font-size: 12px; margin-top: 30px">
                 PRODUCT DETAILS <br /><br />
                 Style 669707 ZAD88 9783<br /><br /><br />

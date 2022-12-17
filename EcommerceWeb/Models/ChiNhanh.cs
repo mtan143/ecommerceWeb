@@ -8,6 +8,25 @@ namespace EcommerceWeb.Models
 {
     public class ChiNhanh
     {
+        static ChiNhanh instance;
+
+        private static object locker = new object();
+        public static ChiNhanh GetCart()
+        {
+            if (instance == null)
+            {
+                lock (locker)
+                {
+                    if (instance == null)
+                    {
+                        instance = new ChiNhanh();
+                    }
+                }
+            }
+            return instance;
+        }
+
+
         public ChiNhanh() { }
 
         [Key]

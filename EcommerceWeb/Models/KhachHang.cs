@@ -5,6 +5,24 @@ namespace EcommerceWeb.Models
 {
     public class KhachHang
     {
+        static KhachHang instance;
+
+        private static object locker = new object();
+        public static KhachHang GetCart()
+        {
+            if (instance == null)
+            {
+                lock (locker)
+                {
+                    if (instance == null)
+                    {
+                        instance = new KhachHang();
+                    }
+                }
+            }
+            return instance;
+        }
+
         public KhachHang()
         {
         }
